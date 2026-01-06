@@ -38,9 +38,8 @@
 <li class="nav-lang">
   <form action="{% url 'set_language' %}" method="post">
     {% csrf_token %}
-
+      <input type="hidden" name="next" value="{{ request.get_full_path }}">
     <i class="fa-solid fa-globe" style="font-size:24px; margin-right:6px;"></i>
-
     {% get_current_language as LANGUAGE_CODE %}
 
     <select name="language" onchange="this.form.submit()">

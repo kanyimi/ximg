@@ -22,9 +22,6 @@ if not DEBUG:
 else:
     SECURE_REFERRER_POLICY = "same-origin"
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-USE_X_FORWARDED_HOST = True
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 INSTALLED_APPS = [
@@ -40,12 +37,21 @@ INSTALLED_APPS = [
     'secret_notes',
 
 ]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
 CSRF_TRUSTED_ORIGINS = [
-    "https://ximg.at",
-    "https://ximg.to",
-    "https://www.ximg.at",
-    "https://www.ximg.to",
+    "https://ximg.at", "https://www.ximg.at",
+    "https://ximg.to", "https://www.ximg.to",
 ]
+
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SAMESITE = "Lax"
+    SESSION_COOKIE_SAMESITE = "Lax"
+
 
 
 MIDDLEWARE = [
