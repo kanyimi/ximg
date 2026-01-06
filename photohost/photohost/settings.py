@@ -22,6 +22,8 @@ if not DEBUG:
 else:
     SECURE_REFERRER_POLICY = "same-origin"
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
