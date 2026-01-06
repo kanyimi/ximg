@@ -19,6 +19,8 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 if not DEBUG:
     SECURE_REFERRER_POLICY = "no-referrer"
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_X_FORWARDED_HOST = True
 else:
     SECURE_REFERRER_POLICY = "same-origin"
 
@@ -39,9 +41,12 @@ INSTALLED_APPS = [
 
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "https://8d53f588f884.ngrok-free.app",
-    "https://*.ngrok-free.app",
+    "https://ximg.at",
+    "https://ximg.to",
+    "https://www.ximg.at",
+    "https://www.ximg.to",
 ]
+
 
 MIDDLEWARE = [
     # 'photohost.middleware.noindex.NoIndexMiddleware',
