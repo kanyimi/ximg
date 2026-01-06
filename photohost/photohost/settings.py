@@ -19,11 +19,11 @@ DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 if not DEBUG:
     SECURE_REFERRER_POLICY = "no-referrer"
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    USE_X_FORWARDED_HOST = True
 else:
     SECURE_REFERRER_POLICY = "same-origin"
 
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
