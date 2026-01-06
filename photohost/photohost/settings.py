@@ -44,7 +44,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 MIDDLEWARE = [
-    'photohost.middleware.noindex.NoIndexMiddleware',
+    # 'photohost.middleware.noindex.NoIndexMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
