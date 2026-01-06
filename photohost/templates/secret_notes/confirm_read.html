@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Confirm Reading{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+
+    <div class="card shadow-sm" style="max-width:100%;">
+      <div class="card-body text-center">
+        <div class="mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#dc3545" class="bi bi-exclamation-diamond" viewBox="0 0 16 16">
+            <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.482 1.482 0 0 1 0-2.098L6.95.435zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>
+            <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+          </svg>
+        </div>
+
+        <h4 class="mb-3">⚠️ {% translate "Important Warning" %}</h4>
+
+        <div class="alert  mb-4">
+          <p class="mb-0"><strong>{{ message }}</strong></p>
+          <p class="mb-0 mt-2">{% translate "You are about to read and" %} <b style="color:#227851;">{% translate "permanently destroy this note" %}.</b></p>
+        </div>
+
+
+        <p class="text-muted mb-4"
+           role="button"
+           data-bs-toggle="modal"
+           data-bs-target="#whatHappensNextModal">
+          {% translate "Are you sure you want to continue?" %}
+          <i class="fa fa-info-circle info-icon" style="font-size:24px"></i>
+        </p>
+
+
+
+        <div class="d-grid gap-2 d-md-block">
+          {% if has_password %}
+            {# For password-protected notes, proceed to password form #}
+            <a href="{% url 'secret_notes:view' note_id %}?confirm=true" class="btn btn-success btn-lg me-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye me-1" viewBox="0 0 16 16">
+                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+              </svg>
+              {% translate "Yes, show me the note" %}
+            </a>
+          {% else %}
+            {# For non-password notes, proceed directly to note #}
+            <a href="{% url 'secret_notes:view' note_id %}?confirm=true" class="btn btn-success btn-lg me-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye me-1" viewBox="0 0 16 16">
+                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+              </svg>
+             {% translate " Yes, show me the note" %}
+            </a>
+          {% endif %}
+
+          <a href="{% url 'secret_notes:create' %}" class="btn btn-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle me-1" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            {% translate "No, not now" %}
+          </a>
+        </div>
+
+        <div class="alert alert-info mt-4" role="alert">
+          <small>
+            <strong>ℹ️ {% translate "Remember" %}:</strong>
+            {% translate "If you need to keep the information from this note," %}
+            {% translate "make sure to copy it before closing the page, as it will be permanently deleted." %}
+          </small>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% include "includes/what_happens_next_modal.html" %}
+
+{% endblock %}
+{% block extra_css %}
+<style>
+  .info-icon {
+    font-size: 24px;
+    color: #6c757d; /* default (muted gray) */
+    transition: color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.info-icon:hover {
+    color: #227851; /* red on hover */
+}
+
+</style>
+{% endblock %}

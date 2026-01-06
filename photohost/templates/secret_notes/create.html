@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Create Secret Note{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+
+    <div class="card shadow-sm" style="width:882px;max-width:100%;">
+      <div class="card-body">
+          <h4 class="mb-3 text-center">{% translate "Send" %} <b style="color:#227851;">{% translate "Encrypted" %} </b>
+              {% translate "Notes that will self-destruct" %} <b style="color:#227851;"> {% translate "after being read" %}</b></h4>
+        <form method="post">
+          {% csrf_token %}
+
+        <div class="mb-3 note-textarea">
+            <textarea
+                name="text"
+                class="form-control note-textarea"
+                rows="6"
+                required
+            ></textarea>
+        </div>
+
+        <div class="mb-3 row align-items-start">
+            <label class="col-sm-3 col-form-label">
+                {% translate "Optional Password" %}
+            </label>
+
+            <div class="col-sm-6">
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Leave empty for no password"
+                />
+                <div class="form-text">
+                    {% translate "If set, users will need this password to view the note" %}.
+                </div>
+            </div>
+        </div>
+
+            <div class="mb-3 row align-items-center">
+                <label class="col-sm-3 col-form-label">
+                    {% translate "Self-destruct" %}
+                </label>
+
+                <div class="col-sm-6">
+                    <select name="expiry" class="form-select">
+                        <option value="read">{% translate "Delete after reading" %}</option>
+                        <option value="1d">{% translate "1 day" %}</option>
+                        <option value="3d">{% translate "3 days" %}</option>
+                        <option value="1w">{% translate "1 week" %}</option>
+                        <option value="2w">{% translate "2 weeks" %}</option>
+                        <option value="1m">{% translate "1 month" %}</option>
+                        <option value="2m">{% translate "2 months" %}</option>
+                    </select>
+                </div>
+            </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-50">
+             <i class="fa fa-lock" style="font-size:15px"></i> {% translate "Create Note" %}
+            </button>
+        </div>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+
+
+{% block extra_css %}
+<style>
+.note-textarea {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+}
+
+/* Large desktops */
+@media (min-width: 1400px) {
+    .note-textarea {
+        max-width: 1000px;
+    }
+}
+
+/* Laptops / desktops */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .note-textarea {
+        max-width: 882px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1199px) {
+    .note-textarea {
+        max-width: 100%;
+    }
+}
+
+/* Phones */
+@media (max-width: 576px) {
+    .note-textarea {
+        font-size: 15px;
+    }
+}
+
+
+</style>
+{% endblock %}

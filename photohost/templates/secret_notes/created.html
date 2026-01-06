@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Note Created{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+  <h4 class="mb-3 text-center">{% translate "Send" %} <b style="color:#227851;">{% translate "Encrypted" %} </b>
+    {% translate "Notes that will self-destruct" %} <b style="color:#227851;"> {% translate "after being read" %}</b></h4>
+    <div class="card shadow-sm" style="border:none; box-shadow: 0 0 0 2px rgba(108,140,255,0.1);max-width:100%;">
+      <div class="card-body text-center">
+
+        <h6 class="mb-3" style="color:#227851;"><i class="fa fa-check-circle" style="font-size:24px; color:#227851;"></i> {% translate "Secret note created successfully" %}!</h6>
+
+        <!-- Password protection notice -->
+        {% if note.has_password %}
+        <div class="alert alert-info mb-3">
+          <div class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-shield-lock me-2" viewBox="0 0 16 16">
+              <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+              <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
+            </svg>
+            <div class="text-start">
+              <strong>{% translate "Password Protected" %}</strong><br>
+              <small>{% translate "This note requires a password to view" %}.</small>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div class="alert alert-warning mb-3">
+          <div class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-shield-exclamation me-2" viewBox="0 0 16 16">
+              <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+            </svg>
+            <div class="text-start">
+              <strong>{% translate "No Password Set" %}</strong><br>
+              <small>{% translate "Anyone with the link can view this note" %}.</small>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <p class="text-muted">
+          {% translate "Share this link. Anyone with it can read the note" %}.
+          {% if note.has_password %}<strong>{% translate "Password required" %}.</strong>{% endif %}
+        </p>
+
+        <div class="input-group mb-3" style="max-width:100%;">
+          <input
+            type="text"
+            class="form-control"
+            id="note-link"
+            value="{{ request.scheme }}://{{ request.get_host }}{% url 'secret_notes:view' note.id %}"
+            readonly
+          >
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            onclick="copyLink()">
+            <i class="fa fa-copy" style="font-size:24px; color:#2e7d32"></i>
+          </button>
+        </div>
+
+        <!-- Additional info about the note -->
+        <div class="card mb-3" style="border:none;max-width:100%;">
+          <div class="card-body">
+            <h6 class="card-title">{% translate "Note Information" %}</h6>
+            <div class="row text-start">
+              <div class="col-md-6">
+                <small class="text-muted">{% translate "Status" %}:</small><br>
+                <span class="badge {% if note.has_password %}bg-info{% else %}bg-warning{% endif %}">
+                  {% if note.has_password %}🔒 {% translate "Password Protected" %}{% else %}🔓 {% translate "No Password" %}{% endif %}
+                </span>
+              </div>
+              <div class="col-md-6">
+                <small class="text-muted">{% translate "Expiration" %}:</small><br>
+                {% if note.delete_after_read %}
+                  <span class="badge bg-danger">{% translate "Delete after reading" %}</span>
+                {% elif note.expires_at %}
+                  <span class="badge bg-secondary">{% translate "Expires" %} {{ note.expires_at|date:"M d, Y" }}</span>
+                {% else %}
+                  <span class="badge bg-success">{% translate "No expiration" %}</span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 d-md-block">
+          <button
+            class="btn btn-outline-success me-2 mb-2"
+            onclick="copyLink()">
+            Copy Link
+          </button>
+
+          <a
+            href="{% url 'secret_notes:view' note.id %}"
+            class="btn btn-primary mb-2"
+            {% if note.has_password %}onclick="alert('Note is password protected. You will need to enter the password to view it.')"{% endif %}>
+            {% if note.has_password %}
+              🔒 Test View (Password Required)
+            {% else %}
+              👁️ {% translate "Test View" %}
+            {% endif %}
+          </a>
+
+          <a
+            href="{% url 'secret_notes:create' %}"
+            class="btn btn-success mb-2">
+           {% translate " Create Another" %}
+          </a>
+        </div>
+
+        {% if note.has_password %}
+        <div class="alert alert-warning mt-3" role="alert">
+          <small>
+            <strong>⚠️ {% translate "Important" %}:</strong>
+            {% translate "The password cannot be recovered if lost." %}
+            {% translate "Make sure to save it somewhere safe before sharing the link." %}
+          </small>
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function copyLink() {
+  const linkInput = document.getElementById('note-link');
+  linkInput.select();
+  linkInput.setSelectionRange(0, 99999); // For mobile devices
+
+  navigator.clipboard.writeText(linkInput.value).then(() => {
+    const copyBtn = linkInput.nextElementSibling;
+    const originalHTML = copyBtn.innerHTML;
+
+    // Show success feedback
+    copyBtn.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+      </svg>
+      Copied!
+    `;
+    copyBtn.classList.remove('btn-outline-secondary');
+    copyBtn.classList.add('btn-success');
+
+    // Revert after 2 seconds
+    setTimeout(() => {
+      copyBtn.innerHTML = originalHTML;
+      copyBtn.classList.remove('btn-success');
+      copyBtn.classList.add('btn-outline-secondary');
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+    alert('Failed to copy link. Please select and copy manually.');
+  });
+}
+</script>
+{% endblock %}

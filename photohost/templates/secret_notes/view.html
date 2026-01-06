@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}View Note{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+  <h4 class="mb-3 text-center">{% translate "Send" %} <b style="color:#227851;">{% translate "Encrypted" %} </b> {% translate "Notes that will self-destruct" %} <b style="color:#227851;"> {% translate "after being read" %}</b></h4>
+    <div class="card shadow-sm" style="border:none; box-shadow: 0 0 0 2px rgba(108,140,255,0.1);max-width:100%;">
+      <div class="card-body">
+
+        <h4 class="mb-3 text-center">📄 {% translate "Note Content" %}</h4>
+        <div class="form-text">
+         <i class="fa fa-clock" style="font-size:15px; color:#000000;"></i>
+          Note will self-destruct:<b style="color:#227851;"> {% translate "after reading" %} </b>
+        </div>
+        <div class="mb-3 note-textarea">
+          <textarea
+            id="noteText"
+            class="form-control"
+            rows="8"
+            readonly
+          >{{ text }}</textarea>
+        </div>
+      <div class="text-center">
+        <button
+          class="btn btn-success w-40"
+          onclick="navigator.clipboard.writeText(document.getElementById('noteText').value)"><i class="fa fa-copy" style="font-size:24px;"></i>
+          {% translate "Copy to Clipboard" %}
+        </button>
+      </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.note-textarea {
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+}
+
+/* Large desktops */
+@media (min-width: 1400px) {
+    .note-textarea {
+        max-width: 1000px;
+    }
+}
+
+/* Laptops / desktops */
+@media (min-width: 1200px) and (max-width: 1399px) {
+    .note-textarea {
+        max-width: 882px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1199px) {
+    .note-textarea {
+        max-width: 100%;
+    }
+}
+
+/* Phones */
+@media (max-width: 576px) {
+    .note-textarea {
+        font-size: 15px;
+    }
+}
+
+
+</style>
+{% endblock %}

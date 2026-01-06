@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Section {{ section.slug }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid1">
+    <div class="section-card">
+        <h1>{% translate "Section" %} {{ section.slug }}</h1>
+            <!-- Copyable section URL -->
+        <div class="copy-url" style="margin-top:20px; max-width:600px;">
+            <div class="copy-url-box" style="position: relative; border:1px solid #ccc; border-radius:10px; padding:6px 10px; background:#fff; max-width:400px;">
+            <!--    <span style="width:10px; height:10px; background:#2e7d32; border-radius:50%; display:inline-block; margin-right:10px;"></span>-->
+
+                <input type="text"
+                       id="sectionUrl"
+                       value="{{ request.build_absolute_uri }}"
+                       readonly
+                       style="
+                         padding-right: 20px; /* space for button */
+                         border:none;
+                         outline:none;
+                         font-size:14px;
+                         background:transparent;
+                       ">
+
+                <button id="copyBtn"
+                        title="Copy"
+                        style="
+                          position: absolute;
+                          right:10px;
+                          top:50%;
+                          transform: translateY(-50%);
+                          border:none;
+                          background:none;
+                          cursor:pointer;
+                          color:#2e7d32;
+                          font-size:18px;
+                        ">
+                    <i class="fa fa-copy"></i>
+                </button>
+            </div>
+            <span id="copyMsg" style="display:none; font-size:13px; color:#2e7d32; margin-top:6px;">Copied!</span>
+        </div>
+
+        <p><strong>{% translate "Uploaded" %}:</strong> {{ section.created_at }}</p>
+        <p><strong>{% translate "Expires" %}:</strong> {{ section.expires_at }}</p>
+
+<h2>Files</h2>
+
+<!-- IMAGE FILES GRID (4 per row) -->
+<div class="image-grid">
+{% for f in files %}
+  {% if f.is_image %}
+    <div class="image-card">
+      <div class="image-name">{{ f.original_name }}</div>
+
+      <a href="{{ f.file.url }}" target="_blank">
+        <img src="{{ f.file.url }}"
+             alt="{{ f.original_name }}"
+             class="image-thumb">
+      </a>
+
+      <div class="image-actions">
+        <a href="{% url 'photohostapp:download_file' f.id %}"
+           class="btn btn-sm btn-success"
+           style="background:#227851;">
+          <i class="fa fa-download"></i> {% translate "Download" %}
+        </a>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+</div>
+
+<!-- NON-IMAGE FILES GRID -->
+<div class="file-grid">
+{% for f in files %}
+    {% if not f.is_image %}
+    <div class="file-card">
+
+        {% if f.is_text %}
+            <!-- TXT file -->
+            <i class="fa-solid fa-file-lines file-icon"></i>
+            <button class="open-text-preview file-eye"
+                    data-title="{{ f.original_name }}"
+                    data-text="{{ f.text_preview|escapejs }}"
+                    title="Preview text">
+                <i class="fa-solid fa-eye"></i>
+            </button>
+        {% else %}
+            <!-- ALL OTHER FILE TYPES -->
+            <i class="fa-solid fa-file file-icon"></i>
+        {% endif %}
+
+        <div class="file-name">{{ f.original_name }}</div>
+
+        <a href="{% url 'photohostapp:download_file' f.id %}"
+           class="btn btn-sm btn-success"
+           style="background:#227851;">
+            <i class="fa fa-download"></i> {% translate "Download" %}
+        </a>
+
+    </div>
+    {% endif %}
+{% endfor %}
+</div>
+
+<br>
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+                <a href="{% url 'photohostapp:download_zip' slug=section.slug %}"
+                   class="download-zip">
+                    <i class="fa fa-download" style="font-size:24px; color:#ffff"></i> {% translate "Download All in ZIP" %}
+                </a>
+        </div>
+    </div>
+
+</div>
+{% include "includes/text_preview_modal.html" %}
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+/* ---------- Copy section URL ---------- */
+const copyBtn = document.getElementById('copyBtn');
+const sectionUrl = document.getElementById('sectionUrl');
+const copyMsg = document.getElementById('copyMsg');
+
+if (copyBtn && sectionUrl) {
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(sectionUrl.value);
+
+        copyMsg.style.display = 'inline';
+        setTimeout(() => {
+            copyMsg.style.display = 'none';
+        }, 2000);
+    });
+}
+    document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('textPreviewModal');
+    const closeBtn = modal.querySelector('.modal-close');
+    const titleEl = document.getElementById('textPreviewTitle');
+    const contentEl = document.getElementById('textPreviewContent');
+    const copyBtn = document.getElementById('copyTextPreviewBtn');
+
+    document.querySelectorAll('.open-text-preview').forEach(btn => {
+        btn.addEventListener('click', () => {
+            titleEl.textContent = btn.dataset.title;
+            const decodedText = JSON.parse('"' + btn.dataset.text + '"');
+            contentEl.textContent = decodedText;
+
+
+            modal.classList.add('show');
+        });
+    });
+
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(contentEl.textContent);
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy', 1500);
+    });
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('show');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+}
+
+.modal-lg {
+    max-width: 700px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+    .file-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.file-card {
+    position: relative;
+    background: #D9D9D9;
+    border-radius: 7px;
+    padding: 16px;
+    height: 200px;
+    text-align: center;
+}
+
+.file-icon {
+    font-size: 72px;
+    color: #227851;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+.file-eye {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #227851;
+}
+
+.file-name {
+    font-size: 0.85em;
+    margin-top: 110px;
+    word-break: break-word;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .file-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+    .file-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+    .file-grid { grid-template-columns: 1fr; }
+}
+.image-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:16px;
+  margin-top:16px;
+}
+
+.image-card{
+  background:#fff;
+  border:1px solid #e5e5e5;
+  border-radius:10px;
+  padding:12px;
+}
+
+.image-name{
+  font-size:0.9em;
+  margin-bottom:8px;
+  word-break:break-word;
+}
+
+.image-thumb{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:8px;
+  display:block;
+}
+
+.image-actions{
+  margin-top:10px;
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  .image-grid{ grid-template-columns:repeat(3, 1fr); }
+}
+@media (max-width: 768px){
+  .image-grid{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (max-width: 480px){
+  .image-grid{ grid-template-columns:1fr; }
+}
+
+</style>
+{% endblock %}

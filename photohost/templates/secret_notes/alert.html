@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Warning{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+
+    <div class="alert alert-warning shadow-sm">
+      <h5>⚠️ {% translate "Warning" %}</h5>
+      <p>{% translate "This note will be permanently deleted after opening." %}</p>
+
+      <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger">{% translate "Open Note" %}</button>
+        <a
+          href="{% url 'secret_notes:create' %}"
+          class="btn btn-secondary ms-2">
+          {% translate "Cancel" %}
+        </a>
+      </form>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

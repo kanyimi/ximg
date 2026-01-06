@@ -1,0 +1,77 @@
+{% load static %}
+<div class="modal fade" id="scanCoordinatesModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content scan-modal">
+
+      <!-- Header -->
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Scan coordinates – <span class="beta-text">BETA version</span>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Body -->
+      <div class="modal-body">
+
+        <p>
+          The function allows us to scan coordinates on your
+          <strong>.PNG</strong> and <strong>.JPG</strong> images.<br>
+          The <span class="green-text">coordinates</span> will then be available under each photo.
+        </p>
+
+        <p>
+          This function allows users to copy coordinates to the clipboard and paste them
+          into their maps, eliminating the need to rewrite it manually!
+        </p>
+
+        <p>
+          This feature is currently <span class="beta-text">in beta</span>.
+        </p>
+
+        <p><strong>Therefore, we ask that you follow these recommendations:</strong></p>
+
+        <ol class="scan-rules">
+          <li>Use <strong>white font on a black background</strong> to write coordinates on the photo.</li>
+          <li>Try to place the coordinates at the <strong>top of the image</strong>.</li>
+          <li>Use a <strong>comma</strong> to separate numbers. Example:
+            <code>52.516721, 13.383312</code>
+          </li>
+        </ol>
+
+        <div class="example-row">
+
+          <!-- GOOD example -->
+          <div class="example-card good">
+            <img src="{% static 'images/example-good.jpg' %}" alt="Good example">
+            <i class="fa fa-check"></i>
+          </div>
+
+          <!-- BAD example -->
+          <div class="example-card bad">
+            <img src="{% static 'images/example-bad.jpg' %}" alt="Bad example">
+            <i class="fa fa-times"></i>
+          </div>
+
+        </div>
+        <!-- App recommendations -->
+        <p class="mt-4">
+          We can recommend using the following apps to create photos with coordinates:
+        </p>
+
+        <p>
+          <strong>APPLE (iOS)</strong> –
+          <a href="#" target="_blank">App_NAME_Link (AppStore)</a>
+        </p>
+
+        <p>
+          <strong>ANDROID</strong> –
+          <a href="#" target="_blank">App_NAME_Link (GooglePlay)</a>
+          or
+          <a href="#" target="_blank">App_NAME_Link (.APK)</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</div>

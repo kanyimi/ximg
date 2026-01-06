@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GPS Result</title>
+</head>
+<body>
+
+<h2>GPS Result</h2>
+
+{% if error %}
+    <p style="color:red;">{{ error }}</p>
+{% else %}
+    <p><strong>Latitude:</strong> {{ lat }}</p>
+    <p><strong>Longitude:</strong> {{ lon }}</p>
+{% endif %}
+
+<a href="{% url 'photohostapp:upload_image' %}">Upload another image</a>
+
+</body>
+</html>

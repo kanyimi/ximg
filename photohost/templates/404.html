@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% translate "Section expired" %} {% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="display-4 text-danger">{% translate "404 - Section expired or Does not exist" %} </h1>
+    <p class="lead mt-3">{% translate "Oops! The item or page you're looking for does not exist." %}</p>
+
+    <img src="{% static 'images/404.jpg' %}" alt="Not Found" class="img-fluid mt-4" style="max-width:300px;">
+
+    <div class="mt-4">
+        <a href="{% url 'photohostapp:create' %}" class="btn btn-primary">{% translate "Go Back Home" %}</a>
+    </div>
+</div>
+{% endblock %}

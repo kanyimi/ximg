@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Multi-Section Results{% endblock %}
+{% block content %}
+<div class="container-fluid1">
+    <div class="section-card">
+        <h2>✅ {% translate "Upload is completed" %}</h2>
+        <p>{% translate "Sections" %}: {{ sections|length }}</p>
+
+
+        <ul style="list-style-type: disc; padding-left: 30px; display:flex; flex-direction:column; gap:20px; color: #227851; font-size: 25px;">
+            {% for section in sections %}
+    <li style="position: relative; border:1px solid #ccc; border-radius:10px; background:#fff; max-width:400px; padding:5px;">
+    <input type="text"
+           value="{{ request.build_absolute_uri|cut:request.path }}{% url 'photohostapp:section_detail' section.slug %}"
+           readonly
+           class="section-url"
+           style="
+               width: calc(100% - 40px);  /* full width minus space for button */
+               border:none;
+               outline:none;
+               font-size:14px;
+               background:transparent;
+           ">
+    <button class="copy-btn"
+            style="
+                position: absolute;
+                right:10px;
+                top:50%;
+                transform: translateY(-50%);
+                border:none;
+                background:none;
+                cursor:pointer;
+                color:#2e7d32;
+                font-size:18px;
+            ">
+        <i class="fa fa-copy"></i>
+    </button>
+    <span class="toast" style="
+          display:none;
+          position:absolute;
+          top:-25px;
+          right:10px;
+          background:#2e7d32;
+          color:#fff;
+          padding:4px 10px;
+          border-radius:6px;
+          font-size:12px;
+          z-index:10;
+          white-space: nowrap;
+          ">{% translate "Copied" %}!</span>
+</li>
+
+            {% endfor %}
+        </ul>
+<div style="display:flex; justify-content:center; align-items:center; margin-bottom:15px;">
+        <!-- Copy All URLs Button -->
+        <button id="copy-all-btn" style="
+                background:#227851;
+                color:#fff;
+                border:none;
+                border-radius:6px;
+                padding:8px 16px;
+                font-size:14px;
+                cursor:pointer;
+
+                margin-bottom:15px;
+            ">
+           <i class="fa fa-copy"></i> {% translate "All URLs" %}
+        </button>
+        <span id="copy-all-toast" style="
+                display:none;
+                margin-left:10px;
+                color:#227851;
+                font-weight:bold;
+            ">{% translate "All URLs copied" %}!</span>
+</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Individual copy buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.previousElementSibling;
+            navigator.clipboard.writeText(input.value).then(() => {
+                const toast = btn.parentElement.querySelector('.toast');
+                toast.style.display = 'inline-block';
+                toast.style.opacity = '1';
+                setTimeout(() => {
+                    toast.style.transition = 'opacity 0.5s';
+                    toast.style.opacity = '0';
+                    setTimeout(() => {
+                        toast.style.display = 'none';
+                        toast.style.transition = '';
+                    }, 500);
+                }, 1500);
+            });
+        });
+    });
+
+    // Copy All URLs
+    const copyAllBtn = document.getElementById('copy-all-btn');
+    const copyAllToast = document.getElementById('copy-all-toast');
+
+    copyAllBtn.addEventListener('click', () => {
+        const urls = Array.from(document.querySelectorAll('.section-url')).map(input => input.value);
+        navigator.clipboard.writeText(urls.join('\n')).then(() => {
+            copyAllToast.style.display = 'inline';
+            setTimeout(() => {
+                copyAllToast.style.display = 'none';
+            }, 2000);
+        });
+    });
+});
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+ul li::marker {
+    color: #2e7d32; /* green bullets */
+    font-size: 32px; /* larger bullets */
+}
+</style>
+{% endblock %}

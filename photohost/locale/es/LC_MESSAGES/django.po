@@ -1,0 +1,540 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-01-01 12:42+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
+
+#: .\photohostapp\forms.py:11 .\templates\secret_notes\create.html:51
+msgid "1 day"
+msgstr "1 día"
+
+#: .\photohostapp\forms.py:12 .\templates\secret_notes\create.html:52
+msgid "3 days"
+msgstr "3 días"
+
+#: .\photohostapp\forms.py:13 .\templates\secret_notes\create.html:53
+msgid "1 week"
+msgstr "1 semana"
+
+#: .\photohostapp\forms.py:14 .\templates\secret_notes\create.html:54
+msgid "2 weeks"
+msgstr "2 semanas"
+
+#: .\photohostapp\forms.py:15 .\templates\secret_notes\create.html:55
+msgid "1 month"
+msgstr "1 mes"
+
+#: .\photohostapp\forms.py:16 .\templates\secret_notes\create.html:56
+msgid "2 months"
+msgstr "2 meses"
+
+#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:143
+msgid "Deletion time"
+msgstr "Tiempo de eliminación"
+
+#: .\photohostapp\forms.py:27
+msgid "Album mode (all files have a single link)"
+msgstr "Modo álbum (todos los archivos tienen un solo enlace)"
+
+#: .\photohostapp\forms.py:28
+msgid "Multi-upload mode (each file has a separate link)"
+msgstr "Modo de carga múltiple (cada archivo tiene un enlace separado)"
+
+#: .\photohostapp\forms.py:35 .\templates\photohostapp\upload.html:96
+msgid "Upload mode"
+msgstr "Modo de carga"
+
+#: .\photohostapp\forms.py:42
+msgid "Save original file names"
+msgstr "Guardar nombres de archivos originales"
+
+#: .\templates\404.html:5
+msgid "Section expired"
+msgstr "Sección expirada"
+
+#: .\templates\404.html:9
+msgid "404 - Section expired or Does not exist"
+msgstr "404 - Sección expirada o no existe"
+
+#: .\templates\404.html:10
+msgid "Oops! The item or page you're looking for does not exist."
+msgstr "¡Ups! El elemento o página que estás buscando no existe."
+
+#: .\templates\404.html:15
+msgid "Go Back Home"
+msgstr "Volver al Inicio"
+
+#: .\templates\base.html:33
+msgid "secure note"
+msgstr "nota segura"
+
+#: .\templates\base.html:75
+msgid "All mirrors of"
+msgstr "Todos los espejos de"
+
+#: .\templates\photohostapp\multi_upload_result.html:8
+msgid "Upload is completed"
+msgstr "Carga completada"
+
+#: .\templates\photohostapp\multi_upload_result.html:9
+msgid "Sections"
+msgstr "Secciones"
+
+#: .\templates\photohostapp\multi_upload_result.html:52
+#: .\templates\photohostapp\section_detail.html:126
+msgid "Copied"
+msgstr "Copiado"
+
+#: .\templates\photohostapp\multi_upload_result.html:70
+msgid "All URLs"
+msgstr "Todas las URLs"
+
+#: .\templates\photohostapp\multi_upload_result.html:77
+msgid "All URLs copied"
+msgstr "Todas las URLs copiadas"
+
+#: .\templates\photohostapp\section_detail.html:9
+msgid "Section"
+msgstr "Sección"
+
+#: .\templates\photohostapp\section_detail.html:46
+msgid "Uploaded"
+msgstr "Subido"
+
+#: .\templates\photohostapp\section_detail.html:47
+#: .\templates\secret_notes\created.html:81
+msgid "Expires"
+msgstr "Caduca"
+
+#: .\templates\photohostapp\section_detail.html:70
+#: .\templates\photohostapp\section_detail.html:165
+msgid "Download"
+msgstr "Descargar"
+
+#: .\templates\photohostapp\section_detail.html:89
+msgid "Coordinates"
+msgstr "Coordenadas"
+
+#: .\templates\photohostapp\section_detail.html:177
+msgid "Download All in ZIP"
+msgstr "Descargar Todo en ZIP"
+
+#: .\templates\photohostapp\upload.html:11
+msgid "Anonymous"
+msgstr "Anónimo"
+
+#: .\templates\photohostapp\upload.html:12
+msgid "file hosting with automatic"
+msgstr "alojamiento de archivos con"
+
+#: .\templates\photohostapp\upload.html:13
+msgid "EXIF (metadata) cleaning"
+msgstr "limpieza automática de EXIF (metadatos)"
+
+#: .\templates\photohostapp\upload.html:20
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: .\templates\photohostapp\upload.html:22
+msgid "Uploading files..."
+msgstr "Subiendo archivos..."
+
+#: .\templates\photohostapp\upload.html:40
+msgid "of"
+msgstr "de"
+
+#: .\templates\photohostapp\upload.html:40
+msgid "files uploaded"
+msgstr "archivos subidos"
+
+#: .\templates\photohostapp\upload.html:53
+msgid "Cancel Upload"
+msgstr "Cancelar Carga"
+
+#: .\templates\photohostapp\upload.html:63
+msgid "Files"
+msgstr "Archivos"
+
+#: .\templates\photohostapp\upload.html:72
+msgid " Select files to upload"
+msgstr "Seleccionar archivos para subir"
+
+#: .\templates\photohostapp\upload.html:77
+msgid "Or Drag and Drop"
+msgstr "O Arrastrar y Soltar"
+
+#: .\templates\photohostapp\upload.html:105
+msgid "The function allows you to upload each file to a separate section"
+msgstr "La función permite subir cada archivo a una sección separada"
+
+#: .\templates\photohostapp\upload.html:106
+msgid "each file"
+msgstr "cada archivo"
+
+#: .\templates\photohostapp\upload.html:106
+#: .\templates\photohostapp\upload.html:107
+msgid "have a"
+msgstr "tiene un"
+
+#: .\templates\photohostapp\upload.html:106
+msgid "different link"
+msgstr "enlace diferente"
+
+#: .\templates\photohostapp\upload.html:107
+msgid "Or All files to one album"
+msgstr "O Todos los archivos a un álbum"
+
+#: .\templates\photohostapp\upload.html:107
+msgid "All files"
+msgstr "Todos los archivos"
+
+#: .\templates\photohostapp\upload.html:107
+msgid "Single link"
+msgstr "Enlace único"
+
+#: .\templates\photohostapp\upload.html:123
+msgid "The function allows you to"
+msgstr "La función te permite"
+
+#: .\templates\photohostapp\upload.html:123
+msgid "save the original file names"
+msgstr "guardar los nombres de archivo originales"
+
+#: .\templates\photohostapp\upload.html:123
+msgid "after uploading to the hosting"
+msgstr "después de subirlos al hosting"
+
+#: .\templates\photohostapp\upload.html:133
+msgid "Scan coordinates on pictures"
+msgstr "Escanear coordenadas en imágenes"
+
+#: .\templates\photohostapp\upload.html:148
+msgid "Data stored from 1 to 60 days"
+msgstr "Datos almacenados de 1 a 60 días"
+
+#: .\templates\photohostapp\upload.html:161
+msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
+msgstr "Eliminamos ExIf (metadatos) de archivos multimedia (JPG, PDF, PSD y otros)"
+
+#: .\templates\photohostapp\upload.html:163
+msgid "Supported files"
+msgstr "Archivos compatibles"
+
+#: .\templates\secret_notes\alert.html:10
+#: .\templates\secret_notes\password.html:20
+msgid "Warning"
+msgstr "Advertencia"
+
+#: .\templates\secret_notes\alert.html:11
+msgid "This note will be permanently deleted after opening."
+msgstr "Esta nota se eliminará permanentemente después de abrirla."
+
+#: .\templates\secret_notes\alert.html:15
+msgid "Open Note"
+msgstr "Abrir Nota"
+
+#: .\templates\secret_notes\alert.html:19
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: .\templates\secret_notes\confirm_read.html:18
+msgid "Important Warning"
+msgstr "Advertencia Importante"
+
+#: .\templates\secret_notes\confirm_read.html:22
+msgid "You are about to read and"
+msgstr "Estás a punto de leer y"
+
+#: .\templates\secret_notes\confirm_read.html:22
+msgid "permanently destroy this note"
+msgstr "destruir permanentemente esta nota"
+
+#: .\templates\secret_notes\confirm_read.html:30
+msgid "Are you sure you want to continue?"
+msgstr "¿Estás seguro de que quieres continuar?"
+
+#: .\templates\secret_notes\confirm_read.html:44
+msgid "Yes, show me the note"
+msgstr "Sí, muéstrame la nota"
+
+#: .\templates\secret_notes\confirm_read.html:53
+msgid " Yes, show me the note"
+msgstr "Sí, muéstrame la nota"
+
+#: .\templates\secret_notes\confirm_read.html:62
+msgid "No, not now"
+msgstr "No, ahora no"
+
+#: .\templates\secret_notes\confirm_read.html:68
+msgid "Remember"
+msgstr "Recuerda"
+
+#: .\templates\secret_notes\confirm_read.html:69
+msgid "If you need to keep the information from this note,"
+msgstr "Si necesitas conservar la información de esta nota,"
+
+#: .\templates\secret_notes\confirm_read.html:70
+msgid ""
+"make sure to copy it before closing the page, as it will be permanently "
+"deleted."
+msgstr "asegúrate de copiarla antes de cerrar la página, ya que se eliminará permanentemente."
+
+#: .\templates\secret_notes\create.html:11
+#: .\templates\secret_notes\created.html:8 .\templates\secret_notes\view.html:8
+msgid "Send"
+msgstr "Enviar"
+
+#: .\templates\secret_notes\create.html:11
+#: .\templates\secret_notes\created.html:8 .\templates\secret_notes\view.html:8
+msgid "Encrypted"
+msgstr "Cifrado"
+
+#: .\templates\secret_notes\create.html:12
+#: .\templates\secret_notes\created.html:9 .\templates\secret_notes\view.html:8
+msgid "Notes that will self-destruct"
+msgstr "Notas que se autodestruirán"
+
+#: .\templates\secret_notes\create.html:12
+#: .\templates\secret_notes\created.html:9 .\templates\secret_notes\view.html:8
+msgid "after being read"
+msgstr "después de ser leídas"
+
+#: .\templates\secret_notes\create.html:27
+msgid "Optional Password"
+msgstr "Contraseña Opcional"
+
+#: .\templates\secret_notes\create.html:38
+msgid "If set, users will need this password to view the note"
+msgstr "Si se establece, los usuarios necesitarán esta contraseña para ver la nota"
+
+#: .\templates\secret_notes\create.html:45
+msgid "Self-destruct"
+msgstr "Autodestrucción"
+
+#: .\templates\secret_notes\create.html:50
+#: .\templates\secret_notes\created.html:79
+msgid "Delete after reading"
+msgstr "Eliminar después de leer"
+
+#: .\templates\secret_notes\create.html:63
+msgid "Create Note"
+msgstr "Crear Nota"
+
+#: .\templates\secret_notes\created.html:13
+msgid "Secret note created successfully"
+msgstr "Nota secreta creada exitosamente"
+
+#: .\templates\secret_notes\created.html:24
+#: .\templates\secret_notes\created.html:73
+msgid "Password Protected"
+msgstr "Protegido con Contraseña"
+
+#: .\templates\secret_notes\created.html:25
+msgid "This note requires a password to view"
+msgstr "Esta nota requiere una contraseña para verla"
+
+#: .\templates\secret_notes\created.html:37
+msgid "No Password Set"
+msgstr "Sin Contraseña"
+
+#: .\templates\secret_notes\created.html:38
+msgid "Anyone with the link can view this note"
+msgstr "Cualquiera con el enlace puede ver esta nota"
+
+#: .\templates\secret_notes\created.html:45
+msgid "Share this link. Anyone with it can read the note"
+msgstr "Comparte este enlace. Cualquiera que lo tenga puede leer la nota"
+
+#: .\templates\secret_notes\created.html:46
+msgid "Password required"
+msgstr "Contraseña requerida"
+
+#: .\templates\secret_notes\created.html:68
+msgid "Note Information"
+msgstr "Información de la Nota"
+
+#: .\templates\secret_notes\created.html:71
+msgid "Status"
+msgstr "Estado"
+
+#: .\templates\secret_notes\created.html:73
+msgid "No Password"
+msgstr "Sin Contraseña"
+
+#: .\templates\secret_notes\created.html:77
+msgid "Expiration"
+msgstr "Expiración"
+
+#: .\templates\secret_notes\created.html:83
+msgid "No expiration"
+msgstr "Sin expiración"
+
+#: .\templates\secret_notes\created.html:104
+msgid "Test View"
+msgstr "Vista de Prueba"
+
+#: .\templates\secret_notes\created.html:111
+msgid " Create Another"
+msgstr "Crear Otra"
+
+#: .\templates\secret_notes\created.html:118
+msgid "Important"
+msgstr "Importante"
+
+#: .\templates\secret_notes\created.html:119
+msgid "The password cannot be recovered if lost."
+msgstr "La contraseña no se puede recuperar si se pierde."
+
+#: .\templates\secret_notes\created.html:120
+msgid "Make sure to save it somewhere safe before sharing the link."
+msgstr "Asegúrate de guardarla en un lugar seguro antes de compartir el enlace."
+
+#: .\templates\secret_notes\deleted.html:18
+msgid "Note Deleted"
+msgstr "Nota Eliminada"
+
+#: .\templates\secret_notes\deleted.html:21
+msgid "This secret note has been deleted or has expired"
+msgstr "Esta nota secreta ha sido eliminada o ha expirado"
+
+#: .\templates\secret_notes\deleted.html:32
+msgid "Why was this note deleted?"
+msgstr "¿Por qué se eliminó esta nota?"
+
+#: .\templates\secret_notes\deleted.html:34
+msgid "It was set to 'delete after reading' and has already been viewed"
+msgstr "Se configuró para 'eliminar después de leer' y ya ha sido vista"
+
+#: .\templates\secret_notes\deleted.html:35
+msgid "It reached its expiration date"
+msgstr "Alcanzó su fecha de expiración"
+
+#: .\templates\secret_notes\deleted.html:36
+msgid "The creator manually deleted it"
+msgstr "El creador la eliminó manualmente"
+
+#: .\templates\secret_notes\deleted.html:37
+msgid "An error occurred while decrypting the content"
+msgstr "Ocurrió un error al descifrar el contenido"
+
+#: .\templates\secret_notes\deleted.html:44
+#: .\templates\secret_notes\error.html:40
+#: .\templates\secret_notes\password.html:77
+msgid "Create New Note"
+msgstr "Crear Nueva Nota"
+
+#: .\templates\secret_notes\deleted.html:47
+msgid "Go to Homepage"
+msgstr "Ir a la Página de Inicio"
+
+#: .\templates\secret_notes\deleted.html:53
+msgid "Note"
+msgstr "Nota"
+
+#: .\templates\secret_notes\deleted.html:53
+msgid ""
+"Secret notes are designed to self-destruct after being read or when they "
+"expire."
+msgstr "Las notas secretas están diseñadas para autodestruirse después de ser leídas o cuando expiran."
+
+#: .\templates\secret_notes\deleted.html:54
+msgid ""
+"This ensures your sensitive information doesn't stay accessible forever."
+msgstr "Esto asegura que tu información sensible no permanezca accesible para siempre."
+
+#: .\templates\secret_notes\error.html:19
+msgid "Error"
+msgstr "Error"
+
+#: .\templates\secret_notes\error.html:26
+msgid "Possible reasons"
+msgstr "Posibles razones"
+
+#: .\templates\secret_notes\error.html:31
+msgid "Encryption key mismatch or corruption"
+msgstr "Incompatibilidad o corrupción de la clave de cifrado"
+
+#: .\templates\secret_notes\error.html:32
+msgid "Note content has been tampered with"
+msgstr "El contenido de la nota ha sido alterado"
+
+#: .\templates\secret_notes\error.html:33
+msgid "Database inconsistency"
+msgstr "Inconsistencia de la base de datos"
+
+#: .\templates\secret_notes\error.html:34
+msgid "Temporary server issue"
+msgstr "Problema temporal del servidor"
+
+#: .\templates\secret_notes\error.html:43
+msgid "Try Again"
+msgstr "Intentar Nuevamente"
+
+#: .\templates\secret_notes\password.html:12
+msgid "Password Required"
+msgstr "Contraseña Requerida"
+
+#: .\templates\secret_notes\password.html:20
+msgid "This note will be permanently"
+msgstr "Esta nota se"
+
+#: .\templates\secret_notes\password.html:20
+msgid "deleted"
+msgstr "eliminará"
+
+#: .\templates\secret_notes\password.html:20
+#: .\templates\secret_notes\view.html:15
+msgid "after reading"
+msgstr "después de leer"
+
+#: .\templates\secret_notes\password.html:31
+msgid ""
+"This note is protected by a password. Please enter it below to view the "
+"content."
+msgstr "Esta nota está protegida por una contraseña. Por favor, ingrésala a continuación para ver el contenido."
+
+#: .\templates\secret_notes\password.html:38
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\templates\secret_notes\password.html:49
+msgid "self-destruct"
+msgstr "autodestruirá"
+
+#: .\templates\secret_notes\password.html:49
+msgid "immediately after viewing."
+msgstr "inmediatamente después de verla."
+
+#: .\templates\secret_notes\password.html:61
+msgid "Read and Destroy Note"
+msgstr "Leer y Destruir Nota"
+
+#: .\templates\secret_notes\password.html:63
+msgid "View Note"
+msgstr "Ver Nota"
+
+#: .\templates\secret_notes\password.html:72
+msgid "Go Back"
+msgstr "Volver Atrás"
+
+#: .\templates\secret_notes\view.html:12
+msgid "Note Content"
+msgstr "Contenido de la Nota"
+
+#: .\templates\secret_notes\view.html:29
+msgid "Copy to Clipboard"
+msgstr "Copiar al Portapapeles"
