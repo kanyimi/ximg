@@ -17,10 +17,7 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 
-if not DEBUG:
-    SECURE_REFERRER_POLICY = "no-referrer"
-else:
-    SECURE_REFERRER_POLICY = "same-origin"
+SECURE_REFERRER_POLICY = "same-origin"
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
