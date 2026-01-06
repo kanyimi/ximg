@@ -36,10 +36,10 @@ p {
 .nav-links {
     list-style: none;
     padding: 0 160px;
-    margin: 20px 30px 30px 30px; /* top margin added */
+    margin: 20px 30px 30px 30px;
     display: flex;
-    justify-content: center; /* center horizontally */
-    gap: 30px; /* spacing between links */
+    justify-content: center;
+    gap: 30px;
     max-width:100%;
 
 }
@@ -72,7 +72,19 @@ p {
         margin-right: 10px;
     }
 }
+.nav-lang select {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  cursor: pointer;
+  color: inherit;
+  outline: none;
+  padding: 0;
+}
 
+.nav-lang select option {
+  color: #000;
+}
 .container-fluid {
   position: relative;
  /* background: rgb(158, 207, 212); /* semi-transparent white */
