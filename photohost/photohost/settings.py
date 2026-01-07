@@ -41,6 +41,7 @@ USE_X_FORWARDED_HOST = True
 CSRF_TRUSTED_ORIGINS = [
     "https://ximg.at", "https://www.ximg.at",
     "https://ximg.to", "https://www.ximg.to",
+    "http://ximg2v3xdwefqhlzs2stdhb5zvnnacnbaopgblsjlrw4ej3ewruexlqd.onion", "http://ximg3ykk7bmtgbzumwb5ffgnozdim4wjpshnoskr5lnoxl2xmffoicqd.onion"
 ]
 
 if not DEBUG:
