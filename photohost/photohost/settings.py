@@ -41,12 +41,12 @@ USE_X_FORWARDED_HOST = True
 CSRF_TRUSTED_ORIGINS = [
     "https://ximg.at", "https://www.ximg.at",
     "https://ximg.to", "https://www.ximg.to",
-    "http://ximg2v3xdwefqhlzs2stdhb5zvnnacnbaopgblsjlrw4ej3ewruexlqd.onion", "http://ximg3ykk7bmtgbzumwb5ffgnozdim4wjpshnoskr5lnoxl2xmffoicqd.onion"
+    "http://ximg2v3xdwefqhlzs2stdhb5zvnnacnbaopgblsjlrw4ej3ewruexlqd.onion",
+    "http://ximg3ykk7bmtgbzumwb5ffgnozdim4wjpshnoskr5lnoxl2xmffoicqd.onion",
+
 ]
 
 if not DEBUG:
-    CSRF_COOKIE_SECURE = True
-    SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SAMESITE = "Lax"
     SESSION_COOKIE_SAMESITE = "Lax"
 
@@ -54,6 +54,7 @@ if not DEBUG:
 
 MIDDLEWARE = [
     # 'photohost.middleware.noindex.NoIndexMiddleware',
+    "photohost.middleware.secure_cookies.SecureCookiesOnlyOnHTTPSMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
