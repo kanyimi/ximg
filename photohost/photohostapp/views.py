@@ -34,8 +34,8 @@ def create_section_and_upload(request):
             total_size = sum(f.size for f in files)
             if total_size > MAX_SECTION_SIZE_BYTES:
                 if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                    return JsonResponse({'status': 'error', 'message': 'Total upload size must not exceed 150 MB.'}, status=400)
-                messages.error(request, "Total upload size must not exceed 150 MB.")
+                    return JsonResponse({'status': 'error', 'message': 'Total upload size must not exceed 300 MB.'}, status=400)
+                messages.error(request, "Total upload size must not exceed 300 MB.")
                 return redirect("photohostapp:create")
 
             # Always create ONE section (album)
@@ -45,9 +45,11 @@ def create_section_and_upload(request):
                 processed_name, content = remove_exif_and_get_file(f)
 
                 sf = StoredFile(section=section)
+                # sf.file.save(processed_name, content, save=True)
+                # sf.original_name = os.path.basename(sf.file.name)
+                # sf.save(update_fields=["original_name"])
+                sf = StoredFile(section=section, original_name=os.path.basename(processed_name))
                 sf.file.save(processed_name, content, save=True)
-                sf.original_name = os.path.basename(sf.file.name)
-                sf.save(update_fields=["original_name"])
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({
