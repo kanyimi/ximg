@@ -43,6 +43,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://ximg.to", "https://www.ximg.to",
     "http://ximg2v3xdwefqhlzs2stdhb5zvnnacnbaopgblsjlrw4ej3ewruexlqd.onion",
     "http://ximg3ykk7bmtgbzumwb5ffgnozdim4wjpshnoskr5lnoxl2xmffoicqd.onion",
+    "https://ximg.my", "https://www.ximg.my",
 
 ]
 
@@ -147,11 +148,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-DATA_UPLOAD_MAX_MEMORY_SIZE = 200 * 1024 * 1024  # 200 MB
-FILE_UPLOAD_MAX_MEMORY_SIZE = 50 * 1024 * 1024
 from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 
 }
+
+DATA_UPLOAD_MAX_NUMBER_FILES = 2000

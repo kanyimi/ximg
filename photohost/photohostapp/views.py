@@ -13,7 +13,7 @@ import mimetypes
 
 from django.urls import reverse
 
-MAX_SECTION_SIZE_MB = 150
+MAX_SECTION_SIZE_MB = 300
 MAX_SECTION_SIZE_BYTES = MAX_SECTION_SIZE_MB * 1024 * 1024
 
 

@@ -3,7 +3,7 @@
 // ==============================
 // CONFIG (must match backend)
 // ==============================
-const MAX_SECTION_SIZE_MB = 150;
+const MAX_SECTION_SIZE_MB = 300;
 const MAX_SECTION_SIZE = MAX_SECTION_SIZE_MB * 1024 * 1024;
 
 // ==============================
