@@ -172,7 +172,7 @@ msgstr "Данные хранятся от 1 до 60 дней"
 #: .\templates\photohostapp\upload.html:126
 
 msgid "Upload"
-msgstr "Загружить"
+msgstr "Загрузить"
 
 #: .\templates\photohostapp\upload.html:131
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
