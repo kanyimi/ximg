@@ -45,11 +45,17 @@ def create_section_and_upload(request):
                 processed_name, content = remove_exif_and_get_file(f)
 
                 sf = StoredFile(section=section)
-                # sf.file.save(processed_name, content, save=True)
-                # sf.original_name = os.path.basename(sf.file.name)
-                # sf.save(update_fields=["original_name"])
-                sf = StoredFile(section=section, original_name=os.path.basename(processed_name))
-                sf.file.save(processed_name, content, save=True)
+
+                # Save using ORIGINAL filename input, so upload_to() can decide UUID vs original
+                sf.file.save(f.name, content, save=True)
+
+                # NOW decide what to store in DB for "original_name"
+                if section.keep_original_filenames:
+                    sf.original_name = os.path.basename(f.name)  # keep original
+                else:
+                    sf.original_name = os.path.basename(sf.file.name)  # store UUID name
+
+                sf.save(update_fields=["original_name"])
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 12:42+0300\n"
+"POT-Creation-Date: 2026-01-22 17:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,49 +20,33 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: .\photohostapp\forms.py:11 .\templates\secret_notes\create.html:51
+#: .\photohostapp\forms.py:10 .\templates\secret_notes\create.html:51
 msgid "1 day"
 msgstr "1 день"
 
-#: .\photohostapp\forms.py:12 .\templates\secret_notes\create.html:52
+#: .\photohostapp\forms.py:11 .\templates\secret_notes\create.html:52
 msgid "3 days"
 msgstr "3 дні"
 
-#: .\photohostapp\forms.py:13 .\templates\secret_notes\create.html:53
+#: .\photohostapp\forms.py:12 .\templates\secret_notes\create.html:53
 msgid "1 week"
 msgstr "1 тиждень"
 
-#: .\photohostapp\forms.py:14 .\templates\secret_notes\create.html:54
+#: .\photohostapp\forms.py:13 .\templates\secret_notes\create.html:54
 msgid "2 weeks"
 msgstr "2 тижні"
 
-#: .\photohostapp\forms.py:15 .\templates\secret_notes\create.html:55
+#: .\photohostapp\forms.py:14 .\templates\secret_notes\create.html:55
 msgid "1 month"
 msgstr "1 місяць"
 
-#: .\photohostapp\forms.py:16 .\templates\secret_notes\create.html:56
+#: .\photohostapp\forms.py:15 .\templates\secret_notes\create.html:56
 msgid "2 months"
 msgstr "2 місяці"
 
-#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:143
+#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:113
 msgid "Deletion time"
 msgstr "Час видалення"
-
-#: .\photohostapp\forms.py:27
-msgid "Album mode (all files have a single link)"
-msgstr "Режим альбому (всі файли мають одне посилання)"
-
-#: .\photohostapp\forms.py:28
-msgid "Multi-upload mode (each file has a separate link)"
-msgstr "Режим множинного завантаження (кожен файл має окреме посилання)"
-
-#: .\photohostapp\forms.py:35 .\templates\photohostapp\upload.html:96
-msgid "Upload mode"
-msgstr "Режим завантаження"
-
-#: .\photohostapp\forms.py:42
-msgid "Save original file names"
-msgstr "Зберегти оригінальні назви файлів"
 
 #: .\templates\404.html:5
 msgid "Section expired"
@@ -80,11 +64,11 @@ msgstr "Ой! Елемент або сторінка, яку ви шукаєте
 msgid "Go Back Home"
 msgstr "Повернутися на головну"
 
-#: .\templates\base.html:33
+#: .\templates\base.html:38
 msgid "secure note"
 msgstr "секретна нотатка"
 
-#: .\templates\base.html:75
+#: .\templates\base.html:79
 msgid "All mirrors of"
 msgstr "Всі дзеркала"
 
@@ -97,7 +81,6 @@ msgid "Sections"
 msgstr "Розділи"
 
 #: .\templates\photohostapp\multi_upload_result.html:52
-#: .\templates\photohostapp\section_detail.html:126
 msgid "Copied"
 msgstr "Скопійовано"
 
@@ -122,117 +105,81 @@ msgstr "Завантажено"
 msgid "Expires"
 msgstr "Закінчується"
 
-#: .\templates\photohostapp\section_detail.html:70
-#: .\templates\photohostapp\section_detail.html:165
+#: .\templates\photohostapp\section_detail.html:66
+#: .\templates\photohostapp\section_detail.html:99
 msgid "Download"
 msgstr "Завантажити"
 
-#: .\templates\photohostapp\section_detail.html:89
-msgid "Coordinates"
-msgstr "Координати"
-
-#: .\templates\photohostapp\section_detail.html:177
+#: .\templates\photohostapp\section_detail.html:111
 msgid "Download All in ZIP"
 msgstr "Завантажити все в ZIP"
 
 #: .\templates\photohostapp\upload.html:11
-msgid "Anonymous"
-msgstr "Анонімний"
+
+msgid "file Hosting with automatic"
+msgstr "Хостинг файлів з автоматичним"
 
 #: .\templates\photohostapp\upload.html:12
-msgid "file hosting with automatic"
-msgstr "хостинг файлів з автоматичним"
-
-#: .\templates\photohostapp\upload.html:13
 msgid "EXIF (metadata) cleaning"
 msgstr "очищенням EXIF (метаданих)"
 
-#: .\templates\photohostapp\upload.html:20
+#: .\templates\photohostapp\upload.html:19
 msgid "Loading..."
 msgstr "Завантаження..."
 
-#: .\templates\photohostapp\upload.html:22
+#: .\templates\photohostapp\upload.html:21
 msgid "Uploading files..."
 msgstr "Завантаження файлів..."
 
-#: .\templates\photohostapp\upload.html:40
+#: .\templates\photohostapp\upload.html:39
 msgid "of"
 msgstr "з"
 
-#: .\templates\photohostapp\upload.html:40
+#: .\templates\photohostapp\upload.html:39
 msgid "files uploaded"
 msgstr "файлів завантажено"
 
-#: .\templates\photohostapp\upload.html:53
+#: .\templates\photohostapp\upload.html:52
 msgid "Cancel Upload"
 msgstr "Скасувати завантаження"
 
-#: .\templates\photohostapp\upload.html:63
-msgid "Files"
-msgstr "Файли"
-
-#: .\templates\photohostapp\upload.html:72
+#: .\templates\photohostapp\upload.html:71
 msgid " Select files to upload"
 msgstr "Вибрати файли для завантаження"
 
-#: .\templates\photohostapp\upload.html:77
+#: .\templates\photohostapp\upload.html:76
 msgid "Or Drag and Drop"
 msgstr "Або перетягніть файли"
 
-#: .\templates\photohostapp\upload.html:105
-msgid "The function allows you to upload each file to a separate section"
-msgstr "Функція дозволяє завантажувати кожен файл в окремий розділ"
+#: .\templates\photohostapp\upload.html:98
+msgid "Keep original filenames"
+msgstr "Зберегти оригінальні назви файлів"
 
-#: .\templates\photohostapp\upload.html:106
-msgid "each file"
-msgstr "кожен файл"
-
-#: .\templates\photohostapp\upload.html:106
-#: .\templates\photohostapp\upload.html:107
-msgid "have a"
-msgstr "має"
-
-#: .\templates\photohostapp\upload.html:106
-msgid "different link"
-msgstr "різне посилання"
-
-#: .\templates\photohostapp\upload.html:107
-msgid "Or All files to one album"
-msgstr "Або всі файли в один альбом"
-
-#: .\templates\photohostapp\upload.html:107
-msgid "All files"
-msgstr "Всі файли"
-
-#: .\templates\photohostapp\upload.html:107
-msgid "Single link"
-msgstr "Одне посилання"
-
-#: .\templates\photohostapp\upload.html:123
+#: .\templates\photohostapp\upload.html:102
 msgid "The function allows you to"
 msgstr "Функція дозволяє"
 
-#: .\templates\photohostapp\upload.html:123
+#: .\templates\photohostapp\upload.html:102
 msgid "save the original file names"
 msgstr "зберегти оригінальні назви файлів"
 
-#: .\templates\photohostapp\upload.html:123
+#: .\templates\photohostapp\upload.html:102
 msgid "after uploading to the hosting"
 msgstr "після завантаження на хостинг"
 
-#: .\templates\photohostapp\upload.html:133
-msgid "Scan coordinates on pictures"
-msgstr "Сканувати координати на зображеннях"
-
-#: .\templates\photohostapp\upload.html:148
+#: .\templates\photohostapp\upload.html:118
 msgid "Data stored from 1 to 60 days"
 msgstr "Дані зберігаються від 1 до 60 днів"
 
-#: .\templates\photohostapp\upload.html:161
+#: .\templates\photohostapp\upload.html:126
+msgid "Upload"
+msgstr "Завантажувати"
+
+#: .\templates\photohostapp\upload.html:131
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr "Ми видаляємо ExIf (метатеги) з медіафайлів (JPG, PDF, PSD та інших)"
 
-#: .\templates\photohostapp\upload.html:163
+#: .\templates\photohostapp\upload.html:133
 msgid "Supported files"
 msgstr "Підтримувані файли"
 
@@ -293,7 +240,9 @@ msgstr "Якщо вам потрібно зберегти інформацію �
 msgid ""
 "make sure to copy it before closing the page, as it will be permanently "
 "deleted."
-msgstr "обов'язково скопіюйте її перед закриттям сторінки, оскільки вона буде видалена назавжди."
+msgstr ""
+"обов'язково скопіюйте її перед закриттям сторінки, оскільки вона буде "
+"видалена назавжди."
 
 #: .\templates\secret_notes\create.html:11
 #: .\templates\secret_notes\created.html:8 .\templates\secret_notes\view.html:8
@@ -321,7 +270,8 @@ msgstr "Пароль (необов'язково)"
 
 #: .\templates\secret_notes\create.html:38
 msgid "If set, users will need this password to view the note"
-msgstr "Якщо встановлено, користувачам знадобиться цей пароль для перегляду нотатки"
+msgstr ""
+"Якщо встановлено, користувачам знадобиться цей пароль для перегляду нотатки"
 
 #: .\templates\secret_notes\create.html:45
 msgid "Self-destruct"
@@ -403,7 +353,8 @@ msgstr "Пароль не можна відновити, якщо він заг�
 
 #: .\templates\secret_notes\created.html:120
 msgid "Make sure to save it somewhere safe before sharing the link."
-msgstr "Обов'язково збережіть його в безпечному місці, перш ніж ділитися посиланням."
+msgstr ""
+"Обов'язково збережіть його в безпечному місці, перш ніж ділитися посиланням."
 
 #: .\templates\secret_notes\deleted.html:18
 msgid "Note Deleted"
@@ -419,7 +370,8 @@ msgstr "Чому було видалено цю нотатку?"
 
 #: .\templates\secret_notes\deleted.html:34
 msgid "It was set to 'delete after reading' and has already been viewed"
-msgstr "Вона була налаштована на 'видалення після читання' і вже була переглянута"
+msgstr ""
+"Вона була налаштована на 'видалення після читання' і вже була переглянута"
 
 #: .\templates\secret_notes\deleted.html:35
 msgid "It reached its expiration date"
@@ -451,12 +403,16 @@ msgstr "Примітка"
 msgid ""
 "Secret notes are designed to self-destruct after being read or when they "
 "expire."
-msgstr "Секретні нотатки призначені для самознищення після прочитання або після закінчення терміну дії."
+msgstr ""
+"Секретні нотатки призначені для самознищення після прочитання або після "
+"закінчення терміну дії."
 
 #: .\templates\secret_notes\deleted.html:54
 msgid ""
 "This ensures your sensitive information doesn't stay accessible forever."
-msgstr "Це гарантує, що ваша конфіденційна інформація не залишиться доступною назавжди."
+msgstr ""
+"Це гарантує, що ваша конфіденційна інформація не залишиться доступною "
+"назавжди."
 
 #: .\templates\secret_notes\error.html:19
 msgid "Error"
@@ -507,7 +463,9 @@ msgstr "після читання"
 msgid ""
 "This note is protected by a password. Please enter it below to view the "
 "content."
-msgstr "Ця нотатка захищена паролем. Будь ласка, введіть його нижче, щоб переглянути вміст."
+msgstr ""
+"Ця нотатка захищена паролем. Будь ласка, введіть його нижче, щоб переглянути "
+"вміст."
 
 #: .\templates\secret_notes\password.html:38
 msgid "Password"
@@ -540,3 +498,45 @@ msgstr "Вміст нотатки"
 #: .\templates\secret_notes\view.html:29
 msgid "Copy to Clipboard"
 msgstr "Копіювати в буфер обміну"
+
+#~ msgid "Album mode (all files have a single link)"
+#~ msgstr "Режим альбому (всі файли мають одне посилання)"
+
+#~ msgid "Multi-upload mode (each file has a separate link)"
+#~ msgstr "Режим множинного завантаження (кожен файл має окреме посилання)"
+
+#~ msgid "Upload mode"
+#~ msgstr "Режим завантаження"
+
+#~ msgid "Coordinates"
+#~ msgstr "Координати"
+
+#~ msgid "Anonymous"
+#~ msgstr "Анонімний"
+
+#~ msgid "Files"
+#~ msgstr "Файли"
+
+#~ msgid "The function allows you to upload each file to a separate section"
+#~ msgstr "Функція дозволяє завантажувати кожен файл в окремий розділ"
+
+#~ msgid "each file"
+#~ msgstr "кожен файл"
+
+#~ msgid "have a"
+#~ msgstr "має"
+
+#~ msgid "different link"
+#~ msgstr "різне посилання"
+
+#~ msgid "Or All files to one album"
+#~ msgstr "Або всі файли в один альбом"
+
+#~ msgid "All files"
+#~ msgstr "Всі файли"
+
+#~ msgid "Single link"
+#~ msgstr "Одне посилання"
+
+#~ msgid "Scan coordinates on pictures"
+#~ msgstr "Сканувати координати на зображеннях"

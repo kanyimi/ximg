@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 12:42+0300\n"
+"POT-Creation-Date: 2026-01-22 17:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,49 +18,33 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#: .\photohostapp\forms.py:11 .\templates\secret_notes\create.html:51
+#: .\photohostapp\forms.py:10 .\templates\secret_notes\create.html:51
 msgid "1 day"
 msgstr "1 día"
 
-#: .\photohostapp\forms.py:12 .\templates\secret_notes\create.html:52
+#: .\photohostapp\forms.py:11 .\templates\secret_notes\create.html:52
 msgid "3 days"
 msgstr "3 días"
 
-#: .\photohostapp\forms.py:13 .\templates\secret_notes\create.html:53
+#: .\photohostapp\forms.py:12 .\templates\secret_notes\create.html:53
 msgid "1 week"
 msgstr "1 semana"
 
-#: .\photohostapp\forms.py:14 .\templates\secret_notes\create.html:54
+#: .\photohostapp\forms.py:13 .\templates\secret_notes\create.html:54
 msgid "2 weeks"
 msgstr "2 semanas"
 
-#: .\photohostapp\forms.py:15 .\templates\secret_notes\create.html:55
+#: .\photohostapp\forms.py:14 .\templates\secret_notes\create.html:55
 msgid "1 month"
 msgstr "1 mes"
 
-#: .\photohostapp\forms.py:16 .\templates\secret_notes\create.html:56
+#: .\photohostapp\forms.py:15 .\templates\secret_notes\create.html:56
 msgid "2 months"
 msgstr "2 meses"
 
-#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:143
+#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:113
 msgid "Deletion time"
 msgstr "Tiempo de eliminación"
-
-#: .\photohostapp\forms.py:27
-msgid "Album mode (all files have a single link)"
-msgstr "Modo álbum (todos los archivos tienen un solo enlace)"
-
-#: .\photohostapp\forms.py:28
-msgid "Multi-upload mode (each file has a separate link)"
-msgstr "Modo de carga múltiple (cada archivo tiene un enlace separado)"
-
-#: .\photohostapp\forms.py:35 .\templates\photohostapp\upload.html:96
-msgid "Upload mode"
-msgstr "Modo de carga"
-
-#: .\photohostapp\forms.py:42
-msgid "Save original file names"
-msgstr "Guardar nombres de archivos originales"
 
 #: .\templates\404.html:5
 msgid "Section expired"
@@ -78,11 +62,11 @@ msgstr "¡Ups! El elemento o página que estás buscando no existe."
 msgid "Go Back Home"
 msgstr "Volver al Inicio"
 
-#: .\templates\base.html:33
+#: .\templates\base.html:38
 msgid "secure note"
 msgstr "nota segura"
 
-#: .\templates\base.html:75
+#: .\templates\base.html:79
 msgid "All mirrors of"
 msgstr "Todos los espejos de"
 
@@ -95,7 +79,6 @@ msgid "Sections"
 msgstr "Secciones"
 
 #: .\templates\photohostapp\multi_upload_result.html:52
-#: .\templates\photohostapp\section_detail.html:126
 msgid "Copied"
 msgstr "Copiado"
 
@@ -120,117 +103,81 @@ msgstr "Subido"
 msgid "Expires"
 msgstr "Caduca"
 
-#: .\templates\photohostapp\section_detail.html:70
-#: .\templates\photohostapp\section_detail.html:165
+#: .\templates\photohostapp\section_detail.html:66
+#: .\templates\photohostapp\section_detail.html:99
 msgid "Download"
 msgstr "Descargar"
 
-#: .\templates\photohostapp\section_detail.html:89
-msgid "Coordinates"
-msgstr "Coordenadas"
-
-#: .\templates\photohostapp\section_detail.html:177
+#: .\templates\photohostapp\section_detail.html:111
 msgid "Download All in ZIP"
 msgstr "Descargar Todo en ZIP"
 
 #: .\templates\photohostapp\upload.html:11
-msgid "Anonymous"
-msgstr "Anónimo"
+msgid "file Hosting with automatic"
+msgstr "alojamiento de archivos con automático"
 
 #: .\templates\photohostapp\upload.html:12
-msgid "file hosting with automatic"
-msgstr "alojamiento de archivos con"
-
-#: .\templates\photohostapp\upload.html:13
 msgid "EXIF (metadata) cleaning"
 msgstr "limpieza automática de EXIF (metadatos)"
 
-#: .\templates\photohostapp\upload.html:20
+#: .\templates\photohostapp\upload.html:19
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: .\templates\photohostapp\upload.html:22
+#: .\templates\photohostapp\upload.html:21
 msgid "Uploading files..."
 msgstr "Subiendo archivos..."
 
-#: .\templates\photohostapp\upload.html:40
+#: .\templates\photohostapp\upload.html:39
 msgid "of"
 msgstr "de"
 
-#: .\templates\photohostapp\upload.html:40
+#: .\templates\photohostapp\upload.html:39
 msgid "files uploaded"
 msgstr "archivos subidos"
 
-#: .\templates\photohostapp\upload.html:53
+#: .\templates\photohostapp\upload.html:52
 msgid "Cancel Upload"
 msgstr "Cancelar Carga"
 
-#: .\templates\photohostapp\upload.html:63
-msgid "Files"
-msgstr "Archivos"
-
-#: .\templates\photohostapp\upload.html:72
+#: .\templates\photohostapp\upload.html:71
 msgid " Select files to upload"
 msgstr "Seleccionar archivos para subir"
 
-#: .\templates\photohostapp\upload.html:77
+#: .\templates\photohostapp\upload.html:76
 msgid "Or Drag and Drop"
 msgstr "O Arrastrar y Soltar"
 
-#: .\templates\photohostapp\upload.html:105
-msgid "The function allows you to upload each file to a separate section"
-msgstr "La función permite subir cada archivo a una sección separada"
+#: .\templates\photohostapp\upload.html:98
+msgid "Keep original filenames"
+msgstr "Guardar nombres de archivos originales"
 
-#: .\templates\photohostapp\upload.html:106
-msgid "each file"
-msgstr "cada archivo"
-
-#: .\templates\photohostapp\upload.html:106
-#: .\templates\photohostapp\upload.html:107
-msgid "have a"
-msgstr "tiene un"
-
-#: .\templates\photohostapp\upload.html:106
-msgid "different link"
-msgstr "enlace diferente"
-
-#: .\templates\photohostapp\upload.html:107
-msgid "Or All files to one album"
-msgstr "O Todos los archivos a un álbum"
-
-#: .\templates\photohostapp\upload.html:107
-msgid "All files"
-msgstr "Todos los archivos"
-
-#: .\templates\photohostapp\upload.html:107
-msgid "Single link"
-msgstr "Enlace único"
-
-#: .\templates\photohostapp\upload.html:123
+#: .\templates\photohostapp\upload.html:102
 msgid "The function allows you to"
 msgstr "La función te permite"
 
-#: .\templates\photohostapp\upload.html:123
+#: .\templates\photohostapp\upload.html:102
 msgid "save the original file names"
 msgstr "guardar los nombres de archivo originales"
 
-#: .\templates\photohostapp\upload.html:123
+#: .\templates\photohostapp\upload.html:102
 msgid "after uploading to the hosting"
 msgstr "después de subirlos al hosting"
 
-#: .\templates\photohostapp\upload.html:133
-msgid "Scan coordinates on pictures"
-msgstr "Escanear coordenadas en imágenes"
-
-#: .\templates\photohostapp\upload.html:148
+#: .\templates\photohostapp\upload.html:118
 msgid "Data stored from 1 to 60 days"
 msgstr "Datos almacenados de 1 a 60 días"
 
-#: .\templates\photohostapp\upload.html:161
-msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
-msgstr "Eliminamos ExIf (metadatos) de archivos multimedia (JPG, PDF, PSD y otros)"
+#: .\templates\photohostapp\upload.html:126
+msgid "Upload"
+msgstr "Subido"
 
-#: .\templates\photohostapp\upload.html:163
+#: .\templates\photohostapp\upload.html:131
+msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
+msgstr ""
+"Eliminamos ExIf (metadatos) de archivos multimedia (JPG, PDF, PSD y otros)"
+
+#: .\templates\photohostapp\upload.html:133
 msgid "Supported files"
 msgstr "Archivos compatibles"
 
@@ -291,7 +238,9 @@ msgstr "Si necesitas conservar la información de esta nota,"
 msgid ""
 "make sure to copy it before closing the page, as it will be permanently "
 "deleted."
-msgstr "asegúrate de copiarla antes de cerrar la página, ya que se eliminará permanentemente."
+msgstr ""
+"asegúrate de copiarla antes de cerrar la página, ya que se eliminará "
+"permanentemente."
 
 #: .\templates\secret_notes\create.html:11
 #: .\templates\secret_notes\created.html:8 .\templates\secret_notes\view.html:8
@@ -319,7 +268,8 @@ msgstr "Contraseña Opcional"
 
 #: .\templates\secret_notes\create.html:38
 msgid "If set, users will need this password to view the note"
-msgstr "Si se establece, los usuarios necesitarán esta contraseña para ver la nota"
+msgstr ""
+"Si se establece, los usuarios necesitarán esta contraseña para ver la nota"
 
 #: .\templates\secret_notes\create.html:45
 msgid "Self-destruct"
@@ -401,7 +351,8 @@ msgstr "La contraseña no se puede recuperar si se pierde."
 
 #: .\templates\secret_notes\created.html:120
 msgid "Make sure to save it somewhere safe before sharing the link."
-msgstr "Asegúrate de guardarla en un lugar seguro antes de compartir el enlace."
+msgstr ""
+"Asegúrate de guardarla en un lugar seguro antes de compartir el enlace."
 
 #: .\templates\secret_notes\deleted.html:18
 msgid "Note Deleted"
@@ -449,12 +400,16 @@ msgstr "Nota"
 msgid ""
 "Secret notes are designed to self-destruct after being read or when they "
 "expire."
-msgstr "Las notas secretas están diseñadas para autodestruirse después de ser leídas o cuando expiran."
+msgstr ""
+"Las notas secretas están diseñadas para autodestruirse después de ser leídas "
+"o cuando expiran."
 
 #: .\templates\secret_notes\deleted.html:54
 msgid ""
 "This ensures your sensitive information doesn't stay accessible forever."
-msgstr "Esto asegura que tu información sensible no permanezca accesible para siempre."
+msgstr ""
+"Esto asegura que tu información sensible no permanezca accesible para "
+"siempre."
 
 #: .\templates\secret_notes\error.html:19
 msgid "Error"
@@ -505,7 +460,9 @@ msgstr "después de leer"
 msgid ""
 "This note is protected by a password. Please enter it below to view the "
 "content."
-msgstr "Esta nota está protegida por una contraseña. Por favor, ingrésala a continuación para ver el contenido."
+msgstr ""
+"Esta nota está protegida por una contraseña. Por favor, ingrésala a "
+"continuación para ver el contenido."
 
 #: .\templates\secret_notes\password.html:38
 msgid "Password"
@@ -538,3 +495,45 @@ msgstr "Contenido de la Nota"
 #: .\templates\secret_notes\view.html:29
 msgid "Copy to Clipboard"
 msgstr "Copiar al Portapapeles"
+
+#~ msgid "Album mode (all files have a single link)"
+#~ msgstr "Modo álbum (todos los archivos tienen un solo enlace)"
+
+#~ msgid "Multi-upload mode (each file has a separate link)"
+#~ msgstr "Modo de carga múltiple (cada archivo tiene un enlace separado)"
+
+#~ msgid "Upload mode"
+#~ msgstr "Modo de carga"
+
+#~ msgid "Coordinates"
+#~ msgstr "Coordenadas"
+
+#~ msgid "Anonymous"
+#~ msgstr "Anónimo"
+
+#~ msgid "Files"
+#~ msgstr "Archivos"
+
+#~ msgid "The function allows you to upload each file to a separate section"
+#~ msgstr "La función permite subir cada archivo a una sección separada"
+
+#~ msgid "each file"
+#~ msgstr "cada archivo"
+
+#~ msgid "have a"
+#~ msgstr "tiene un"
+
+#~ msgid "different link"
+#~ msgstr "enlace diferente"
+
+#~ msgid "Or All files to one album"
+#~ msgstr "O Todos los archivos a un álbum"
+
+#~ msgid "All files"
+#~ msgstr "Todos los archivos"
+
+#~ msgid "Single link"
+#~ msgstr "Enlace único"
+
+#~ msgid "Scan coordinates on pictures"
+#~ msgstr "Escanear coordenadas en imágenes"

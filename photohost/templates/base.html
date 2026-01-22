@@ -25,10 +25,13 @@
 
 <ul class="nav-links">
   <li class="nav-first">
-    <a href="{% url 'photohostapp:create' %}">
-      <img src="{% static 'source/Favicon.svg' %}" alt="Tor" style="height:22px; width:auto;">
-      img
-    </a>
+        <a href="{% url 'photohostapp:create' %}"
+           style="display: inline-flex; align-items: center; gap: 6px; font-size: 30px;">
+          <img src="{% static 'source/Favicon.svg' %}"
+               alt="Tor"
+               style="height:44px; width:auto;">
+          img
+        </a>
   </li>
 
   <li><a href="{% url 'secret_notes:create' %}">

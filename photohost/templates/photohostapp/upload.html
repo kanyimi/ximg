@@ -8,7 +8,7 @@
     <!-- Upload Form Card -->
     <div class="card" style="max-width:100%;">
         <h3 class="mb-3 text-center">
-            {% translate "file hosting with automatic" %}
+            {% translate "file Hosting with automatic" %}
             <b style="color:#227851;">{% translate "EXIF (metadata) cleaning" %}</b>
         </h3>
         <!-- Upload Status Container -->
@@ -59,7 +59,7 @@
 
             <!-- File Upload -->
             <fieldset class="mb-4">
-                <legend>{% translate "Files" %}</legend>
+
                 <div class="quick-upload" id="dropZone">
                     <i class="fa-solid fa-cloud-upload-alt fa-3x mb-3" style="color:#227851;"></i>
                     <br>
@@ -94,8 +94,8 @@
                     <div class="col-md-12 d-flex align-items-center mt-4">
                         <div class="form-check">
                             {{ sform.keep_original_filenames }}
-                            <label class="form-check-label">
-                                {{ sform.keep_original_filenames.label }}
+                            <label class="form-check-label" for="{{ sform.keep_original_filenames.label }}">
+                                    {% translate "Keep original filenames" %}
                                 <span class="info-tooltip">
                                     <img src="{% static 'source/Info.svg' %}" alt="info" style="height:20px;">
                                     <span class="tooltip-text">
@@ -107,7 +107,7 @@
                     </div>
 
                     <!-- Expiration -->
-                    <div class="col-md-8">
+                    <div class="col-md-8 ms-4">
                         <div class="d-flex align-items-center gap-4">
                             <label class="form-label fw-semibold mb-0" style="white-space:nowrap;">
                                 {% translate "Deletion time" %}:
@@ -123,7 +123,7 @@
 
             <div class="text-center">
                 <button id="submitBtn" type="submit" class="btn btn-primary">
-                    <i class="fa fa-cloud-upload" style="font-size:24px;max-width:100%;"></i> Upload
+                    <i class="fa fa-cloud-upload" style="font-size:24px;max-width:100%;"></i> {% translate "Upload" %}
                 </button>
             </div>
 
