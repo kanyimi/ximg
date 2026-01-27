@@ -60,7 +60,7 @@
       </a>
 
       <div class="image-actions">
-        <a href="{% url 'photohostapp:download_file' f.id %}"
+        <a href="{% url 'photohostapp:download_file' slug=section.slug file_id=f.id %}"
            class="btn btn-sm btn-success"
            style="background:#227851;">
           <i class="fa fa-download"></i> {% translate "Download" %}
@@ -93,7 +93,7 @@
 
         <div class="file-name">{{ f.original_name }}</div>
 
-        <a href="{% url 'photohostapp:download_file' f.id %}"
+        <a href="{% url 'photohostapp:download_file' slug=section.slug file_id=f.id %}"
            class="btn btn-sm btn-success"
            style="background:#227851;">
             <i class="fa fa-download"></i> {% translate "Download" %}

@@ -141,19 +141,18 @@ def download_zip(request, slug):
     response["Content-Disposition"] = f'attachment; filename="{section.slug}.zip"'
     return response
 
-def download_file(request, file_id):
-    stored_file = get_object_or_404(StoredFile, id=file_id)
+def download_file(request, slug, file_id):
+    stored_file = get_object_or_404(StoredFile, id=file_id, section__slug=slug)
     section = stored_file.section
 
     if section.is_expired():
         raise Http404("Section expired")
 
-    stored_file.file.open("rb")
-    response = FileResponse(
-        stored_file.file,
+    # FileResponse can stream without manually opening
+    return FileResponse(
+        stored_file.file.open("rb"),
         as_attachment=True,
         filename=stored_file.original_name,
     )
-    return response
 
 
