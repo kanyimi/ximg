@@ -44,25 +44,25 @@
   <div class="dash-divider" style="margin:18px 0;"></div>
 
   <div class="dash-card-head" style="margin-bottom:10px;">
-    <h3 style="margin:0;">Server</h3>
-    <div class="dash-muted" style="padding:0;">
-      {{ server_stats.os }} • Python {{ server_stats.python }}
-    </div>
+    <h3 style="margin:0;">{% translate "Server" %}</h3>
+<!--    <div class="dash-muted" style="padding:0;">-->
+<!--      {{ server_stats.os }} • Python {{ server_stats.python }}-->
+<!--    </div>-->
   </div>
 
   <div class="dash-grid">
     <div class="dash-metric">
-      <div class="dash-metric-label">Total storage</div>
+      <div class="dash-metric-label">{% translate "Total storage" %}</div>
       <div class="dash-metric-value">{{ server_stats.disk_total }}</div>
     </div>
 
     <div class="dash-metric">
-      <div class="dash-metric-label">Free storage</div>
+      <div class="dash-metric-label">{% translate "Free storage" %}</div>
       <div class="dash-metric-value">{{ server_stats.disk_free }}</div>
     </div>
 
     <div class="dash-metric">
-      <div class="dash-metric-label">Used storage</div>
+      <div class="dash-metric-label">{% translate "Used storage" %}</div>
       <div class="dash-metric-value">
         {{ server_stats.disk_used }} ({{ server_stats.disk_used_pct }}%)
       </div>
@@ -75,7 +75,7 @@
           {{ server_stats.ram_used }} / {{ server_stats.ram_total }}
           ({{ server_stats.ram_used_pct }}%)
         </div>
-        <div class="dash-muted" style="padding:0;">Available: {{ server_stats.ram_available }}</div>
+        <div class="dash-muted" style="padding:0;">{% translate "Available" %}: {{ server_stats.ram_available }}</div>
       </div>
     {% endif %}
 
@@ -89,14 +89,14 @@
 
     {% if server_stats.uptime %}
       <div class="dash-metric">
-        <div class="dash-metric-label">Uptime</div>
+        <div class="dash-metric-label">{% translate "Uptime" %}</div>
         <div class="dash-metric-value">{{ server_stats.uptime }}</div>
       </div>
     {% endif %}
 
     {% if server_stats.loadavg %}
       <div class="dash-metric">
-        <div class="dash-metric-label">Load avg (1/5/15)</div>
+        <div class="dash-metric-label">{% translate "Load avg " %}(1/5/15)</div>
         <div class="dash-metric-value">{{ server_stats.loadavg }}</div>
       </div>
     {% endif %}

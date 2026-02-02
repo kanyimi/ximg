@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-30 17:04+0300\n"
+"POT-Creation-Date: 2026-02-02 19:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,7 +71,6 @@ msgid "All mirrors of"
 msgstr "Todos los espejos de"
 
 #: .\templates\dashboard\2fa_verify.html:11
-
 msgid "Verification"
 msgstr "Sección"
 
@@ -88,7 +87,7 @@ msgstr "Código"
 msgid "Verify"
 msgstr "Verificar"
 
-#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:66
+#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:57
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -96,67 +95,65 @@ msgstr "Cerrar sesión"
 msgid "Dashboard Login"
 msgstr "Inicio de sesión del panel"
 
-#: .\templates\dashboard\login.html:13
+#: .\templates\dashboard\login.html:14
 msgid "Sign in to access admin statistics and content."
-msgstr "Inicia sesión para acceder a las estadísticas y al contenido de administración."
+msgstr ""
+"Inicia sesión para acceder a las estadísticas y al contenido de "
+"administración."
 
-#: .\templates\dashboard\login.html:27
+#: .\templates\dashboard\login.html:29
 msgid "Username"
 msgstr "Nombre de usuario"
 
-#: .\templates\dashboard\login.html:32
+#: .\templates\dashboard\login.html:34
 #: .\templates\dashboard\partials\secret_notes.html:60
 #: .\templates\secret_notes\password.html:38
 msgid "Password"
 msgstr "Contraseña"
 
-#: .\templates\dashboard\login.html:36
+#: .\templates\dashboard\login.html:38
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: .\templates\dashboard\login.html:40
+#: .\templates\dashboard\login.html:42
 msgid "Protected area • Staff accounts only"
 msgstr "Área protegida • Solo cuentas del personal"
 
-#: .\templates\dashboard\partials\files.html:8
+#: .\templates\dashboard\partials\files.html:7
 #: .\templates\dashboard\partials\secret_notes.html:7
 #: .\templates\dashboard\partials\sections.html:6
 msgid "Search"
 msgstr "Buscar"
 
-#: .\templates\dashboard\partials\files.html:16
-
+#: .\templates\dashboard\partials\files.html:14
 msgid "Original name"
 msgstr "Guardar nombres de archivos originales"
 
-#: .\templates\dashboard\partials\files.html:17
+#: .\templates\dashboard\partials\files.html:15
 #: .\templates\photohostapp\section_detail.html:9
 #: .\templates\photohostapp\section_detail.html:47
 msgid "Section"
 msgstr "Sección"
 
-#: .\templates\dashboard\partials\files.html:18
+#: .\templates\dashboard\partials\files.html:16
 msgid "Uploaded"
 msgstr "Subido"
 
-#: .\templates\dashboard\partials\files.html:19
-#: .\templates\dashboard\partials\files.html:33
+#: .\templates\dashboard\partials\files.html:17
 #: .\templates\photohostapp\section_detail.html:88
 #: .\templates\photohostapp\section_detail.html:123
 msgid "Download"
 msgstr "Descargar"
 
-#: .\templates\dashboard\partials\files.html:38
+#: .\templates\dashboard\partials\files.html:35
 msgid "No files found."
 msgstr "No se encontraron archivos."
 
 #: .\templates\dashboard\partials\secret_notes.html:19
-
 msgid "Active notes"
 msgstr "nota segura"
 
 #: .\templates\dashboard\partials\secret_notes.html:29
-
 msgid "Retention copies"
 msgstr "Tiempo de eliminación"
 
@@ -172,7 +169,6 @@ msgstr "ID"
 #: .\templates\dashboard\partials\secret_notes.html:113
 #: .\templates\dashboard\partials\secret_notes.html:164
 #: .\templates\dashboard\partials\sections.html:14
-
 msgid "Created"
 msgstr "Crear Nota"
 
@@ -186,13 +182,11 @@ msgid "Expires"
 msgstr "Caduca"
 
 #: .\templates\dashboard\partials\secret_notes.html:59
-
 msgid "Delete after read"
 msgstr "Eliminar después de leer"
 
 #: .\templates\dashboard\partials\secret_notes.html:61
 #: .\templates\dashboard\partials\sections.html:16
-
 msgid "Open"
 msgstr "Abrir Nota"
 
@@ -211,7 +205,6 @@ msgstr "Sí"
 #: .\templates\dashboard\partials\secret_notes.html:79
 #: .\templates\dashboard\partials\secret_notes.html:84
 #: .\templates\dashboard\partials\secret_notes.html:129
-
 msgid "No"
 msgstr "Nota"
 
@@ -221,12 +214,10 @@ msgstr "No se encontraron notas activas."
 
 #: .\templates\dashboard\partials\secret_notes.html:112
 #: .\templates\dashboard\partials\secret_notes.html:163
-
 msgid "Note ID"
 msgstr "Nota"
 
 #: .\templates\dashboard\partials\secret_notes.html:115
-
 msgid "Had password"
 msgstr "Contraseña"
 
@@ -240,7 +231,6 @@ msgstr "Vista previa"
 #: .\templates\dashboard\partials\secret_notes.html:167
 #: .\templates\dashboard\partials\secret_notes.html:187
 #: .\templates\dashboard\partials\sections.html:27
-
 msgid "View"
 msgstr "Vista de Prueba"
 
@@ -257,12 +247,10 @@ msgid "No flagged notes found."
 msgstr "No se encontraron notas marcadas."
 
 #: .\templates\dashboard\partials\secret_notes.html:209
-
 msgid "Retention Note"
 msgstr "Tiempo de eliminación"
 
 #: .\templates\dashboard\partials\secret_notes.html:210
-
 msgid "Note ID:"
 msgstr "Nota"
 
@@ -295,17 +283,14 @@ msgid "Apply"
 msgstr "Aplicar"
 
 #: .\templates\dashboard\partials\stats.html:19
-
 msgid "Files uploaded"
 msgstr "archivos subidos"
 
 #: .\templates\dashboard\partials\stats.html:24
-
 msgid "Sections created"
 msgstr "Sección expirada"
 
 #: .\templates\dashboard\partials\stats.html:29
-
 msgid "Notes created"
 msgstr "Nota Eliminada"
 
@@ -313,9 +298,40 @@ msgstr "Nota Eliminada"
 msgid "Visitors"
 msgstr "Visitantes"
 
-#: .\templates\dashboard\partials\stats.html:40
+#: .\templates\dashboard\partials\stats.html:41
 msgid "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval."
-msgstr "El período puede ser 1 día, 2 días, 1 semana, 1 mes o cualquier intervalo del calendario."
+msgstr ""
+"El período puede ser 1 día, 2 días, 1 semana, 1 mes o cualquier intervalo "
+"del calendario."
+
+#: .\templates\dashboard\partials\stats.html:47
+msgid "Server"
+msgstr "Servidor"
+
+#: .\templates\dashboard\partials\stats.html:55
+msgid "Total storage"
+msgstr "Almacenamiento total"
+
+#: .\templates\dashboard\partials\stats.html:60
+msgid "Free storage"
+msgstr "Almacenamiento libre"
+
+#: .\templates\dashboard\partials\stats.html:65
+msgid "Used storage"
+msgstr "Almacenamiento usado"
+
+#: .\templates\dashboard\partials\stats.html:78
+msgid "Available"
+msgstr "Disponible"
+
+#: .\templates\dashboard\partials\stats.html:92
+msgid "Uptime"
+msgstr "Tiempo de actividad"
+
+#: .\templates\dashboard\partials\stats.html:99
+msgid "Load avg "
+msgstr "Promedio de carga "
+
 
 #: .\templates\dashboard\partials\twofa.html:17
 #: .\templates\dashboard\partials\twofa.html:27
@@ -342,7 +358,9 @@ msgstr "desactivada"
 msgid ""
 "Scan the QR code with Google Authenticator / Authy / 1Password, then enter "
 "the code to enable 2FA."
-msgstr "Escanea el código QR con Google Authenticator / Authy / 1Password y luego introduce el código para activar la 2FA."
+msgstr ""
+"Escanea el código QR con Google Authenticator / Authy / 1Password y luego "
+"introduce el código para activar la 2FA."
 
 #: .\templates\dashboard\partials\twofa.html:41
 msgid "Manual secret:"
@@ -356,30 +374,28 @@ msgstr "Activar 2FA"
 msgid "No secret generated yet."
 msgstr "Aún no se ha generado ningún secreto."
 
-#: .\templates\dashboard\shell.html:12
+#: .\templates\dashboard\shell.html:11
 msgid "Dashboard"
 msgstr "Panel"
 
-#: .\templates\dashboard\shell.html:23
-
+#: .\templates\dashboard\shell.html:20
 msgid "Statistics"
 msgstr "Estado"
 
-#: .\templates\dashboard\shell.html:31
+#: .\templates\dashboard\shell.html:27
 #: .\templates\photohostapp\multi_upload_result.html:9
 msgid "Sections"
 msgstr "Secciones"
 
-#: .\templates\dashboard\shell.html:39
+#: .\templates\dashboard\shell.html:34
 msgid "Files"
 msgstr "Archivos"
 
-#: .\templates\dashboard\shell.html:46
-
+#: .\templates\dashboard\shell.html:41
 msgid "Secret Notes"
 msgstr "Crear Nota"
 
-#: .\templates\dashboard\shell.html:55
+#: .\templates\dashboard\shell.html:49
 msgid "Settings"
 msgstr "Ajustes"
 
