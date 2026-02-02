@@ -94,13 +94,15 @@ p {
   border-radius: 12px;
 }
 .container-fluid1 {
-    justify-content:center;
   position: relative;
   width: 100%;
-  max-width: 700px;
-  padding: 25px 30px;
+  max-width: 1000px;
+  padding: 24px 16px;
   margin: 20px auto;
   border-radius: 12px;
+  display: flex;
+  justify-content:center;
+
 }
 h1 {
   text-align: center;
@@ -560,5 +562,90 @@ section detail
 .info-tooltip:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
+}
+
+.section-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* centers everything */
+  text-align: center;
+  gap: 14px;                /* spacing between h1, copy box, expires */
+  margin-bottom: 18px;      /* spacing before the grid starts */
+}
+
+.section-title{
+  margin: 0;
+}
+
+.copy-url{
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.copy-url-box{
+  position: relative;
+  width: 100%;
+  max-width: 520px;          /* make it a bit wider */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 8px 44px 8px 12px; /* right padding for the button */
+  background: #fff;
+}
+
+.copy-url-box input{
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+}
+
+.copy-url-box button{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #2e7d32;
+  font-size: 18px;
+}
+
+.copy-msg{
+  font-size: 13px;
+  color: #2e7d32;
+}
+
+.expires{
+  margin: 0;
+}
+.section-divider{
+  border: 0;
+  height: 10px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 18px auto 22px;
+
+  /* light green background strip */
+  background: rgba(0, 128, 0, 0.3);
+
+  /* the actual line */
+  position: relative;
+}
+
+.section-divider::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 10px;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, transparent, rgba(34,120,81,0.65), transparent);
 }
 

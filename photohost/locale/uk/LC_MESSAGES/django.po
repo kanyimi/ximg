@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 17:43+0300\n"
+"POT-Creation-Date: 2026-01-30 17:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,13 +72,324 @@ msgstr "секретна нотатка"
 msgid "All mirrors of"
 msgstr "Всі дзеркала"
 
-#: .\templates\photohostapp\multi_upload_result.html:8
-msgid "Upload is completed"
-msgstr "Завантаження завершено"
+#: .\templates\dashboard\2fa_verify.html:11
 
+msgid "Verification"
+msgstr "Розділ"
+
+#: .\templates\dashboard\2fa_verify.html:12
+msgid "Enter the 6-digit code from your authenticator app."
+msgstr "Введіть 6-значний код із вашого застосунку автентифікації."
+
+#: .\templates\dashboard\2fa_verify.html:25
+#: .\templates\dashboard\partials\twofa.html:52
+msgid "Code"
+msgstr "Код"
+
+#: .\templates\dashboard\2fa_verify.html:28
+msgid "Verify"
+msgstr "Підтвердити"
+
+#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:66
+msgid "Logout"
+msgstr "Вийти"
+
+#: .\templates\dashboard\login.html:12
+msgid "Dashboard Login"
+msgstr "Вхід до панелі"
+
+#: .\templates\dashboard\login.html:13
+msgid "Sign in to access admin statistics and content."
+msgstr "Увійдіть, щоб отримати доступ до статистики та контенту адміністратора."
+
+#: .\templates\dashboard\login.html:27
+msgid "Username"
+msgstr "Ім’я користувача"
+
+#: .\templates\dashboard\login.html:32
+#: .\templates\dashboard\partials\secret_notes.html:60
+#: .\templates\secret_notes\password.html:38
+msgid "Password"
+msgstr "Пароль"
+
+#: .\templates\dashboard\login.html:36
+msgid "Login"
+msgstr "Увійти"
+
+#: .\templates\dashboard\login.html:40
+msgid "Protected area • Staff accounts only"
+msgstr "Захищена зона • Лише облікові записи персоналу"
+
+#: .\templates\dashboard\partials\files.html:8
+#: .\templates\dashboard\partials\secret_notes.html:7
+#: .\templates\dashboard\partials\sections.html:6
+msgid "Search"
+msgstr "Пошук"
+
+#: .\templates\dashboard\partials\files.html:16
+
+msgid "Original name"
+msgstr "Зберегти оригінальні назви файлів"
+
+#: .\templates\dashboard\partials\files.html:17
+#: .\templates\photohostapp\section_detail.html:9
+#: .\templates\photohostapp\section_detail.html:47
+msgid "Section"
+msgstr "Розділ"
+
+#: .\templates\dashboard\partials\files.html:18
+msgid "Uploaded"
+msgstr "Завантажено"
+
+#: .\templates\dashboard\partials\files.html:19
+#: .\templates\dashboard\partials\files.html:33
+#: .\templates\photohostapp\section_detail.html:88
+#: .\templates\photohostapp\section_detail.html:123
+msgid "Download"
+msgstr "Завантажити"
+
+#: .\templates\dashboard\partials\files.html:38
+msgid "No files found."
+msgstr "Файлів не знайдено."
+
+#: .\templates\dashboard\partials\secret_notes.html:19
+
+msgid "Active notes"
+msgstr "секретна нотатка"
+
+#: .\templates\dashboard\partials\secret_notes.html:29
+
+msgid "Retention copies"
+msgstr "Час видалення"
+
+#: .\templates\dashboard\partials\secret_notes.html:38
+msgid "Flagged notes"
+msgstr "Позначені нотатки"
+
+#: .\templates\dashboard\partials\secret_notes.html:56
+msgid "ID"
+msgstr "ID"
+
+#: .\templates\dashboard\partials\secret_notes.html:57
+#: .\templates\dashboard\partials\secret_notes.html:113
+#: .\templates\dashboard\partials\secret_notes.html:164
+#: .\templates\dashboard\partials\sections.html:14
+
+msgid "Created"
+msgstr "Створити нотатку"
+
+#: .\templates\dashboard\partials\secret_notes.html:58
+#: .\templates\dashboard\partials\secret_notes.html:114
+#: .\templates\dashboard\partials\sections.html:15
+#: .\templates\photohostapp\section_detail.html:45
+#: .\templates\photohostapp\section_detail.html:67
+#: .\templates\secret_notes\created.html:81
+msgid "Expires"
+msgstr "Закінчується"
+
+#: .\templates\dashboard\partials\secret_notes.html:59
+
+msgid "Delete after read"
+msgstr "Видалити після читання"
+
+#: .\templates\dashboard\partials\secret_notes.html:61
+#: .\templates\dashboard\partials\sections.html:16
+
+msgid "Open"
+msgstr "Відкрити нотатку"
+
+#: .\templates\dashboard\partials\secret_notes.html:73
+#: .\templates\secret_notes\create.html:50
+#: .\templates\secret_notes\created.html:79
+msgid "Delete after reading"
+msgstr "Видалити після читання"
+
+#: .\templates\dashboard\partials\secret_notes.html:77
+#: .\templates\dashboard\partials\secret_notes.html:82
+#: .\templates\dashboard\partials\secret_notes.html:127
+msgid "Yes"
+msgstr "Так"
+
+#: .\templates\dashboard\partials\secret_notes.html:79
+#: .\templates\dashboard\partials\secret_notes.html:84
+#: .\templates\dashboard\partials\secret_notes.html:129
+
+msgid "No"
+msgstr "Примітка"
+
+#: .\templates\dashboard\partials\secret_notes.html:95
+msgid "No active notes found."
+msgstr "Активних нотаток не знайдено."
+
+#: .\templates\dashboard\partials\secret_notes.html:112
+#: .\templates\dashboard\partials\secret_notes.html:163
+
+msgid "Note ID"
+msgstr "Примітка"
+
+#: .\templates\dashboard\partials\secret_notes.html:115
+
+msgid "Had password"
+msgstr "Пароль"
+
+#: .\templates\dashboard\partials\secret_notes.html:116
+#: .\templates\dashboard\partials\secret_notes.html:166
+msgid "Preview"
+msgstr "Попередній перегляд"
+
+#: .\templates\dashboard\partials\secret_notes.html:117
+#: .\templates\dashboard\partials\secret_notes.html:142
+#: .\templates\dashboard\partials\secret_notes.html:167
+#: .\templates\dashboard\partials\secret_notes.html:187
+#: .\templates\dashboard\partials\sections.html:27
+
+msgid "View"
+msgstr "Тестовий перегляд"
+
+#: .\templates\dashboard\partials\secret_notes.html:147
+msgid "No retention copies found."
+msgstr "Копій для ретенції не знайдено."
+
+#: .\templates\dashboard\partials\secret_notes.html:165
+msgid "Matched terms"
+msgstr "Збіглі терміни"
+
+#: .\templates\dashboard\partials\secret_notes.html:192
+msgid "No flagged notes found."
+msgstr "Позначених нотаток не знайдено."
+
+#: .\templates\dashboard\partials\secret_notes.html:209
+
+msgid "Retention Note"
+msgstr "Час видалення"
+
+#: .\templates\dashboard\partials\secret_notes.html:210
+
+msgid "Note ID:"
+msgstr "Примітка"
+
+#: .\templates\dashboard\partials\secret_notes.html:224
+msgid "Copy"
+msgstr "Копіювати"
+
+#: .\templates\dashboard\partials\secret_notes.html:226
+msgid "Close"
+msgstr "Закрити"
+
+#: .\templates\dashboard\partials\sections.html:13
+msgid "Slug"
+msgstr "Слаг"
+
+#: .\templates\dashboard\partials\sections.html:32
+msgid "No sections found."
+msgstr "Розділів не знайдено."
+
+#: .\templates\dashboard\partials\stats.html:6
+msgid "Start"
+msgstr "Початок"
+
+#: .\templates\dashboard\partials\stats.html:10
+msgid "End"
+msgstr "Кінець"
+
+#: .\templates\dashboard\partials\stats.html:13
+msgid "Apply"
+msgstr "Застосувати"
+
+#: .\templates\dashboard\partials\stats.html:19
+
+msgid "Files uploaded"
+msgstr "файлів завантажено"
+
+#: .\templates\dashboard\partials\stats.html:24
+
+msgid "Sections created"
+msgstr "Розділ закінчився"
+
+#: .\templates\dashboard\partials\stats.html:29
+
+msgid "Notes created"
+msgstr "Нотатку видалено"
+
+#: .\templates\dashboard\partials\stats.html:34
+msgid "Visitors"
+msgstr "Відвідувачі"
+
+#: .\templates\dashboard\partials\stats.html:40
+msgid "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval."
+msgstr "Період може бути 1 день, 2 дні, 1 тиждень, 1 місяць або будь-який календарний інтервал."
+
+#: .\templates\dashboard\partials\twofa.html:17
+#: .\templates\dashboard\partials\twofa.html:27
+msgid "2FA is"
+msgstr "2FA"
+
+#: .\templates\dashboard\partials\twofa.html:17
+msgid "enabled"
+msgstr "увімкнено"
+
+#: .\templates\dashboard\partials\twofa.html:17
+msgid "for this account. ✅"
+msgstr "для цього облікового запису. ✅"
+
+#: .\templates\dashboard\partials\twofa.html:22
+msgid "Disable 2FA"
+msgstr "Вимкнути 2FA"
+
+#: .\templates\dashboard\partials\twofa.html:27
+msgid "disabled"
+msgstr "вимкнено"
+
+#: .\templates\dashboard\partials\twofa.html:29
+msgid ""
+"Scan the QR code with Google Authenticator / Authy / 1Password, then enter "
+"the code to enable 2FA."
+msgstr ""
+"Відскануйте QR-код у Google Authenticator / Authy / 1Password, а потім введіть "
+"код, щоб увімкнути 2FA."
+
+#: .\templates\dashboard\partials\twofa.html:41
+msgid "Manual secret:"
+msgstr "Секрет вручну:"
+
+#: .\templates\dashboard\partials\twofa.html:61
+msgid "Enable 2FA"
+msgstr "Увімкнути 2FA"
+
+#: .\templates\dashboard\partials\twofa.html:67
+msgid "No secret generated yet."
+msgstr "Секрет ще не згенеровано."
+
+#: .\templates\dashboard\shell.html:12
+msgid "Dashboard"
+msgstr "Панель"
+
+#: .\templates\dashboard\shell.html:23
+
+msgid "Statistics"
+msgstr "Статус"
+
+#: .\templates\dashboard\shell.html:31
 #: .\templates\photohostapp\multi_upload_result.html:9
 msgid "Sections"
 msgstr "Розділи"
+
+#: .\templates\dashboard\shell.html:39
+msgid "Files"
+msgstr "Файли"
+
+#: .\templates\dashboard\shell.html:46
+
+msgid "Secret Notes"
+msgstr "Створити нотатку"
+
+#: .\templates\dashboard\shell.html:55
+msgid "Settings"
+msgstr "Налаштування"
+
+#: .\templates\photohostapp\multi_upload_result.html:8
+msgid "Upload is completed"
+msgstr "Завантаження завершено"
 
 #: .\templates\photohostapp\multi_upload_result.html:52
 msgid "Copied"
@@ -92,30 +403,11 @@ msgstr "Всі URL"
 msgid "All URLs copied"
 msgstr "Всі URL скопійовано"
 
-#: .\templates\photohostapp\section_detail.html:9
-msgid "Section"
-msgstr "Розділ"
-
-#: .\templates\photohostapp\section_detail.html:46
-msgid "Uploaded"
-msgstr "Завантажено"
-
-#: .\templates\photohostapp\section_detail.html:47
-#: .\templates\secret_notes\created.html:81
-msgid "Expires"
-msgstr "Закінчується"
-
-#: .\templates\photohostapp\section_detail.html:66
-#: .\templates\photohostapp\section_detail.html:99
-msgid "Download"
-msgstr "Завантажити"
-
-#: .\templates\photohostapp\section_detail.html:111
+#: .\templates\photohostapp\section_detail.html:135
 msgid "Download All in ZIP"
 msgstr "Завантажити все в ZIP"
 
 #: .\templates\photohostapp\upload.html:11
-
 msgid "file Hosting with automatic"
 msgstr "Хостинг файлів з автоматичним"
 
@@ -173,7 +465,7 @@ msgstr "Дані зберігаються від 1 до 60 днів"
 
 #: .\templates\photohostapp\upload.html:126
 msgid "Upload"
-msgstr "Завантажувати"
+msgstr "Завантажити"
 
 #: .\templates\photohostapp\upload.html:131
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
@@ -276,11 +568,6 @@ msgstr ""
 #: .\templates\secret_notes\create.html:45
 msgid "Self-destruct"
 msgstr "Самознищення"
-
-#: .\templates\secret_notes\create.html:50
-#: .\templates\secret_notes\created.html:79
-msgid "Delete after reading"
-msgstr "Видалити після читання"
 
 #: .\templates\secret_notes\create.html:63
 msgid "Create Note"
@@ -467,10 +754,6 @@ msgstr ""
 "Ця нотатка захищена паролем. Будь ласка, введіть його нижче, щоб переглянути "
 "вміст."
 
-#: .\templates\secret_notes\password.html:38
-msgid "Password"
-msgstr "Пароль"
-
 #: .\templates\secret_notes\password.html:49
 msgid "self-destruct"
 msgstr "самознищиться"
@@ -514,9 +797,6 @@ msgstr "Копіювати в буфер обміну"
 #~ msgid "Anonymous"
 #~ msgstr "Анонімний"
 
-#~ msgid "Files"
-#~ msgstr "Файли"
-
 #~ msgid "The function allows you to upload each file to a separate section"
 #~ msgstr "Функція дозволяє завантажувати кожен файл в окремий розділ"
 
@@ -540,3 +820,4 @@ msgstr "Копіювати в буфер обміну"
 
 #~ msgid "Scan coordinates on pictures"
 #~ msgstr "Сканувати координати на зображеннях"
+

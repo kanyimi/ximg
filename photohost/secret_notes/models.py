@@ -27,3 +27,17 @@ class SecretNote(models.Model):
         if not self.has_password or not self.password_hash:
             return True  # No password set, always valid
         return check_password(raw_password, self.password_hash)
+
+
+    def is_expired(self) -> bool:
+        """
+        Returns True if the note has an expires_at and it's in the past.
+        If expires_at is None => not expired.
+        """
+        if not self.expires_at:
+            return False
+
+        exp = self.expires_at
+        if timezone.is_naive(exp):
+            exp = timezone.make_aware(exp, timezone.get_current_timezone())
+        return timezone.now() >= exp

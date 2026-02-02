@@ -4,3 +4,6 @@ media/*
 /static/
 /.env
 /cmds.md
+server/*
+ssl/*
+ximg/commit_log.txt

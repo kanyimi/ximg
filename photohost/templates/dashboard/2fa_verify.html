@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}2FA Verification{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+
+<div class="dash-auth-wrap">
+  <div class="dash-auth-card">
+    <h2 class="dash-auth-title">2FA {% translate "Verification" %}</h2>
+    <p class="dash-auth-sub">{% translate "Enter the 6-digit code from your authenticator app." %}</p>
+
+    {% if messages %}
+      <div class="dash-auth-msgs">
+        {% for m in messages %}
+          <div class="dash-auth-msg">{{ m }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <label class="dash-auth-label">
+        {% translate "Code" %}
+        <input class="dash-auth-input" type="text" name="code" inputmode="numeric" autocomplete="one-time-code" required>
+      </label>
+      <button class="dash-btn" type="submit" style="width:100%;">{% translate "Verify" %}</button>
+    </form>
+
+    <div style="margin-top:12px; text-align:center;">
+      <a href="{% url 'dashboard:logout' %}" class="dash-link-small">{% translate "Logout" %}</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

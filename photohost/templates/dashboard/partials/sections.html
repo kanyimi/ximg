@@ -1,0 +1,37 @@
+{% load i18n %}
+<div class="dash-card">
+  <div class="dash-card-head">
+    <form id="sectionsSearchForm" class="dash-search">
+      <input type="text" name="q" value="{{ q }}" placeholder="Search by slug or title...">
+      <button class="dash-btn" type="submit">{% translate "Search" %}</button>
+    </form>
+  </div>
+  <div class="dash-table-wrap">
+    <table class="dash-table">
+      <thead>
+        <tr>
+          <th>{% translate "Slug" %}</th>
+          <th>{% translate "Created" %}</th>
+          <th>{% translate "Expires" %}</th>
+          <th>{% translate "Open" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for s in sections %}
+          <tr>
+            <td><code>{{ s.slug }}</code></td>
+            <td>{{ s.created_at }}</td>
+            <td>{{ s.expires_at }}</td>
+            <td>
+              <a class="dash-link-small" href="{% url 'photohostapp:section_detail' slug=s.slug %}" target="_blank" style="color:#227851;">
+                {% translate "View" %}
+              </a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="5" class="dash-muted">{% translate "No sections found." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

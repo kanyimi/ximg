@@ -6,45 +6,67 @@
 {% block content %}
 <div class="container-fluid1">
     <div class="section-card">
-        <h1>{% translate "Section" %} {{ section.slug }}</h1>
-            <!-- Copyable section URL -->
-        <div class="copy-url" style="margin-top:20px; max-width:600px;">
-            <div class="copy-url-box" style="position: relative; border:1px solid #ccc; border-radius:10px; padding:6px 10px; background:#fff; max-width:400px;">
-            <!--    <span style="width:10px; height:10px; background:#2e7d32; border-radius:50%; display:inline-block; margin-right:10px;"></span>-->
+<!--        <h1>{% translate "Section" %} {{ section.slug }}</h1>-->
+<!--            &lt;!&ndash; Copyable section URL &ndash;&gt;-->
+<!--        <div class="copy-url" style="margin-top:20px; max-width:600px;">-->
+<!--            <div class="copy-url-box" style="position: relative; border:1px solid #ccc; border-radius:10px; padding:6px 10px; background:#fff; max-width:400px;">-->
+<!--            &lt;!&ndash;    <span style="width:10px; height:10px; background:#2e7d32; border-radius:50%; display:inline-block; margin-right:10px;"></span>&ndash;&gt;-->
 
-                <input type="text"
-                       id="sectionUrl"
-                       value="{{ request.build_absolute_uri }}"
-                       readonly
-                       style="
-                         padding-right: 20px; /* space for button */
-                         border:none;
-                         outline:none;
-                         font-size:14px;
-                         background:transparent;
-                       ">
+<!--                <input type="text"-->
+<!--                       id="sectionUrl"-->
+<!--                       value="{{ request.build_absolute_uri }}"-->
+<!--                       readonly-->
+<!--                       style="-->
+<!--                         padding-right: 20px; /* space for button */-->
+<!--                         border:none;-->
+<!--                         outline:none;-->
+<!--                         font-size:14px;-->
+<!--                         background:transparent;-->
+<!--                       ">-->
 
-                <button id="copyBtn"
-                        title="Copy"
-                        style="
-                          position: absolute;
-                          right:10px;
-                          top:50%;
-                          transform: translateY(-50%);
-                          border:none;
-                          background:none;
-                          cursor:pointer;
-                          color:#2e7d32;
-                          font-size:18px;
-                        ">
-                    <i class="fa fa-copy"></i>
-                </button>
-            </div>
-            <span id="copyMsg" style="display:none; font-size:13px; color:#2e7d32; margin-top:6px;">Copied!</span>
-        </div>
+<!--                <button id="copyBtn"-->
+<!--                        title="Copy"-->
+<!--                        style="-->
+<!--                          position: absolute;-->
+<!--                          right:10px;-->
+<!--                          top:50%;-->
+<!--                          transform: translateY(-50%);-->
+<!--                          border:none;-->
+<!--                          background:none;-->
+<!--                          cursor:pointer;-->
+<!--                          color:#2e7d32;-->
+<!--                          font-size:18px;-->
+<!--                        ">-->
+<!--                    <i class="fa fa-copy"></i>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <span id="copyMsg" style="display:none; font-size:13px; color:#2e7d32; margin-top:6px;">Copied!</span>-->
+<!--        </div>-->
+<!--        <p class="expires"><strong>{% translate "Expires" %}:</strong> {{ section.expires_at }}</p>-->
+<div class="section-header">
+  <h1 class="section-title">{% translate "Section" %} {{ section.slug }}</h1>
 
-        <p><strong>{% translate "Uploaded" %}:</strong> {{ section.created_at }}</p>
-        <p><strong>{% translate "Expires" %}:</strong> {{ section.expires_at }}</p>
+  <div class="copy-url">
+    <div class="copy-url-box">
+      <input
+        type="text"
+        id="sectionUrl"
+        value="{{ request.build_absolute_uri }}"
+        readonly
+      />
+
+      <button id="copyBtn" title="Copy">
+        <i class="fa fa-copy"></i>
+      </button>
+    </div>
+
+    <span id="copyMsg" class="copy-msg" style="display:none;">Copied!</span>
+  </div>
+
+  <p class="expires">
+    <strong>{% translate "Expires" %}:</strong> {{ section.expires_at }}
+  </p>
+</div>
 
 <!-- IMAGE FILES GRID (4 per row) -->
 <div class="image-grid">
@@ -70,6 +92,8 @@
   {% endif %}
 {% endfor %}
 </div>
+
+<hr class="section-divider">
 
 <!-- NON-IMAGE FILES GRID -->
 <div class="file-grid">
@@ -187,29 +211,62 @@ if (copyBtn && sectionUrl) {
 .modal-overlay.show {
     display: flex;
 }
-
 .modal-content {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 600px;
-    width: 90%;
-    position: relative;
+  position: relative;
+  overflow: visible;         /* IMPORTANT: prevents close button being cut off */
 }
+.modal-close {
+  position: absolute;
+  top: 25px;
+  right: 12px;
+  z-index: 9999;             /* IMPORTANT: sits on top */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+}
+
+.modal-close i {
+  color: #000 !important;   /* force black even if FA styles override */
+}
+
+.ocr-container {
+  position: relative;
+}
+
+#textPreviewContent {
+  white-space: pre-wrap;
+  background: #f8f9fa;
+  padding: 14px;
+  border-radius: 6px;
+  max-height: 400px;
+  overflow: auto;
+  margin: 0;
+}
+
+/* new bottom big copy button */
+.modal-copy-btn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #227851;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-copy-btn:active {
+  transform: translateY(1px);
+}
+
 
 .modal-lg {
     max-width: 700px;
 }
 
-.modal-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    border: none;
-    background: none;
-    font-size: 24px;
-    cursor: pointer;
-}
 
     .file-grid {
     display: grid;

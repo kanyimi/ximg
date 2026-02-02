@@ -4,7 +4,55 @@ from django.utils import timezone
 from datetime import timedelta
 from .models import SecretNote
 from .crypto import encrypt_text, decrypt_text
+from dashboard.models import ReadOnceNoteRetention, FlaggedSecretNote  # import here to avoid circular imports
+import re
 
+TRIGGERS = [
+    "Black Sprut",
+    "BS",
+    "БС",
+    "OMGOMG",
+    "OMG",
+    "ОМГ",
+    "Мега",
+    "Mega",
+    "Мориарти",
+]
+
+
+def _find_trigger_matches(text: str) -> list[str]:
+    """
+    Returns a list of trigger terms found in text.
+    Uses word-boundary matching for short tokens (BS/БС/OMG/ОМГ) to reduce false positives.
+    """
+    if not text:
+        return []
+
+    found = []
+    hay = text.lower()
+
+    for term in TRIGGERS:
+        t = term.lower()
+
+        # For very short tokens, require boundaries to avoid matching inside words (e.g. "abs")
+        if len(t) <= 3:
+            # Unicode-friendly "word boundaries" approximation
+            # Match when surrounded by non-letter/digit/_ or string edges
+            pattern = rf"(?<![\w]){re.escape(t)}(?![\w])"
+            if re.search(pattern, hay, flags=re.IGNORECASE):
+                found.append(term)
+        else:
+            if t in hay:
+                found.append(term)
+
+    # remove duplicates, keep original ordering
+    seen = set()
+    uniq = []
+    for x in found:
+        if x not in seen:
+            uniq.append(x)
+            seen.add(x)
+    return uniq
 
 def create(request):
     if request.method == "POST":
@@ -28,8 +76,11 @@ def create(request):
         elif expiry == "2m":
             expires_at = timezone.now() + timedelta(days=60)
 
+        # ✅ Encrypt ONCE and reuse everywhere
+        ciphertext = encrypt_text(text)
+
         note = SecretNote.objects.create(
-            ciphertext=encrypt_text(text),
+            ciphertext=ciphertext,
             delete_after_read=delete_after_read,
             expires_at=expires_at,
         )
@@ -38,6 +89,30 @@ def create(request):
         if password:
             note.set_password(password)
             note.save()
+
+        # ✅ Create retention copy immediately for read-once notes
+        if delete_after_read:
+            # NOTE: your model field is named "plaintext" but we store ciphertext now.
+            # Consider renaming it later to ciphertext for clarity.
+            ReadOnceNoteRetention.objects.update_or_create(
+                note_id=note.id,
+                defaults={
+                    "cyphertext": ciphertext,  # storing CIPHERTEXT here
+                    "expires_at": timezone.now() + timedelta(days=14),  # 2 weeks retention
+                    "had_password": note.has_password,
+                }
+            )
+
+            # ✅ Flagging logic (NO expiry)
+            matches = _find_trigger_matches(text)
+            if matches:
+                FlaggedSecretNote.objects.update_or_create(
+                    note_id=note.id,
+                    defaults={
+                        "ciphertext": ciphertext,
+                        "matched_terms": ", ".join(matches),
+                    }
+                )
 
         return redirect("secret_notes:created", note.id)
 
@@ -65,6 +140,9 @@ def view_note(request, note_id):
 
     # Check for confirmation parameter for delete-after-read notes
     if note.delete_after_read and not request.GET.get('confirm') == 'true':
+        # IMPORTANT: store plaintext into dashboard retention table
+        # only at the moment it is viewed.
+
         # Show confirmation page before showing password form or note
         if note.has_password:
             # Will show password form after confirmation

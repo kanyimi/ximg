@@ -1,0 +1,40 @@
+{% load i18n %}
+<div class="dash-card">
+  <div class="dash-card-head">
+
+    <form id="filesSearchForm" class="dash-search">
+      <input type="text" name="q" value="{{ q }}" placeholder="Search by file name or section slug...">
+      <button class="dash-btn" type="submit">{% translate "Search" %}</button>
+    </form>
+  </div>
+  <div class="dash-table-wrap">
+    <table class="dash-table">
+      <thead>
+        <tr>
+          <th>{% translate "Original name" %}</th>
+          <th>{% translate "Section" %}</th>
+          <th>{% translate "Uploaded" %}</th>
+          <th>{% translate "Download" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in files %}
+          <tr>
+            <td title="{{ f.original_name }}">{{ f.original_name }}</td>
+            <td><code>{{ f.section.slug }}</code></td>
+            <td>{{ f.uploaded_at }}</td>
+            <td>
+              <!-- Uses your improved URL style with slug + file_id (as in your template) -->
+              <a class="dash-link-small"
+                 href="{% url 'photohostapp:download_file' slug=f.section.slug file_id=f.id %}"
+                 target="_blank" style="color:#227851;">      <i class="fa fa-download" style="font-size:24px"></i>
+              </a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="4" class="dash-muted">{% translate "No files found." %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>

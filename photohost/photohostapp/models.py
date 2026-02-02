@@ -41,8 +41,6 @@ def upload_to(instance, filename):
 
     return f"sections/{instance.section.slug}/{final_name}"
 
-
-
 class StoredFile(models.Model):
     section = models.ForeignKey(Section, related_name="files", on_delete=models.CASCADE)
     original_name = models.CharField(max_length=512)
@@ -52,5 +50,7 @@ class StoredFile(models.Model):
 
     def __str__(self):
         return self.original_name
+
+
 
 

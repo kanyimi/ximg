@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+<div class="dashboard-shell" id="dashboardShell" data-initial-route="{{ initial_route|default:'stats' }}">
+  <aside class="dash-sidebar" id="dashSidebar">
+    <div class="dash-sidebar-top">
+            <div class="dash-brand">{% translate "Dashboard" %}</div>
+      <button class="dash-toggle" id="dashToggle" type="button" aria-label="Toggle sidebar">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+<nav class="dash-nav">
+  <a class="dash-link" href="{% url 'dashboard:stats' %}" data-route="stats">
+    <span class="dash-left">
+      <i class="fa-solid fa-chart-line dash-ico"></i>
+      <span class="dash-text">{% translate "Statistics" %}</span>
+    </span>
+    <i class="fa-solid fa-chevron-right dash-arrow"></i>
+  </a>
+  <a class="dash-link" href="{% url 'dashboard:sections' %}" data-route="sections">
+    <span class="dash-left">
+      <i class="fa-solid fa-layer-group dash-ico"></i>
+      <span class="dash-text">{% translate "Sections" %}</span>
+    </span>
+    <i class="fa-solid fa-chevron-right dash-arrow"></i>
+  </a>
+  <a class="dash-link" href="{% url 'dashboard:files' %}" data-route="files">
+    <span class="dash-left">
+      <i class="fa-solid fa-file-arrow-up dash-ico"></i>
+      <span class="dash-text">{% translate "Files" %}</span>
+    </span>
+      <i class="fa-solid fa-chevron-right dash-arrow"></i>
+  </a>
+<a class="dash-link" href="{% url 'dashboard:secret_notes' %}" data-route="secret_notes">
+  <span class="dash-left">
+    <i class="fa-solid fa-note-sticky dash-ico"></i>
+    <span class="dash-text">{% translate "Secret Notes" %}</span>
+  </span>
+  <i class="fa-solid fa-chevron-right dash-arrow"></i>
+</a>
+      <!-- ✅ 2FA loads inside dashContent now -->
+      <a class="dash-link" href="{% url 'dashboard:twofa_page' %}" data-route="twofa">
+        <span class="dash-left">
+          <i class="fa-solid fa-shield-halved dash-ico"></i>
+          <span class="dash-text">2FA {% translate "Settings" %}</span>
+        </span>
+        <i class="fa-solid fa-chevron-right dash-arrow"></i>
+      </a>
+  <div class="dash-divider"></div>
+  <a class="dash-link logout" href="{% url 'dashboard:logout' %}">
+    <span class="dash-left">
+      <i class="fa-solid fa-right-from-bracket dash-ico"></i>
+      <span class="dash-text">{% translate "Logout" %}</span>
+    </span>
+    <i class="fa-solid fa-chevron-right dash-arrow"></i>
+  </a>
+</nav>
+  </aside>
+
+  <main class="dash-main">
+    <div class="dash-content">
+      <div id="dashContent">
+        <!-- partial HTML injected here -->
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="{% static 'dashboard/dashboard.js' %}"></script>
+{% endblock %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 17:43+0300\n"
+"POT-Creation-Date: 2026-01-30 17:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,13 +71,323 @@ msgstr "секретная заметка"
 msgid "All mirrors of"
 msgstr "Все зеркала"
 
-#: .\templates\photohostapp\multi_upload_result.html:8
-msgid "Upload is completed"
-msgstr "Загрузка завершена"
+#: .\templates\dashboard\2fa_verify.html:11
 
+msgid "Verification"
+msgstr "Раздел"
+
+#: .\templates\dashboard\2fa_verify.html:12
+msgid "Enter the 6-digit code from your authenticator app."
+msgstr "Введите 6-значный код из приложения-аутентификатора."
+
+#: .\templates\dashboard\2fa_verify.html:25
+#: .\templates\dashboard\partials\twofa.html:52
+msgid "Code"
+msgstr "Код"
+
+#: .\templates\dashboard\2fa_verify.html:28
+msgid "Verify"
+msgstr "Подтвердить"
+
+#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:66
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\templates\dashboard\login.html:12
+msgid "Dashboard Login"
+msgstr "Вход в панель управления"
+
+#: .\templates\dashboard\login.html:13
+msgid "Sign in to access admin statistics and content."
+msgstr "Войдите, чтобы получить доступ к статистике и контенту администратора."
+
+#: .\templates\dashboard\login.html:27
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: .\templates\dashboard\login.html:32
+#: .\templates\dashboard\partials\secret_notes.html:60
+#: .\templates\secret_notes\password.html:38
+msgid "Password"
+msgstr "Пароль"
+
+#: .\templates\dashboard\login.html:36
+msgid "Login"
+msgstr "Войти"
+
+#: .\templates\dashboard\login.html:40
+msgid "Protected area • Staff accounts only"
+msgstr "Защищённая зона • Только для сотрудников"
+
+#: .\templates\dashboard\partials\files.html:8
+#: .\templates\dashboard\partials\secret_notes.html:7
+#: .\templates\dashboard\partials\sections.html:6
+msgid "Search"
+msgstr "Поиск"
+
+#: .\templates\dashboard\partials\files.html:16
+
+msgid "Original name"
+msgstr "Сохранить старые имена файлов"
+
+#: .\templates\dashboard\partials\files.html:17
+#: .\templates\photohostapp\section_detail.html:9
+#: .\templates\photohostapp\section_detail.html:47
+msgid "Section"
+msgstr "Раздел"
+
+#: .\templates\dashboard\partials\files.html:18
+msgid "Uploaded"
+msgstr "Загружено"
+
+#: .\templates\dashboard\partials\files.html:19
+#: .\templates\dashboard\partials\files.html:33
+#: .\templates\photohostapp\section_detail.html:88
+#: .\templates\photohostapp\section_detail.html:123
+msgid "Download"
+msgstr "Скачать"
+
+#: .\templates\dashboard\partials\files.html:38
+msgid "No files found."
+msgstr "Файлы не найдены."
+
+#: .\templates\dashboard\partials\secret_notes.html:19
+
+msgid "Active notes"
+msgstr "секретная заметка"
+
+#: .\templates\dashboard\partials\secret_notes.html:29
+
+msgid "Retention copies"
+msgstr "Время удаления"
+
+#: .\templates\dashboard\partials\secret_notes.html:38
+msgid "Flagged notes"
+msgstr "Отмеченные заметки"
+
+#: .\templates\dashboard\partials\secret_notes.html:56
+msgid "ID"
+msgstr "ID"
+
+#: .\templates\dashboard\partials\secret_notes.html:57
+#: .\templates\dashboard\partials\secret_notes.html:113
+#: .\templates\dashboard\partials\secret_notes.html:164
+#: .\templates\dashboard\partials\sections.html:14
+
+msgid "Created"
+msgstr "Создать заметку"
+
+#: .\templates\dashboard\partials\secret_notes.html:58
+#: .\templates\dashboard\partials\secret_notes.html:114
+#: .\templates\dashboard\partials\sections.html:15
+#: .\templates\photohostapp\section_detail.html:45
+#: .\templates\photohostapp\section_detail.html:67
+#: .\templates\secret_notes\created.html:81
+msgid "Expires"
+msgstr "Истекает"
+
+#: .\templates\dashboard\partials\secret_notes.html:59
+
+
+msgid "Delete after read"
+msgstr "Удалить после прочтения"
+
+#: .\templates\dashboard\partials\secret_notes.html:61
+#: .\templates\dashboard\partials\sections.html:16
+
+msgid "Open"
+msgstr "Открыть заметку"
+
+#: .\templates\dashboard\partials\secret_notes.html:73
+#: .\templates\secret_notes\create.html:50
+#: .\templates\secret_notes\created.html:79
+msgid "Delete after reading"
+msgstr "Удалить после прочтения"
+
+#: .\templates\dashboard\partials\secret_notes.html:77
+#: .\templates\dashboard\partials\secret_notes.html:82
+#: .\templates\dashboard\partials\secret_notes.html:127
+msgid "Yes"
+msgstr "Да"
+
+#: .\templates\dashboard\partials\secret_notes.html:79
+#: .\templates\dashboard\partials\secret_notes.html:84
+#: .\templates\dashboard\partials\secret_notes.html:129
+
+msgid "No"
+msgstr "Примечание"
+
+#: .\templates\dashboard\partials\secret_notes.html:95
+msgid "No active notes found."
+msgstr "Активные заметки не найдены."
+
+#: .\templates\dashboard\partials\secret_notes.html:112
+#: .\templates\dashboard\partials\secret_notes.html:163
+
+msgid "Note ID"
+msgstr "Примечание"
+
+#: .\templates\dashboard\partials\secret_notes.html:115
+
+msgid "Had password"
+msgstr "Пароль"
+
+#: .\templates\dashboard\partials\secret_notes.html:116
+#: .\templates\dashboard\partials\secret_notes.html:166
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: .\templates\dashboard\partials\secret_notes.html:117
+#: .\templates\dashboard\partials\secret_notes.html:142
+#: .\templates\dashboard\partials\secret_notes.html:167
+#: .\templates\dashboard\partials\secret_notes.html:187
+#: .\templates\dashboard\partials\sections.html:27
+
+msgid "View"
+msgstr "Тестовый просмотр"
+
+#: .\templates\dashboard\partials\secret_notes.html:147
+msgid "No retention copies found."
+msgstr "Копии для хранения не найдены."
+
+#: .\templates\dashboard\partials\secret_notes.html:165
+msgid "Matched terms"
+msgstr "Совпавшие термины"
+
+#: .\templates\dashboard\partials\secret_notes.html:192
+msgid "No flagged notes found."
+msgstr "Отмеченные заметки не найдены."
+
+#: .\templates\dashboard\partials\secret_notes.html:209
+
+msgid "Retention Note"
+msgstr "Время удаления"
+
+#: .\templates\dashboard\partials\secret_notes.html:210
+
+msgid "Note ID:"
+msgstr "Примечание"
+
+#: .\templates\dashboard\partials\secret_notes.html:224
+msgid "Copy"
+msgstr "Копировать"
+
+#: .\templates\dashboard\partials\secret_notes.html:226
+msgid "Close"
+msgstr "Закрыть"
+
+#: .\templates\dashboard\partials\sections.html:13
+msgid "Slug"
+msgstr "Slug"
+
+#: .\templates\dashboard\partials\sections.html:32
+msgid "No sections found."
+msgstr "Разделы не найдены."
+
+#: .\templates\dashboard\partials\stats.html:6
+msgid "Start"
+msgstr "Начало"
+
+#: .\templates\dashboard\partials\stats.html:10
+msgid "End"
+msgstr "Конец"
+
+#: .\templates\dashboard\partials\stats.html:13
+msgid "Apply"
+msgstr "Применить"
+
+#: .\templates\dashboard\partials\stats.html:19
+
+msgid "Files uploaded"
+msgstr "файлов загружено"
+
+#: .\templates\dashboard\partials\stats.html:24
+
+msgid "Sections created"
+msgstr "Раздел истёк"
+
+#: .\templates\dashboard\partials\stats.html:29
+
+msgid "Notes created"
+msgstr "Заметка удалена"
+
+#: .\templates\dashboard\partials\stats.html:34
+msgid "Visitors"
+msgstr "Посетители"
+
+#: .\templates\dashboard\partials\stats.html:40
+msgid "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval."
+msgstr "Период может быть 1 день, 2 дня, 1 неделя, 1 месяц или любой календарный интервал."
+
+#: .\templates\dashboard\partials\twofa.html:17
+#: .\templates\dashboard\partials\twofa.html:27
+msgid "2FA is"
+msgstr "2FA"
+
+#: .\templates\dashboard\partials\twofa.html:17
+msgid "enabled"
+msgstr "включена"
+
+#: .\templates\dashboard\partials\twofa.html:17
+msgid "for this account. ✅"
+msgstr "для этого аккаунта. ✅"
+
+#: .\templates\dashboard\partials\twofa.html:22
+msgid "Disable 2FA"
+msgstr "Отключить 2FA"
+
+#: .\templates\dashboard\partials\twofa.html:27
+msgid "disabled"
+msgstr "отключена"
+
+#: .\templates\dashboard\partials\twofa.html:29
+msgid ""
+"Scan the QR code with Google Authenticator / Authy / 1Password, then enter "
+"the code to enable 2FA."
+msgstr "Отсканируйте QR-код в Google Authenticator / Authy / 1Password, затем введите код, чтобы включить 2FA."
+
+#: .\templates\dashboard\partials\twofa.html:41
+msgid "Manual secret:"
+msgstr "Секрет вручную:"
+
+#: .\templates\dashboard\partials\twofa.html:61
+msgid "Enable 2FA"
+msgstr "Включить 2FA"
+
+#: .\templates\dashboard\partials\twofa.html:67
+msgid "No secret generated yet."
+msgstr "Секрет ещё не сгенерирован."
+
+#: .\templates\dashboard\shell.html:12
+msgid "Dashboard"
+msgstr "Панель управления"
+
+#: .\templates\dashboard\shell.html:23
+
+msgid "Statistics"
+msgstr "Статус"
+
+#: .\templates\dashboard\shell.html:31
 #: .\templates\photohostapp\multi_upload_result.html:9
 msgid "Sections"
 msgstr "Разделы"
+
+#: .\templates\dashboard\shell.html:39
+msgid "Files"
+msgstr "Файлы"
+
+#: .\templates\dashboard\shell.html:46
+
+msgid "Secret Notes"
+msgstr "Создать заметку"
+
+#: .\templates\dashboard\shell.html:55
+msgid "Settings"
+msgstr "Настройки"
+
+#: .\templates\photohostapp\multi_upload_result.html:8
+msgid "Upload is completed"
+msgstr "Загрузка завершена"
 
 #: .\templates\photohostapp\multi_upload_result.html:52
 msgid "Copied"
@@ -91,25 +401,7 @@ msgstr "Все URL"
 msgid "All URLs copied"
 msgstr "Все URL скопированы"
 
-#: .\templates\photohostapp\section_detail.html:9
-msgid "Section"
-msgstr "Раздел"
-
-#: .\templates\photohostapp\section_detail.html:46
-msgid "Uploaded"
-msgstr "Загружено"
-
-#: .\templates\photohostapp\section_detail.html:47
-#: .\templates\secret_notes\created.html:81
-msgid "Expires"
-msgstr "Истекает"
-
-#: .\templates\photohostapp\section_detail.html:66
-#: .\templates\photohostapp\section_detail.html:99
-msgid "Download"
-msgstr "Скачать"
-
-#: .\templates\photohostapp\section_detail.html:111
+#: .\templates\photohostapp\section_detail.html:135
 msgid "Download All in ZIP"
 msgstr "Скачать всё в ZIP"
 
@@ -170,7 +462,6 @@ msgid "Data stored from 1 to 60 days"
 msgstr "Данные хранятся от 1 до 60 дней"
 
 #: .\templates\photohostapp\upload.html:126
-
 msgid "Upload"
 msgstr "Загрузить"
 
@@ -275,11 +566,6 @@ msgstr ""
 #: .\templates\secret_notes\create.html:45
 msgid "Self-destruct"
 msgstr "Самоуничтожение"
-
-#: .\templates\secret_notes\create.html:50
-#: .\templates\secret_notes\created.html:79
-msgid "Delete after reading"
-msgstr "Удалить после прочтения"
 
 #: .\templates\secret_notes\create.html:63
 msgid "Create Note"
@@ -467,10 +753,6 @@ msgstr ""
 "Эта заметка защищена паролем. Пожалуйста, введите его ниже, чтобы "
 "просмотреть содержимое."
 
-#: .\templates\secret_notes\password.html:38
-msgid "Password"
-msgstr "Пароль"
-
 #: .\templates\secret_notes\password.html:49
 msgid "self-destruct"
 msgstr "самоуничтожится"
@@ -513,9 +795,6 @@ msgstr "Копировать в буфер обмена"
 
 #~ msgid "Anonymous"
 #~ msgstr "Анонимный"
-
-#~ msgid "Files"
-#~ msgstr "Файлы"
 
 #~ msgid "The function allows you to upload each file to a separate section"
 #~ msgstr "Функция позволяет загружать каждый файл в отдельный раздел"

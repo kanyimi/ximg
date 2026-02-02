@@ -1,0 +1,104 @@
+{% load i18n %}
+<div class="dash-card">
+  <div class="dash-card-head">
+    <form id="statsRangeForm" class="dash-range">
+      <label>
+        {% translate "Start" %}
+        <input type="date" name="start" value="{{ start|date:'Y-m-d' }}">
+      </label>
+      <label>
+        {% translate "End" %}
+        <input type="date" name="end" value="{{ end|date:'Y-m-d' }}">
+      </label>
+      <button class="dash-btn" type="submit">{% translate "Apply" %}</button>
+    </form>
+  </div>
+
+  <div class="dash-grid">
+    <div class="dash-metric">
+      <div class="dash-metric-label">{% translate "Files uploaded" %}</div>
+      <div class="dash-metric-value">{{ files_count }}</div>
+    </div>
+
+    <div class="dash-metric">
+      <div class="dash-metric-label">{% translate "Sections created" %}</div>
+      <div class="dash-metric-value">{{ sections_count }}</div>
+    </div>
+
+    <div class="dash-metric">
+      <div class="dash-metric-label">{% translate "Notes created" %}</div>
+      <div class="dash-metric-value">{{ notes_count }}</div>
+    </div>
+
+    <div class="dash-metric">
+      <div class="dash-metric-label">{% translate "Visitors" %}</div>
+      <div class="dash-metric-value">{{ visitors_count }}</div>
+    </div>
+
+  </div>
+
+  <p class="dash-help">
+    {% translate "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval." %}
+  </p>
+</div>
+  <div class="dash-divider" style="margin:18px 0;"></div>
+
+  <div class="dash-card-head" style="margin-bottom:10px;">
+    <h3 style="margin:0;">Server</h3>
+    <div class="dash-muted" style="padding:0;">
+      {{ server_stats.os }} • Python {{ server_stats.python }}
+    </div>
+  </div>
+
+  <div class="dash-grid">
+    <div class="dash-metric">
+      <div class="dash-metric-label">Total storage</div>
+      <div class="dash-metric-value">{{ server_stats.disk_total }}</div>
+    </div>
+
+    <div class="dash-metric">
+      <div class="dash-metric-label">Free storage</div>
+      <div class="dash-metric-value">{{ server_stats.disk_free }}</div>
+    </div>
+
+    <div class="dash-metric">
+      <div class="dash-metric-label">Used storage</div>
+      <div class="dash-metric-value">
+        {{ server_stats.disk_used }} ({{ server_stats.disk_used_pct }}%)
+      </div>
+    </div>
+
+    {% if server_stats.ram_total %}
+      <div class="dash-metric">
+        <div class="dash-metric-label">RAM</div>
+        <div class="dash-metric-value">
+          {{ server_stats.ram_used }} / {{ server_stats.ram_total }}
+          ({{ server_stats.ram_used_pct }}%)
+        </div>
+        <div class="dash-muted" style="padding:0;">Available: {{ server_stats.ram_available }}</div>
+      </div>
+    {% endif %}
+
+    {% if server_stats.cpu_percent != None %}
+      <div class="dash-metric">
+        <div class="dash-metric-label">CPU</div>
+        <div class="dash-metric-value">{{ server_stats.cpu_percent }}%</div>
+        <div class="dash-muted" style="padding:0;">Cores: {{ server_stats.cpu_count }}</div>
+      </div>
+    {% endif %}
+
+    {% if server_stats.uptime %}
+      <div class="dash-metric">
+        <div class="dash-metric-label">Uptime</div>
+        <div class="dash-metric-value">{{ server_stats.uptime }}</div>
+      </div>
+    {% endif %}
+
+    {% if server_stats.loadavg %}
+      <div class="dash-metric">
+        <div class="dash-metric-label">Load avg (1/5/15)</div>
+        <div class="dash-metric-value">{{ server_stats.loadavg }}</div>
+      </div>
+    {% endif %}
+  </div>
+

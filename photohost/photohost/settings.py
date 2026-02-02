@@ -16,6 +16,8 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
+ADMIN_PATH = os.getenv("ADMIN_PATH", "my-secret-admin/")
+
 
 SECURE_REFERRER_POLICY = "same-origin"
 
@@ -32,6 +34,7 @@ INSTALLED_APPS = [
     'django_cleanup',
     "photohostapp",
     'secret_notes',
+    "dashboard",
 
 ]
 
@@ -52,6 +55,7 @@ if not DEBUG:
     SESSION_COOKIE_SAMESITE = "Lax"
 
 
+# SITE_ID = 1
 
 MIDDLEWARE = [
     # 'photohost.middleware.noindex.NoIndexMiddleware',
@@ -64,6 +68,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "dashboard.middleware.SimpleVisitorCounterMiddleware",
 
 ]
 

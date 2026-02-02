@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-22 17:43+0300\n"
+"POT-Creation-Date: 2026-01-30 17:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,15 +52,15 @@ msgstr "Sección expirada"
 
 #: .\templates\404.html:9
 msgid "404 - Section expired or Does not exist"
-msgstr "404 - Sección expirada o no existe"
+msgstr "404 - La sección expiró o no existe"
 
 #: .\templates\404.html:10
 msgid "Oops! The item or page you're looking for does not exist."
-msgstr "¡Ups! El elemento o página que estás buscando no existe."
+msgstr "¡Ups! El elemento o la página que buscas no existe."
 
 #: .\templates\404.html:15
 msgid "Go Back Home"
-msgstr "Volver al Inicio"
+msgstr "Volver al inicio"
 
 #: .\templates\base.html:38
 msgid "secure note"
@@ -70,13 +70,322 @@ msgstr "nota segura"
 msgid "All mirrors of"
 msgstr "Todos los espejos de"
 
-#: .\templates\photohostapp\multi_upload_result.html:8
-msgid "Upload is completed"
-msgstr "Carga completada"
+#: .\templates\dashboard\2fa_verify.html:11
 
+msgid "Verification"
+msgstr "Sección"
+
+#: .\templates\dashboard\2fa_verify.html:12
+msgid "Enter the 6-digit code from your authenticator app."
+msgstr "Introduce el código de 6 dígitos de tu aplicación de autenticación."
+
+#: .\templates\dashboard\2fa_verify.html:25
+#: .\templates\dashboard\partials\twofa.html:52
+msgid "Code"
+msgstr "Código"
+
+#: .\templates\dashboard\2fa_verify.html:28
+msgid "Verify"
+msgstr "Verificar"
+
+#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:66
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: .\templates\dashboard\login.html:12
+msgid "Dashboard Login"
+msgstr "Inicio de sesión del panel"
+
+#: .\templates\dashboard\login.html:13
+msgid "Sign in to access admin statistics and content."
+msgstr "Inicia sesión para acceder a las estadísticas y al contenido de administración."
+
+#: .\templates\dashboard\login.html:27
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: .\templates\dashboard\login.html:32
+#: .\templates\dashboard\partials\secret_notes.html:60
+#: .\templates\secret_notes\password.html:38
+msgid "Password"
+msgstr "Contraseña"
+
+#: .\templates\dashboard\login.html:36
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: .\templates\dashboard\login.html:40
+msgid "Protected area • Staff accounts only"
+msgstr "Área protegida • Solo cuentas del personal"
+
+#: .\templates\dashboard\partials\files.html:8
+#: .\templates\dashboard\partials\secret_notes.html:7
+#: .\templates\dashboard\partials\sections.html:6
+msgid "Search"
+msgstr "Buscar"
+
+#: .\templates\dashboard\partials\files.html:16
+
+msgid "Original name"
+msgstr "Guardar nombres de archivos originales"
+
+#: .\templates\dashboard\partials\files.html:17
+#: .\templates\photohostapp\section_detail.html:9
+#: .\templates\photohostapp\section_detail.html:47
+msgid "Section"
+msgstr "Sección"
+
+#: .\templates\dashboard\partials\files.html:18
+msgid "Uploaded"
+msgstr "Subido"
+
+#: .\templates\dashboard\partials\files.html:19
+#: .\templates\dashboard\partials\files.html:33
+#: .\templates\photohostapp\section_detail.html:88
+#: .\templates\photohostapp\section_detail.html:123
+msgid "Download"
+msgstr "Descargar"
+
+#: .\templates\dashboard\partials\files.html:38
+msgid "No files found."
+msgstr "No se encontraron archivos."
+
+#: .\templates\dashboard\partials\secret_notes.html:19
+
+msgid "Active notes"
+msgstr "nota segura"
+
+#: .\templates\dashboard\partials\secret_notes.html:29
+
+msgid "Retention copies"
+msgstr "Tiempo de eliminación"
+
+#: .\templates\dashboard\partials\secret_notes.html:38
+msgid "Flagged notes"
+msgstr "Notas marcadas"
+
+#: .\templates\dashboard\partials\secret_notes.html:56
+msgid "ID"
+msgstr "ID"
+
+#: .\templates\dashboard\partials\secret_notes.html:57
+#: .\templates\dashboard\partials\secret_notes.html:113
+#: .\templates\dashboard\partials\secret_notes.html:164
+#: .\templates\dashboard\partials\sections.html:14
+
+msgid "Created"
+msgstr "Crear Nota"
+
+#: .\templates\dashboard\partials\secret_notes.html:58
+#: .\templates\dashboard\partials\secret_notes.html:114
+#: .\templates\dashboard\partials\sections.html:15
+#: .\templates\photohostapp\section_detail.html:45
+#: .\templates\photohostapp\section_detail.html:67
+#: .\templates\secret_notes\created.html:81
+msgid "Expires"
+msgstr "Caduca"
+
+#: .\templates\dashboard\partials\secret_notes.html:59
+
+msgid "Delete after read"
+msgstr "Eliminar después de leer"
+
+#: .\templates\dashboard\partials\secret_notes.html:61
+#: .\templates\dashboard\partials\sections.html:16
+
+msgid "Open"
+msgstr "Abrir Nota"
+
+#: .\templates\dashboard\partials\secret_notes.html:73
+#: .\templates\secret_notes\create.html:50
+#: .\templates\secret_notes\created.html:79
+msgid "Delete after reading"
+msgstr "Eliminar después de leer"
+
+#: .\templates\dashboard\partials\secret_notes.html:77
+#: .\templates\dashboard\partials\secret_notes.html:82
+#: .\templates\dashboard\partials\secret_notes.html:127
+msgid "Yes"
+msgstr "Sí"
+
+#: .\templates\dashboard\partials\secret_notes.html:79
+#: .\templates\dashboard\partials\secret_notes.html:84
+#: .\templates\dashboard\partials\secret_notes.html:129
+
+msgid "No"
+msgstr "Nota"
+
+#: .\templates\dashboard\partials\secret_notes.html:95
+msgid "No active notes found."
+msgstr "No se encontraron notas activas."
+
+#: .\templates\dashboard\partials\secret_notes.html:112
+#: .\templates\dashboard\partials\secret_notes.html:163
+
+msgid "Note ID"
+msgstr "Nota"
+
+#: .\templates\dashboard\partials\secret_notes.html:115
+
+msgid "Had password"
+msgstr "Contraseña"
+
+#: .\templates\dashboard\partials\secret_notes.html:116
+#: .\templates\dashboard\partials\secret_notes.html:166
+msgid "Preview"
+msgstr "Vista previa"
+
+#: .\templates\dashboard\partials\secret_notes.html:117
+#: .\templates\dashboard\partials\secret_notes.html:142
+#: .\templates\dashboard\partials\secret_notes.html:167
+#: .\templates\dashboard\partials\secret_notes.html:187
+#: .\templates\dashboard\partials\sections.html:27
+
+msgid "View"
+msgstr "Vista de Prueba"
+
+#: .\templates\dashboard\partials\secret_notes.html:147
+msgid "No retention copies found."
+msgstr "No se encontraron copias de retención."
+
+#: .\templates\dashboard\partials\secret_notes.html:165
+msgid "Matched terms"
+msgstr "Términos coincidentes"
+
+#: .\templates\dashboard\partials\secret_notes.html:192
+msgid "No flagged notes found."
+msgstr "No se encontraron notas marcadas."
+
+#: .\templates\dashboard\partials\secret_notes.html:209
+
+msgid "Retention Note"
+msgstr "Tiempo de eliminación"
+
+#: .\templates\dashboard\partials\secret_notes.html:210
+
+msgid "Note ID:"
+msgstr "Nota"
+
+#: .\templates\dashboard\partials\secret_notes.html:224
+msgid "Copy"
+msgstr "Copiar"
+
+#: .\templates\dashboard\partials\secret_notes.html:226
+msgid "Close"
+msgstr "Cerrar"
+
+#: .\templates\dashboard\partials\sections.html:13
+msgid "Slug"
+msgstr "Slug"
+
+#: .\templates\dashboard\partials\sections.html:32
+msgid "No sections found."
+msgstr "No se encontraron secciones."
+
+#: .\templates\dashboard\partials\stats.html:6
+msgid "Start"
+msgstr "Inicio"
+
+#: .\templates\dashboard\partials\stats.html:10
+msgid "End"
+msgstr "Fin"
+
+#: .\templates\dashboard\partials\stats.html:13
+msgid "Apply"
+msgstr "Aplicar"
+
+#: .\templates\dashboard\partials\stats.html:19
+
+msgid "Files uploaded"
+msgstr "archivos subidos"
+
+#: .\templates\dashboard\partials\stats.html:24
+
+msgid "Sections created"
+msgstr "Sección expirada"
+
+#: .\templates\dashboard\partials\stats.html:29
+
+msgid "Notes created"
+msgstr "Nota Eliminada"
+
+#: .\templates\dashboard\partials\stats.html:34
+msgid "Visitors"
+msgstr "Visitantes"
+
+#: .\templates\dashboard\partials\stats.html:40
+msgid "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval."
+msgstr "El período puede ser 1 día, 2 días, 1 semana, 1 mes o cualquier intervalo del calendario."
+
+#: .\templates\dashboard\partials\twofa.html:17
+#: .\templates\dashboard\partials\twofa.html:27
+msgid "2FA is"
+msgstr "La 2FA está"
+
+#: .\templates\dashboard\partials\twofa.html:17
+msgid "enabled"
+msgstr "activada"
+
+#: .\templates\dashboard\partials\twofa.html:17
+msgid "for this account. ✅"
+msgstr "para esta cuenta. ✅"
+
+#: .\templates\dashboard\partials\twofa.html:22
+msgid "Disable 2FA"
+msgstr "Desactivar 2FA"
+
+#: .\templates\dashboard\partials\twofa.html:27
+msgid "disabled"
+msgstr "desactivada"
+
+#: .\templates\dashboard\partials\twofa.html:29
+msgid ""
+"Scan the QR code with Google Authenticator / Authy / 1Password, then enter "
+"the code to enable 2FA."
+msgstr "Escanea el código QR con Google Authenticator / Authy / 1Password y luego introduce el código para activar la 2FA."
+
+#: .\templates\dashboard\partials\twofa.html:41
+msgid "Manual secret:"
+msgstr "Secreto manual:"
+
+#: .\templates\dashboard\partials\twofa.html:61
+msgid "Enable 2FA"
+msgstr "Activar 2FA"
+
+#: .\templates\dashboard\partials\twofa.html:67
+msgid "No secret generated yet."
+msgstr "Aún no se ha generado ningún secreto."
+
+#: .\templates\dashboard\shell.html:12
+msgid "Dashboard"
+msgstr "Panel"
+
+#: .\templates\dashboard\shell.html:23
+
+msgid "Statistics"
+msgstr "Estado"
+
+#: .\templates\dashboard\shell.html:31
 #: .\templates\photohostapp\multi_upload_result.html:9
 msgid "Sections"
 msgstr "Secciones"
+
+#: .\templates\dashboard\shell.html:39
+msgid "Files"
+msgstr "Archivos"
+
+#: .\templates\dashboard\shell.html:46
+
+msgid "Secret Notes"
+msgstr "Crear Nota"
+
+#: .\templates\dashboard\shell.html:55
+msgid "Settings"
+msgstr "Ajustes"
+
+#: .\templates\photohostapp\multi_upload_result.html:8
+msgid "Upload is completed"
+msgstr "Carga completada"
 
 #: .\templates\photohostapp\multi_upload_result.html:52
 msgid "Copied"
@@ -90,25 +399,7 @@ msgstr "Todas las URLs"
 msgid "All URLs copied"
 msgstr "Todas las URLs copiadas"
 
-#: .\templates\photohostapp\section_detail.html:9
-msgid "Section"
-msgstr "Sección"
-
-#: .\templates\photohostapp\section_detail.html:46
-msgid "Uploaded"
-msgstr "Subido"
-
-#: .\templates\photohostapp\section_detail.html:47
-#: .\templates\secret_notes\created.html:81
-msgid "Expires"
-msgstr "Caduca"
-
-#: .\templates\photohostapp\section_detail.html:66
-#: .\templates\photohostapp\section_detail.html:99
-msgid "Download"
-msgstr "Descargar"
-
-#: .\templates\photohostapp\section_detail.html:111
+#: .\templates\photohostapp\section_detail.html:135
 msgid "Download All in ZIP"
 msgstr "Descargar Todo en ZIP"
 
@@ -274,11 +565,6 @@ msgstr ""
 #: .\templates\secret_notes\create.html:45
 msgid "Self-destruct"
 msgstr "Autodestrucción"
-
-#: .\templates\secret_notes\create.html:50
-#: .\templates\secret_notes\created.html:79
-msgid "Delete after reading"
-msgstr "Eliminar después de leer"
 
 #: .\templates\secret_notes\create.html:63
 msgid "Create Note"
@@ -464,10 +750,6 @@ msgstr ""
 "Esta nota está protegida por una contraseña. Por favor, ingrésala a "
 "continuación para ver el contenido."
 
-#: .\templates\secret_notes\password.html:38
-msgid "Password"
-msgstr "Contraseña"
-
 #: .\templates\secret_notes\password.html:49
 msgid "self-destruct"
 msgstr "autodestruirá"
@@ -510,9 +792,6 @@ msgstr "Copiar al Portapapeles"
 
 #~ msgid "Anonymous"
 #~ msgstr "Anónimo"
-
-#~ msgid "Files"
-#~ msgstr "Archivos"
 
 #~ msgid "The function allows you to upload each file to a separate section"
 #~ msgstr "La función permite subir cada archivo a una sección separada"

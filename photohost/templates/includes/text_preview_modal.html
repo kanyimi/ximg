@@ -1,36 +1,18 @@
 <div id="textPreviewModal" class="modal-overlay">
-    <div class="modal-content modal-lg">
-        <button class="modal-close" aria-label="Close">&times;</button>
+  <div class="modal-content modal-lg">
+    <button class="modal-close" aria-label="Close">
+      <i class="fas fa-times-circle" style="font-size:36px"></i>
+    </button>
 
-        <h5 id="textPreviewTitle" class="mb-3"></h5>
+    <h5 id="textPreviewTitle" class="mb-3"></h5>
 
-        <div class="ocr-container" style="position:relative;">
-            <button id="copyTextPreviewBtn"
-                    style="
-                        position:absolute;
-                        top:10px;
-                        right:10px;
-                        padding:4px 10px;
-                        font-size:0.85em;
-                        border:none;
-                        border-radius:4px;
-                        background:#28a745;
-                        color:#fff;
-                        cursor:pointer;
-                    ">
-                Copy
-            </button>
+    <div class="ocr-container">
+      <pre id="textPreviewContent"></pre>
 
-            <pre id="textPreviewContent"
-                 style="
-                    white-space:pre-wrap;
-                    background:#f8f9fa;
-                    padding:14px;
-                    border-radius:6px;
-                    max-height:400px;
-                    overflow:auto;
-                    margin:0;
-                 "></pre>
-        </div>
+      <!-- moved to bottom -->
+      <button id="copyTextPreviewBtn" class="modal-copy-btn">
+        Copy
+      </button>
     </div>
+  </div>
 </div>

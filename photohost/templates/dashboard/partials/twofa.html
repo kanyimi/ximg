@@ -1,0 +1,70 @@
+{% load i18n %}
+
+<div class="dash-card">
+  <div class="dash-card-head">
+    <h2>2FA</h2>
+  </div>
+
+  {% if messages %}
+    <div class="dash-auth-msgs" style="margin-bottom:12px;">
+      {% for m in messages %}
+        <div class="dash-auth-msg">{{ m }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if totp_enabled %}
+    <p>{% translate "2FA is" %} <b>{% translate "enabled" %}</b>{% translate "for this account. ✅" %}</p>
+
+    <form method="post" action="{% url 'dashboard:twofa_disable' %}">
+      {% csrf_token %}
+      <button class="dash-btn dash-btn-secondary" type="submit">
+        {% translate "Disable 2FA" %}
+      </button>
+    </form>
+
+  {% else %}
+    <p>{% translate "2FA is" %} <b>{% translate "disabled" %}</b>.</p>
+    <p class="dash-muted">
+      {% translate "Scan the QR code with Google Authenticator / Authy / 1Password, then enter the code to enable 2FA." %}
+    </p>
+
+    {% if qr_data_url %}
+      <div style="display:flex; gap:16px; align-items:flex-start; flex-wrap:wrap; margin-top:12px;">
+        <div>
+          <img src="{{ qr_data_url }}"
+               alt="2FA QR Code"
+               style="border-radius:12px; border:1px solid rgba(0,0,0,0.08);">
+        </div>
+
+        <div style="flex:1; min-width:260px;">
+          <p class="dash-muted" style="margin-bottom:8px;">{% translate "Manual secret:" %}</p>
+
+          <code style="display:block; padding:10px; border-radius:12px; background:rgba(15,23,42,0.04); border:1px solid rgba(15,23,42,0.08);">
+            {{ secret }}
+          </code>
+
+          <form method="post" action="{% url 'dashboard:twofa_partial' %}" style="margin-top:14px;">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="enable">
+
+            <label class="dash-auth-label">
+              {% translate "Code" %}
+              <input class="dash-auth-input"
+                     type="text"
+                     name="code"
+                     inputmode="numeric"
+                     autocomplete="one-time-code"
+                     required>
+            </label>
+
+            <button class="dash-btn" type="submit">{% translate "Enable 2FA" %}</button>
+          </form>
+
+        </div>
+      </div>
+    {% else %}
+      <p class="dash-muted" style="margin-top:8px;">{% translate "No secret generated yet." %}</p>
+    {% endif %}
+  {% endif %}
+</div>
