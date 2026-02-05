@@ -299,3 +299,112 @@
   const params = Object.fromEntries(new URL(window.location.href).searchParams.entries());
   loadRoute(initial, params, false);
 })();
+
+
+/* =========================================================
+   Image Preview Modal (Files page)
+   Put this at the END of dashboard.js
+   ========================================================= */
+(function () {
+  // Prevent double-binding if dashboard.js is loaded twice
+  if (window.__dashImgPreviewBound) return;
+  window.__dashImgPreviewBound = true;
+
+  function ensureImgModalExists() {
+    let modal = document.getElementById("imgPreviewModal");
+    if (modal) return modal;
+
+    // Create modal markup once and append to body
+    modal = document.createElement("div");
+    modal.id = "imgPreviewModal";
+    modal.className = "dash-img-modal";
+    modal.setAttribute("aria-hidden", "true");
+
+    modal.innerHTML = `
+      <div class="dash-img-modal__overlay" data-close="1"></div>
+
+      <div class="dash-img-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="imgPreviewTitle">
+        <div class="dash-img-modal__head">
+          <div class="dash-img-modal__title" id="imgPreviewTitle">Preview</div>
+
+          <button type="button" class="dash-img-modal__close" id="imgPreviewClose" aria-label="Close">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+
+        <div class="dash-img-modal__body">
+          <img id="imgPreviewImg" alt="" />
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+    return modal;
+  }
+
+  function openImgModal(src, filename) {
+    const modal = ensureImgModalExists();
+    const img = modal.querySelector("#imgPreviewImg");
+    const title = modal.querySelector("#imgPreviewTitle");
+    const closeBtn = modal.querySelector("#imgPreviewClose");
+
+    title.textContent = filename || "Preview";
+    img.src = src;
+    img.alt = filename || "Image preview";
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+
+    // Focus close for accessibility
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeImgModal() {
+    const modal = document.getElementById("imgPreviewModal");
+    if (!modal) return;
+
+    const img = modal.querySelector("#imgPreviewImg");
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+
+    // Stop loading / free memory
+    if (img) {
+      img.src = "";
+      img.alt = "";
+    }
+  }
+
+  // ✅ Open modal when clicking image preview links in Files table
+  document.addEventListener("click", function (e) {
+    const a = e.target.closest(".js-img-preview");
+    if (!a) return;
+
+    e.preventDefault();
+    openImgModal(a.href, a.dataset.filename || "");
+  });
+
+  // ✅ Close: overlay click or close button click
+  document.addEventListener("click", function (e) {
+    const modal = document.getElementById("imgPreviewModal");
+    if (!modal || !modal.classList.contains("is-open")) return;
+
+    if (e.target.matches("#imgPreviewClose") || e.target.closest("#imgPreviewClose")) {
+      closeImgModal();
+      return;
+    }
+    if (e.target && e.target.dataset && e.target.dataset.close === "1") {
+      closeImgModal();
+      return;
+    }
+  });
+
+  // ✅ Close on ESC
+  document.addEventListener("keydown", function (e) {
+    const modal = document.getElementById("imgPreviewModal");
+    if (e.key === "Escape" && modal && modal.classList.contains("is-open")) {
+      closeImgModal();
+    }
+  });
+})();
+
+

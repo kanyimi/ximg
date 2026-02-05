@@ -21,6 +21,10 @@ import os
 import platform
 import shutil
 from django.conf import settings
+import mimetypes
+from django.http import Http404, FileResponse
+from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_GET
 
 def _parse_range(request):
     """
@@ -342,6 +346,36 @@ def sections_partial(request):
         "sections": sections[:500],  # keep table responsive
     })
 
+
+
+@require_GET
+def preview_file(request, slug, file_id):
+    stored_file = get_object_or_404(StoredFile, id=file_id, section__slug=slug)
+    section = stored_file.section
+
+    if section.is_expired():
+        raise Http404("Section expired")
+
+    content_type, _ = mimetypes.guess_type(stored_file.original_name or stored_file.file.name)
+    if not content_type or not content_type.startswith("image/"):
+        raise Http404("Not an image")
+
+    resp = FileResponse(stored_file.file.open("rb"), content_type=content_type)
+    resp["Content-Disposition"] = f'inline; filename="{stored_file.original_name}"'
+    return resp
+
+def download_file(request, slug, file_id):
+    stored_file = get_object_or_404(StoredFile, id=file_id, section__slug=slug)
+    section = stored_file.section
+
+    if section.is_expired():
+        raise Http404("Section expired")
+
+    return FileResponse(
+        stored_file.file.open("rb"),
+        as_attachment=True,
+        filename=stored_file.original_name,
+    )
 
 @dashboard_2fa_required
 def files_partial(request):

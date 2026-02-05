@@ -661,3 +661,112 @@
 }
 
 
+/* =========================================================
+   Image Preview Modal (Files page)
+   Put this at the END of dashboard.css
+   ========================================================= */
+
+
+/* ===== Image Preview Modal (force popup) ===== */
+.dash-img-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  display: none !important;
+  z-index: 99999 !important;
+}
+
+.dash-img-modal.is-open {
+  display: block !important;
+}
+
+.dash-img-modal__overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: rgba(2, 6, 23, 0.60) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+.dash-img-modal__dialog {
+  position: relative !important;
+  max-width: 980px !important;
+  width: calc(100% - 28px) !important;
+  margin: 6vh auto !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,0.92) !important;
+  border: 1px solid rgba(15, 23, 42, 0.10) !important;
+  box-shadow: 0 26px 70px rgba(0,0,0,0.25) !important;
+  overflow: hidden !important;
+}
+
+.dash-img-modal__head {
+  padding: 14px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.10) !important;
+}
+
+.dash-img-modal__title {
+  font-size: 16px !important;
+  font-weight: 850 !important;
+  color: #0f172a !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.dash-img-modal__close {
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  background: rgba(255,255,255,0.85) !important;
+  border-radius: 12px !important;
+  width: 38px !important;
+  height: 38px !important;
+  cursor: pointer !important;
+  display: grid !important;
+  place-items: center !important;
+}
+
+.dash-img-modal__body {
+  padding: 16px !important;
+}
+
+.dash-img-modal__body img {
+  display: block !important;
+  max-width: 100% !important;
+  max-height: 75vh !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+
+/* ===== Image modal close button (red X) ===== */
+.dash-img-modal__close {
+  border: 1px solid rgba(239, 68, 68, 0.35) !important;
+  background: rgba(239, 68, 68, 0.08) !important;
+  border-radius: 12px !important;
+  width: 38px !important;
+  height: 38px !important;
+  padding: 0 !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  cursor: pointer !important;
+  transition: background 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+
+.dash-img-modal__close i.fa-times {
+  color: #ef4444 !important;      /* red X */
+  font-size: 16px !important;     /* fits perfectly */
+  line-height: 1 !important;
+}
+
+.dash-img-modal__close:hover {
+  background: rgba(239, 68, 68, 0.14) !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.25) !important;
+  transform: translateY(-1px);
+}
+
+.dash-img-modal__close:active {
+  transform: translateY(0);
+}

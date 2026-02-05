@@ -24,6 +24,7 @@ urlpatterns = [
     path("partials/stats/", views.stats_partial, name="stats_partial"),
     path("partials/sections/", views.sections_partial, name="sections_partial"),
     path("partials/files/", views.files_partial, name="files_partial"),
+    path("<slug:slug>/file/<int:file_id>/preview/", views.preview_file, name="preview_file"),
     path("partials/secret-notes/", views.secret_notes_partial, name="secret_notes_partial"),  # ✅ add
 
     path("logout/", views.logout_view, name="logout"),

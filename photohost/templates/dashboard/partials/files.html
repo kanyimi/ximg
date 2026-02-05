@@ -24,12 +24,24 @@
             <td><code>{{ f.section.slug }}</code></td>
             <td>{{ f.uploaded_at }}</td>
             <td>
-              <!-- Uses your improved URL style with slug + file_id (as in your template) -->
-              <a class="dash-link-small"
-                 href="{% url 'photohostapp:download_file' slug=f.section.slug file_id=f.id %}"
-                 target="_blank" style="color:#227851;">      <i class="fa fa-download" style="font-size:24px"></i>
+              {% with name=f.original_name|lower %}
+                {% if name|slice:"-4:" == ".png" or name|slice:"-4:" == ".jpg" or name|slice:"-5:" == ".jpeg" or name|slice:"-4:" == ".gif" or name|slice:"-5:" == ".webp" %}
+              <a class="dash-link-small js-img-preview"
+                 href="{% url 'dashboard:preview_file' slug=f.section.slug file_id=f.id %}"
+                 data-filename="{{ f.original_name|escape }}">
+                <i class="fa fa-eye" style="font-size:24px"></i>
               </a>
+                {% else %}
+                  <a class="dash-link-small"
+                     href="{% url 'photohostapp:download_file' slug=f.section.slug file_id=f.id %}"
+                     target="_blank" style="color:#227851;">
+                    <i class="fa fa-download" style="font-size:24px"></i>
+                  </a>
+                {% endif %}
+              {% endwith %}
             </td>
+
+
           </tr>
         {% empty %}
           <tr><td colspan="4" class="dash-muted">{% translate "No files found." %}</td></tr>
@@ -38,3 +50,27 @@
     </table>
   </div>
 </div>
+
+
+
+<!-- Image Preview Modal -->
+<div id="imgPreviewModal" class="dash-img-modal" aria-hidden="true">
+  <div class="dash-img-modal__overlay" data-close="1"></div>
+
+  <div class="dash-img-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="imgPreviewTitle">
+    <div class="dash-img-modal__head">
+      <div id="imgPreviewTitle" class="dash-img-modal__title">Preview</div>
+
+      <button type="button" class="dash-img-modal__close" id="imgPreviewClose" aria-label="Close">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div class="dash-img-modal__body">
+      <img id="imgPreviewImg" alt="" />
+    </div>
+  </div>
+</div>
+
+
+
