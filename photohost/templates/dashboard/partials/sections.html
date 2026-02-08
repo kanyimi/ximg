@@ -20,8 +20,8 @@
         {% for s in sections %}
           <tr>
             <td><code>{{ s.slug }}</code></td>
-            <td>{{ s.created_at }}</td>
-            <td>{{ s.expires_at }}</td>
+            <td>{{ s.created_at|date:"d.m.Y" }}</td>
+            <td>{{ s.expires_at|date:"d.m.Y" }}</td>
             <td>
               <a class="dash-link-small" href="{% url 'photohostapp:section_detail' slug=s.slug %}" target="_blank" style="color:#227851;">
                 {% translate "View" %}
@@ -34,4 +34,33 @@
       </tbody>
     </table>
   </div>
+  {% if page_obj.paginator.num_pages > 1 %}
+  <div class="dash-pager">
+    <div class="dash-pager-left">
+      {% if page_obj.has_previous %}
+        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page=1"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></a>
+        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></a>
+      {% else %}
+        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></span>
+        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></span>
+      {% endif %}
+    </div>
+
+    <div class="dash-pager-mid">
+      Page <strong>{{ page_obj.number }}</strong> of <strong>{{ page_obj.paginator.num_pages }}</strong>
+      <span class="dash-muted">({{ page_obj.paginator.count }} sections)</span>
+    </div>
+
+    <div class="dash-pager-right">
+      {% if page_obj.has_next %}
+        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></a>
+        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></a>
+      {% else %}
+        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></span>
+        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></span>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
 </div>

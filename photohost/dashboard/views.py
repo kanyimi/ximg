@@ -25,6 +25,7 @@ import mimetypes
 from django.http import Http404, FileResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET
+from django.core.paginator import Paginator
 
 def _parse_range(request):
     """
@@ -59,6 +60,86 @@ def _dt_bounds(start_date, end_date):
     # end inclusive -> convert to end+1 day exclusive
     end_dt = timezone.make_aware(datetime.combine(end_date + timedelta(days=1), datetime.min.time()), tz)
     return start_dt, end_dt
+
+def _fmt_bytes(num: int) -> str:
+    # 1024-based (KiB, MiB...) but with friendly labels
+    step = 1024.0
+    for unit in ["B", "KB", "MB", "GB", "TB", "PB"]:
+        if num < step:
+            return f"{num:.0f} {unit}" if unit == "B" else f"{num:.2f} {unit}"
+        num /= step
+    return f"{num:.2f} EB"
+
+def _get_server_stats():
+    # Disk stats: use MEDIA_ROOT if set, else project base dir
+    disk_path = getattr(settings, "BASE_DIR", ".")
+    du = shutil.disk_usage(disk_path)
+
+    disk_total = du.total
+    disk_used = du.used
+    disk_free = du.free
+    disk_used_pct = round((disk_used / disk_total) * 100, 1) if disk_total else 0.0
+
+    stats = {
+        "os": f"{platform.system()} {platform.release()}",
+        "python": platform.python_version(),
+        "disk_path": str(disk_path),
+        "disk_total": _fmt_bytes(disk_total),
+        "disk_used": _fmt_bytes(disk_used),
+        "disk_free": _fmt_bytes(disk_free),
+        "disk_used_pct": disk_used_pct,
+    }
+
+    # Optional: psutil gives CPU/RAM/uptime (works on Windows + Linux)
+    try:
+        import psutil
+
+        # CPU
+        cpu_percent = psutil.cpu_percent(interval=0.2)
+        cpu_count = psutil.cpu_count(logical=True) or 0
+
+        # RAM
+        vm = psutil.virtual_memory()
+        ram_total = vm.total
+        ram_used = vm.used
+        ram_available = vm.available
+        ram_used_pct = round(vm.percent, 1)
+
+        # Uptime
+        boot = timezone.datetime.fromtimestamp(psutil.boot_time(), tz=timezone.get_current_timezone())
+        uptime_td = timezone.now() - boot
+
+        stats.update({
+            "cpu_percent": round(cpu_percent, 1),
+            "cpu_count": cpu_count,
+            "ram_total": _fmt_bytes(ram_total),
+            "ram_used": _fmt_bytes(ram_used),
+            "ram_available": _fmt_bytes(ram_available),
+            "ram_used_pct": ram_used_pct,
+            "uptime": str(timedelta(seconds=int(uptime_td.total_seconds()))),
+        })
+
+    except Exception:
+        # If psutil isn't installed or fails, we still have disk + OS/Python
+        stats.update({
+            "cpu_percent": None,
+            "cpu_count": None,
+            "ram_total": None,
+            "ram_used": None,
+            "ram_available": None,
+            "ram_used_pct": None,
+            "uptime": None,
+        })
+
+    # Load average (Linux/macOS only)
+    try:
+        la = os.getloadavg()  # (1, 5, 15)
+        stats["loadavg"] = f"{la[0]:.2f}, {la[1]:.2f}, {la[2]:.2f}"
+    except Exception:
+        stats["loadavg"] = None
+
+    return stats
+
 
 def login_view(request):
     if request.user.is_authenticated and request.user.is_staff:
@@ -95,6 +176,14 @@ def login_view(request):
         return redirect("dashboard:shell")
 
     return render(request, "dashboard/login.html")
+
+
+def logout_view(request):
+    logout(request)
+    request.session.pop("dashboard_2fa_ok", None)
+    return redirect("dashboard:login")
+
+
 
 def twofa_verify(request):
     if not request.user.is_authenticated:
@@ -215,84 +304,6 @@ def sections_page(request):
 def files_page(request):
     return render(request, "dashboard/shell.html", {"initial_route": "files"})
 
-def _fmt_bytes(num: int) -> str:
-    # 1024-based (KiB, MiB...) but with friendly labels
-    step = 1024.0
-    for unit in ["B", "KB", "MB", "GB", "TB", "PB"]:
-        if num < step:
-            return f"{num:.0f} {unit}" if unit == "B" else f"{num:.2f} {unit}"
-        num /= step
-    return f"{num:.2f} EB"
-
-def _get_server_stats():
-    # Disk stats: use MEDIA_ROOT if set, else project base dir
-    disk_path = getattr(settings, "BASE_DIR", ".")
-    du = shutil.disk_usage(disk_path)
-
-    disk_total = du.total
-    disk_used = du.used
-    disk_free = du.free
-    disk_used_pct = round((disk_used / disk_total) * 100, 1) if disk_total else 0.0
-
-    stats = {
-        "os": f"{platform.system()} {platform.release()}",
-        "python": platform.python_version(),
-        "disk_path": str(disk_path),
-        "disk_total": _fmt_bytes(disk_total),
-        "disk_used": _fmt_bytes(disk_used),
-        "disk_free": _fmt_bytes(disk_free),
-        "disk_used_pct": disk_used_pct,
-    }
-
-    # Optional: psutil gives CPU/RAM/uptime (works on Windows + Linux)
-    try:
-        import psutil
-
-        # CPU
-        cpu_percent = psutil.cpu_percent(interval=0.2)
-        cpu_count = psutil.cpu_count(logical=True) or 0
-
-        # RAM
-        vm = psutil.virtual_memory()
-        ram_total = vm.total
-        ram_used = vm.used
-        ram_available = vm.available
-        ram_used_pct = round(vm.percent, 1)
-
-        # Uptime
-        boot = timezone.datetime.fromtimestamp(psutil.boot_time(), tz=timezone.get_current_timezone())
-        uptime_td = timezone.now() - boot
-
-        stats.update({
-            "cpu_percent": round(cpu_percent, 1),
-            "cpu_count": cpu_count,
-            "ram_total": _fmt_bytes(ram_total),
-            "ram_used": _fmt_bytes(ram_used),
-            "ram_available": _fmt_bytes(ram_available),
-            "ram_used_pct": ram_used_pct,
-            "uptime": str(timedelta(seconds=int(uptime_td.total_seconds()))),
-        })
-
-    except Exception:
-        # If psutil isn't installed or fails, we still have disk + OS/Python
-        stats.update({
-            "cpu_percent": None,
-            "cpu_count": None,
-            "ram_total": None,
-            "ram_used": None,
-            "ram_available": None,
-            "ram_used_pct": None,
-            "uptime": None,
-        })
-
-    # Load average (Linux/macOS only)
-    try:
-        la = os.getloadavg()  # (1, 5, 15)
-        stats["loadavg"] = f"{la[0]:.2f}, {la[1]:.2f}, {la[2]:.2f}"
-    except Exception:
-        stats["loadavg"] = None
-
-    return stats
 
 @dashboard_2fa_required
 def stats_partial(request):
@@ -322,29 +333,10 @@ def stats_partial(request):
     })
 
 
+
 @dashboard_2fa_required
-def sections_partial(request):
-    q = (request.GET.get("q") or "").strip()
-    qs = Section.objects.all().order_by("-created_at")
-
-    # "current sections (not deleted)" - your model deletes by expiry logic, not DB delete.
-    # We'll exclude expired:
-    # NOTE: expires_at is python property, so filter with created_at + lifetime_days is hard in SQL.
-    # Fast approach: show all, mark expired; or do a python-side filter (OK for small data).
-    # We'll do python filter for now.
-    sections = []
-    for s in qs[:2000]:  # safety cap
-        if not s.is_expired():
-            sections.append(s)
-
-    if q:
-        q_low = q.lower()
-        sections = [s for s in sections if q_low in (s.slug or "").lower() or q_low in (s.title or "").lower()]
-
-    return render(request, "dashboard/partials/sections.html", {
-        "q": q,
-        "sections": sections[:500],  # keep table responsive
-    })
+def secret_notes_page(request):
+    return render(request, "dashboard/shell.html", {"initial_route": "secret-notes"})
 
 
 
@@ -380,45 +372,73 @@ def download_file(request, slug, file_id):
 @dashboard_2fa_required
 def files_partial(request):
     q = (request.GET.get("q") or "").strip()
+
     qs = StoredFile.objects.select_related("section").order_by("-uploaded_at")
 
-    # Exclude files from expired sections (your "deleted" rule)
-    files = []
-    for f in qs[:3000]:
-        if not f.section.is_expired():
-            files.append(f)
-
+    # Optional search (DB-side)
     if q:
-        q_low = q.lower()
-        def match(f):
-            return (
-                q_low in (f.original_name or "").lower()
-                or q_low in (f.section.slug or "").lower()
-                or q_low in (getattr(f.file, "name", "") or "").lower()
-            )
-        files = [f for f in files if match(f)]
+        qs = qs.filter(
+            Q(original_name__icontains=q) |
+            Q(section__slug__icontains=q) |
+            Q(file__icontains=q)
+        )
+
+    # Exclude expired sections (python-side)
+    # If your Section model has a DB field like expires_at, you should filter in SQL instead.
+    valid_files = [f for f in qs if not f.section.is_expired()]
+
+    paginator = Paginator(valid_files, 20)  # 20 per page
+    page_number = request.GET.get("page") or 1
+    page_obj = paginator.get_page(page_number)
 
     return render(request, "dashboard/partials/files.html", {
         "q": q,
-        "files": files[:500],
+        "page_obj": page_obj,
+        "files": page_obj.object_list,  # keep your template loop unchanged
     })
 
-
-def logout_view(request):
-    logout(request)
-    request.session.pop("dashboard_2fa_ok", None)
-    return redirect("dashboard:login")
-
-
 @dashboard_2fa_required
-def secret_notes_page(request):
-    return render(request, "dashboard/shell.html", {"initial_route": "secret-notes"})
+def sections_partial(request):
+    q = (request.GET.get("q") or "").strip()
+    qs = Section.objects.all().order_by("-created_at")
+
+    # Exclude expired (python-side)
+    sections = [s for s in qs if not s.is_expired()]
+
+    # Search (python-side)
+    if q:
+        q_low = q.lower()
+        sections = [
+            s for s in sections
+            if q_low in (s.slug or "").lower() or q_low in (s.title or "").lower()
+        ]
+
+    paginator = Paginator(sections, 20)  # 20 per page
+    page_number = request.GET.get("page") or 1
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "dashboard/partials/sections.html", {
+        "q": q,
+        "page_obj": page_obj,
+        "sections": page_obj.object_list,  # keep your loop unchanged
+    })
+
 
 @dashboard_2fa_required
 def secret_notes_partial(request):
     q_raw = (request.GET.get("q") or "").strip()
     q = q_raw.lower()
     now = timezone.now()
+
+    # keep current tab on reload
+    tab = (request.GET.get("tab") or "active").strip()
+    if tab not in ("active", "retention", "flagged"):
+        tab = "active"
+
+    # page params per tab
+    page_active = request.GET.get("page_active") or 1
+    page_retention = request.GET.get("page_retention") or 1
+    page_flagged = request.GET.get("page_flagged") or 1
 
     notes_qs = (
         SecretNote.objects
@@ -435,61 +455,70 @@ def secret_notes_partial(request):
     flagged_qs = FlaggedSecretNote.objects.order_by("-created_at")
 
     if q:
-        # Active notes: search by UUID (string form)
         notes_qs = notes_qs.filter(id__icontains=q)
-
-        # Retention: search by note_id
         retention_qs = retention_qs.filter(note_id__icontains=q)
-
-        # Flagged: search by note_id OR matched terms
         flagged_qs = flagged_qs.filter(
             Q(note_id__icontains=q) | Q(matched_terms__icontains=q)
         )
 
-    notes = list(notes_qs[:500])
+    # ---- Paginate Active notes (no decrypt) ----
+    notes_paginator = Paginator(notes_qs, 20)
+    notes_page = notes_paginator.get_page(page_active)
+
+    # ---- Paginate Retention (decrypt only on current page) ----
+    retention_paginator = Paginator(retention_qs, 20)
+    retention_page = retention_paginator.get_page(page_retention)
 
     retention_rows = []
-    for r in retention_qs[:500]:
+    for r in retention_page.object_list:
         cipher = r.cyphertext or ""
-
         try:
             text = decrypt_text(cipher) if cipher else ""
         except Exception:
             text = "[Unable to decrypt]"
 
         preview = (text[:120] + "…") if len(text) > 120 else text
-
         retention_rows.append({
             "note_id": str(r.note_id),
             "created_at": r.created_at,
             "expires_at": r.expires_at,
             "had_password": r.had_password,
             "preview": preview,
-            "plaintext": text,  # decrypted plaintext for modal
+            "plaintext": text,
         })
 
-    flagged_rows = []
-    for f in flagged_qs[:500]:
-        cipher = f.ciphertext or ""
+    # ---- Paginate Flagged (decrypt only on current page) ----
+    flagged_paginator = Paginator(flagged_qs, 20)
+    flagged_page = flagged_paginator.get_page(page_flagged)
 
+    flagged_rows = []
+    for f in flagged_page.object_list:
+        cipher = f.ciphertext or ""
         try:
             text = decrypt_text(cipher) if cipher else ""
         except Exception:
             text = "[Unable to decrypt]"
 
         preview = (text[:120] + "…") if len(text) > 120 else text
-
         flagged_rows.append({
             "note_id": str(f.note_id),
             "created_at": f.created_at,
             "matched_terms": f.matched_terms,
             "preview": preview,
-            "plaintext": text,  # decrypted plaintext for modal
+            "plaintext": text,
         })
 
     return render(request, "dashboard/partials/secret_notes.html", {
         "q": q_raw,
-        "notes": notes,
+        "tab": tab,
+
+        # page objects
+        "notes_page": notes_page,
+        "retention_page": retention_page,
+        "flagged_page": flagged_page,
+
+        # current-page rows for display
+        "notes": list(notes_page.object_list),
         "retention_rows": retention_rows,
         "flagged_rows": flagged_rows,
     })
