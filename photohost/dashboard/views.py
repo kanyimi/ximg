@@ -140,7 +140,12 @@ def _get_server_stats():
 
     return stats
 
-
+def _parse_ddmmyyyy(s: str):
+    s = (s or "").strip()
+    try:
+        return datetime.strptime(s, "%d.%m.%Y").date()
+    except ValueError:
+        return None
 def login_view(request):
     if request.user.is_authenticated and request.user.is_staff:
         # If already logged in, go to OTP if needed else dashboard
@@ -375,59 +380,88 @@ def files_partial(request):
 
     qs = StoredFile.objects.select_related("section").order_by("-uploaded_at")
 
-    # Optional search (DB-side)
+    q_date = _parse_ddmmyyyy(q)
+
     if q:
-        qs = qs.filter(
-            Q(original_name__icontains=q) |
-            Q(section__slug__icontains=q) |
-            Q(file__icontains=q)
-        )
+        if q_date:
+            # ✅ date search (Django handles TZ correctly)
+            qs = qs.filter(uploaded_at__date=q_date)
+        else:
+            # ✅ text search
+            qs = qs.filter(
+                Q(original_name__icontains=q) |
+                Q(section__slug__icontains=q) |
+                Q(file__icontains=q)
+            )
 
     # Exclude expired sections (python-side)
-    # If your Section model has a DB field like expires_at, you should filter in SQL instead.
     valid_files = [f for f in qs if not f.section.is_expired()]
 
-    paginator = Paginator(valid_files, 20)  # 20 per page
+    paginator = Paginator(valid_files, 20)
     page_number = request.GET.get("page") or 1
     page_obj = paginator.get_page(page_number)
 
     return render(request, "dashboard/partials/files.html", {
         "q": q,
         "page_obj": page_obj,
-        "files": page_obj.object_list,  # keep your template loop unchanged
+        "files": page_obj.object_list,
     })
+
 
 @dashboard_2fa_required
 def sections_partial(request):
     q = (request.GET.get("q") or "").strip()
+    q_low = q.lower()
+
     qs = Section.objects.all().order_by("-created_at")
 
     # Exclude expired (python-side)
     sections = [s for s in qs if not s.is_expired()]
 
-    # Search (python-side)
     if q:
-        q_low = q.lower()
-        sections = [
-            s for s in sections
-            if q_low in (s.slug or "").lower() or q_low in (s.title or "").lower()
-        ]
+        q_date = _parse_ddmmyyyy(q)
 
-    paginator = Paginator(sections, 20)  # 20 per page
+        def match_section(s):
+            # text match (slug/title)
+            if q_low in (s.slug or "").lower() or q_low in (s.title or "").lower():
+                return True
+
+            # date match
+            if q_date:
+                # created_at date match
+                if s.created_at and s.created_at.date() == q_date:
+                    return True
+                # expires_at property match
+                exp = s.expires_at
+                if exp and exp.date() == q_date:
+                    return True
+                return False
+
+            # if query looks like dd.mm.yyyy string, match formatted dates too
+            if len(q) == 10 and q[2] == "." and q[5] == ".":
+                created_str = s.created_at.strftime("%d.%m.%Y") if s.created_at else ""
+                expires_str = s.expires_at.strftime("%d.%m.%Y") if s.expires_at else ""
+                return q == created_str or q == expires_str
+
+            return False
+
+        sections = [s for s in sections if match_section(s)]
+
+    paginator = Paginator(sections, 20)
     page_number = request.GET.get("page") or 1
     page_obj = paginator.get_page(page_number)
 
     return render(request, "dashboard/partials/sections.html", {
         "q": q,
         "page_obj": page_obj,
-        "sections": page_obj.object_list,  # keep your loop unchanged
+        "sections": page_obj.object_list,
     })
+
 
 
 @dashboard_2fa_required
 def secret_notes_partial(request):
     q_raw = (request.GET.get("q") or "").strip()
-    q = q_raw.lower()
     now = timezone.now()
 
     # keep current tab on reload
@@ -440,6 +474,7 @@ def secret_notes_partial(request):
     page_retention = request.GET.get("page_retention") or 1
     page_flagged = request.GET.get("page_flagged") or 1
 
+    # Base querysets
     notes_qs = (
         SecretNote.objects
         .filter(Q(expires_at__isnull=True) | Q(expires_at__gt=now))
@@ -454,12 +489,35 @@ def secret_notes_partial(request):
 
     flagged_qs = FlaggedSecretNote.objects.order_by("-created_at")
 
-    if q:
-        notes_qs = notes_qs.filter(id__icontains=q)
-        retention_qs = retention_qs.filter(note_id__icontains=q)
-        flagged_qs = flagged_qs.filter(
-            Q(note_id__icontains=q) | Q(matched_terms__icontains=q)
-        )
+    # ---- Search handling (text OR date dd.mm.yyyy) ----
+    q_date = _parse_ddmmyyyy(q_raw)
+    q = q_raw.lower()
+
+    if q_raw:
+        if q_date:
+            # ✅ Date search
+            # Active notes: created_at OR expires_at on that date
+            notes_qs = notes_qs.filter(
+                Q(created_at__date=q_date) |
+                Q(expires_at__date=q_date)
+            )
+
+            # Retention: created_at OR expires_at on that date (still respects expires_at__gt=now base filter)
+            retention_qs = retention_qs.filter(
+                Q(created_at__date=q_date) |
+                Q(expires_at__date=q_date)
+            )
+
+            # Flagged: created_at on that date
+            flagged_qs = flagged_qs.filter(created_at__date=q_date)
+
+        else:
+            # ✅ Text search (existing behavior)
+            notes_qs = notes_qs.filter(id__icontains=q)
+            retention_qs = retention_qs.filter(note_id__icontains=q)
+            flagged_qs = flagged_qs.filter(
+                Q(note_id__icontains=q) | Q(matched_terms__icontains=q)
+            )
 
     # ---- Paginate Active notes (no decrypt) ----
     notes_paginator = Paginator(notes_qs, 20)
@@ -477,7 +535,7 @@ def secret_notes_partial(request):
         except Exception:
             text = "[Unable to decrypt]"
 
-        preview = (text[:120] + "…") if len(text) > 120 else text
+        preview = (text[:30] + "…") if len(text) > 30 else text
         retention_rows.append({
             "note_id": str(r.note_id),
             "created_at": r.created_at,
@@ -499,7 +557,7 @@ def secret_notes_partial(request):
         except Exception:
             text = "[Unable to decrypt]"
 
-        preview = (text[:120] + "…") if len(text) > 120 else text
+        preview = (text[:30] + "…") if len(text) > 30 else text
         flagged_rows.append({
             "note_id": str(f.note_id),
             "created_at": f.created_at,
@@ -512,17 +570,14 @@ def secret_notes_partial(request):
         "q": q_raw,
         "tab": tab,
 
-        # page objects
         "notes_page": notes_page,
         "retention_page": retention_page,
         "flagged_page": flagged_page,
 
-        # current-page rows for display
         "notes": list(notes_page.object_list),
         "retention_rows": retention_rows,
         "flagged_rows": flagged_rows,
     })
-
 
 @dashboard_2fa_required
 def api_secret_notes(request):
