@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-02 19:38+0300\n"
+"POT-Creation-Date: 2026-02-13 16:39+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr "1 mes"
 msgid "2 months"
 msgstr "2 meses"
 
-#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:113
+#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:111
 msgid "Deletion time"
 msgstr "Tiempo de eliminación"
 
@@ -62,11 +62,19 @@ msgstr "¡Ups! El elemento o la página que buscas no existe."
 msgid "Go Back Home"
 msgstr "Volver al inicio"
 
-#: .\templates\base.html:38
+#: .\templates\base.html:11
+msgid "File exchange service with a secure feature to remove metadata."
+msgstr "Servicio de intercambio de archivos con una función segura para eliminar metadatos."
+
+#: .\templates\base.html:14
+msgid "File Exchange — Security and Metadata Removal"
+msgstr "Intercambio de archivos — Seguridad y eliminación de metadatos"
+
+#: .\templates\base.html:45
 msgid "secure note"
 msgstr "nota segura"
 
-#: .\templates\base.html:79
+#: .\templates\base.html:86
 msgid "All mirrors of"
 msgstr "Todos los espejos de"
 
@@ -87,7 +95,7 @@ msgstr "Código"
 msgid "Verify"
 msgstr "Verificar"
 
-#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:57
+#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:67
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -106,7 +114,7 @@ msgid "Username"
 msgstr "Nombre de usuario"
 
 #: .\templates\dashboard\login.html:34
-#: .\templates\dashboard\partials\secret_notes.html:60
+#: .\templates\dashboard\partials\secret_notes.html:61
 #: .\templates\secret_notes\password.html:38
 msgid "Password"
 msgstr "Contraseña"
@@ -130,8 +138,8 @@ msgid "Original name"
 msgstr "Guardar nombres de archivos originales"
 
 #: .\templates\dashboard\partials\files.html:15
-#: .\templates\photohostapp\section_detail.html:9
-#: .\templates\photohostapp\section_detail.html:47
+#: .\templates\photohostapp\section_detail.html:7
+#: .\templates\photohostapp\section_detail.html:45
 msgid "Section"
 msgstr "Sección"
 
@@ -140,12 +148,12 @@ msgid "Uploaded"
 msgstr "Subido"
 
 #: .\templates\dashboard\partials\files.html:17
-#: .\templates\photohostapp\section_detail.html:88
-#: .\templates\photohostapp\section_detail.html:123
+#: .\templates\photohostapp\section_detail.html:86
+#: .\templates\photohostapp\section_detail.html:121
 msgid "Download"
 msgstr "Descargar"
 
-#: .\templates\dashboard\partials\files.html:35
+#: .\templates\dashboard\partials\files.html:47
 msgid "No files found."
 msgstr "No se encontraron archivos."
 
@@ -157,108 +165,108 @@ msgstr "nota segura"
 msgid "Retention copies"
 msgstr "Tiempo de eliminación"
 
-#: .\templates\dashboard\partials\secret_notes.html:38
+#: .\templates\dashboard\partials\secret_notes.html:39
 msgid "Flagged notes"
 msgstr "Notas marcadas"
 
-#: .\templates\dashboard\partials\secret_notes.html:56
+#: .\templates\dashboard\partials\secret_notes.html:57
 msgid "ID"
 msgstr "ID"
 
-#: .\templates\dashboard\partials\secret_notes.html:57
-#: .\templates\dashboard\partials\secret_notes.html:113
-#: .\templates\dashboard\partials\secret_notes.html:164
+#: .\templates\dashboard\partials\secret_notes.html:58
+#: .\templates\dashboard\partials\secret_notes.html:146
+#: .\templates\dashboard\partials\secret_notes.html:230
 #: .\templates\dashboard\partials\sections.html:14
 msgid "Created"
 msgstr "Crear Nota"
 
-#: .\templates\dashboard\partials\secret_notes.html:58
-#: .\templates\dashboard\partials\secret_notes.html:114
+#: .\templates\dashboard\partials\secret_notes.html:59
+#: .\templates\dashboard\partials\secret_notes.html:147
 #: .\templates\dashboard\partials\sections.html:15
-#: .\templates\photohostapp\section_detail.html:45
-#: .\templates\photohostapp\section_detail.html:67
+#: .\templates\photohostapp\section_detail.html:43
+#: .\templates\photohostapp\section_detail.html:65
 #: .\templates\secret_notes\created.html:81
 msgid "Expires"
 msgstr "Caduca"
 
-#: .\templates\dashboard\partials\secret_notes.html:59
+#: .\templates\dashboard\partials\secret_notes.html:60
 msgid "Delete after read"
 msgstr "Eliminar después de leer"
 
-#: .\templates\dashboard\partials\secret_notes.html:61
+#: .\templates\dashboard\partials\secret_notes.html:62
 #: .\templates\dashboard\partials\sections.html:16
 msgid "Open"
 msgstr "Abrir Nota"
 
-#: .\templates\dashboard\partials\secret_notes.html:73
+#: .\templates\dashboard\partials\secret_notes.html:74
 #: .\templates\secret_notes\create.html:50
 #: .\templates\secret_notes\created.html:79
 msgid "Delete after reading"
 msgstr "Eliminar después de leer"
 
-#: .\templates\dashboard\partials\secret_notes.html:77
-#: .\templates\dashboard\partials\secret_notes.html:82
-#: .\templates\dashboard\partials\secret_notes.html:127
+#: .\templates\dashboard\partials\secret_notes.html:78
+#: .\templates\dashboard\partials\secret_notes.html:81
+#: .\templates\dashboard\partials\secret_notes.html:160
 msgid "Yes"
 msgstr "Sí"
 
-#: .\templates\dashboard\partials\secret_notes.html:79
-#: .\templates\dashboard\partials\secret_notes.html:84
-#: .\templates\dashboard\partials\secret_notes.html:129
+#: .\templates\dashboard\partials\secret_notes.html:78
+#: .\templates\dashboard\partials\secret_notes.html:81
+#: .\templates\dashboard\partials\secret_notes.html:160
 msgid "No"
 msgstr "Nota"
 
-#: .\templates\dashboard\partials\secret_notes.html:95
+#: .\templates\dashboard\partials\secret_notes.html:92
 msgid "No active notes found."
 msgstr "No se encontraron notas activas."
 
-#: .\templates\dashboard\partials\secret_notes.html:112
-#: .\templates\dashboard\partials\secret_notes.html:163
+#: .\templates\dashboard\partials\secret_notes.html:145
+#: .\templates\dashboard\partials\secret_notes.html:229
 msgid "Note ID"
 msgstr "Nota"
 
-#: .\templates\dashboard\partials\secret_notes.html:115
+#: .\templates\dashboard\partials\secret_notes.html:148
 msgid "Had password"
 msgstr "Contraseña"
 
-#: .\templates\dashboard\partials\secret_notes.html:116
-#: .\templates\dashboard\partials\secret_notes.html:166
+#: .\templates\dashboard\partials\secret_notes.html:149
+#: .\templates\dashboard\partials\secret_notes.html:232
 msgid "Preview"
 msgstr "Vista previa"
 
-#: .\templates\dashboard\partials\secret_notes.html:117
-#: .\templates\dashboard\partials\secret_notes.html:142
-#: .\templates\dashboard\partials\secret_notes.html:167
-#: .\templates\dashboard\partials\secret_notes.html:187
+#: .\templates\dashboard\partials\secret_notes.html:150
+#: .\templates\dashboard\partials\secret_notes.html:171
+#: .\templates\dashboard\partials\secret_notes.html:233
+#: .\templates\dashboard\partials\secret_notes.html:251
 #: .\templates\dashboard\partials\sections.html:27
 msgid "View"
 msgstr "Vista de Prueba"
 
-#: .\templates\dashboard\partials\secret_notes.html:147
+#: .\templates\dashboard\partials\secret_notes.html:176
 msgid "No retention copies found."
 msgstr "No se encontraron copias de retención."
 
-#: .\templates\dashboard\partials\secret_notes.html:165
+#: .\templates\dashboard\partials\secret_notes.html:231
 msgid "Matched terms"
 msgstr "Términos coincidentes"
 
-#: .\templates\dashboard\partials\secret_notes.html:192
+#: .\templates\dashboard\partials\secret_notes.html:256
 msgid "No flagged notes found."
 msgstr "No se encontraron notas marcadas."
 
-#: .\templates\dashboard\partials\secret_notes.html:209
+#: .\templates\dashboard\partials\secret_notes.html:309
 msgid "Retention Note"
 msgstr "Tiempo de eliminación"
 
-#: .\templates\dashboard\partials\secret_notes.html:210
+#: .\templates\dashboard\partials\secret_notes.html:310
 msgid "Note ID:"
 msgstr "Nota"
 
-#: .\templates\dashboard\partials\secret_notes.html:224
+#: .\templates\dashboard\partials\secret_notes.html:324
 msgid "Copy"
 msgstr "Copiar"
 
-#: .\templates\dashboard\partials\secret_notes.html:226
+#: .\templates\dashboard\partials\secret_notes.html:326
 msgid "Close"
 msgstr "Cerrar"
 
@@ -308,30 +316,29 @@ msgstr ""
 msgid "Server"
 msgstr "Servidor"
 
-#: .\templates\dashboard\partials\stats.html:55
+#: .\templates\dashboard\partials\stats.html:53
 msgid "Total storage"
 msgstr "Almacenamiento total"
 
-#: .\templates\dashboard\partials\stats.html:60
+#: .\templates\dashboard\partials\stats.html:58
 msgid "Free storage"
 msgstr "Almacenamiento libre"
 
-#: .\templates\dashboard\partials\stats.html:65
+#: .\templates\dashboard\partials\stats.html:63
 msgid "Used storage"
 msgstr "Almacenamiento usado"
 
-#: .\templates\dashboard\partials\stats.html:78
+#: .\templates\dashboard\partials\stats.html:76
 msgid "Available"
 msgstr "Disponible"
 
-#: .\templates\dashboard\partials\stats.html:92
+#: .\templates\dashboard\partials\stats.html:90
 msgid "Uptime"
 msgstr "Tiempo de actividad"
 
-#: .\templates\dashboard\partials\stats.html:99
+#: .\templates\dashboard\partials\stats.html:97
 msgid "Load avg "
 msgstr "Promedio de carga "
-
 
 #: .\templates\dashboard\partials\twofa.html:17
 #: .\templates\dashboard\partials\twofa.html:27
@@ -374,117 +381,117 @@ msgstr "Activar 2FA"
 msgid "No secret generated yet."
 msgstr "Aún no se ha generado ningún secreto."
 
-#: .\templates\dashboard\shell.html:11
+#: .\templates\dashboard\shell.html:14
 msgid "Dashboard"
 msgstr "Panel"
 
-#: .\templates\dashboard\shell.html:20
+#: .\templates\dashboard\shell.html:24
 msgid "Statistics"
 msgstr "Estado"
 
-#: .\templates\dashboard\shell.html:27
-#: .\templates\photohostapp\multi_upload_result.html:9
+#: .\templates\dashboard\shell.html:32
+#: .\templates\photohostapp\multi_upload_result.html:8
 msgid "Sections"
 msgstr "Secciones"
 
-#: .\templates\dashboard\shell.html:34
+#: .\templates\dashboard\shell.html:40
 msgid "Files"
 msgstr "Archivos"
 
-#: .\templates\dashboard\shell.html:41
+#: .\templates\dashboard\shell.html:48
 msgid "Secret Notes"
 msgstr "Crear Nota"
 
-#: .\templates\dashboard\shell.html:49
+#: .\templates\dashboard\shell.html:57
 msgid "Settings"
 msgstr "Ajustes"
 
-#: .\templates\photohostapp\multi_upload_result.html:8
+#: .\templates\photohostapp\multi_upload_result.html:7
 msgid "Upload is completed"
 msgstr "Carga completada"
 
-#: .\templates\photohostapp\multi_upload_result.html:52
+#: .\templates\photohostapp\multi_upload_result.html:51
 msgid "Copied"
 msgstr "Copiado"
 
-#: .\templates\photohostapp\multi_upload_result.html:70
+#: .\templates\photohostapp\multi_upload_result.html:69
 msgid "All URLs"
 msgstr "Todas las URLs"
 
-#: .\templates\photohostapp\multi_upload_result.html:77
+#: .\templates\photohostapp\multi_upload_result.html:76
 msgid "All URLs copied"
 msgstr "Todas las URLs copiadas"
 
-#: .\templates\photohostapp\section_detail.html:135
+#: .\templates\photohostapp\section_detail.html:133
 msgid "Download All in ZIP"
 msgstr "Descargar Todo en ZIP"
 
-#: .\templates\photohostapp\upload.html:11
+#: .\templates\photohostapp\upload.html:9
 msgid "file Hosting with automatic"
 msgstr "alojamiento de archivos con automático"
 
-#: .\templates\photohostapp\upload.html:12
+#: .\templates\photohostapp\upload.html:10
 msgid "EXIF (metadata) cleaning"
 msgstr "limpieza automática de EXIF (metadatos)"
 
-#: .\templates\photohostapp\upload.html:19
+#: .\templates\photohostapp\upload.html:17
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: .\templates\photohostapp\upload.html:21
+#: .\templates\photohostapp\upload.html:19
 msgid "Uploading files..."
 msgstr "Subiendo archivos..."
 
-#: .\templates\photohostapp\upload.html:39
+#: .\templates\photohostapp\upload.html:37
 msgid "of"
 msgstr "de"
 
-#: .\templates\photohostapp\upload.html:39
+#: .\templates\photohostapp\upload.html:37
 msgid "files uploaded"
 msgstr "archivos subidos"
 
-#: .\templates\photohostapp\upload.html:52
+#: .\templates\photohostapp\upload.html:50
 msgid "Cancel Upload"
 msgstr "Cancelar Carga"
 
-#: .\templates\photohostapp\upload.html:71
+#: .\templates\photohostapp\upload.html:69
 msgid " Select files to upload"
 msgstr "Seleccionar archivos para subir"
 
-#: .\templates\photohostapp\upload.html:76
+#: .\templates\photohostapp\upload.html:74
 msgid "Or Drag and Drop"
 msgstr "O Arrastrar y Soltar"
 
-#: .\templates\photohostapp\upload.html:98
+#: .\templates\photohostapp\upload.html:96
 msgid "Keep original filenames"
 msgstr "Guardar nombres de archivos originales"
 
-#: .\templates\photohostapp\upload.html:102
+#: .\templates\photohostapp\upload.html:100
 msgid "The function allows you to"
 msgstr "La función te permite"
 
-#: .\templates\photohostapp\upload.html:102
+#: .\templates\photohostapp\upload.html:100
 msgid "save the original file names"
 msgstr "guardar los nombres de archivo originales"
 
-#: .\templates\photohostapp\upload.html:102
+#: .\templates\photohostapp\upload.html:100
 msgid "after uploading to the hosting"
 msgstr "después de subirlos al hosting"
 
-#: .\templates\photohostapp\upload.html:118
+#: .\templates\photohostapp\upload.html:116
 msgid "Data stored from 1 to 60 days"
 msgstr "Datos almacenados de 1 a 60 días"
 
-#: .\templates\photohostapp\upload.html:126
+#: .\templates\photohostapp\upload.html:124
 msgid "Upload"
 msgstr "Subido"
 
-#: .\templates\photohostapp\upload.html:131
+#: .\templates\photohostapp\upload.html:129
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr ""
 "Eliminamos ExIf (metadatos) de archivos multimedia (JPG, PDF, PSD y otros)"
 
-#: .\templates\photohostapp\upload.html:133
+#: .\templates\photohostapp\upload.html:131
 msgid "Supported files"
 msgstr "Archivos compatibles"
 

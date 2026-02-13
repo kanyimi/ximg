@@ -7,7 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 
-    <title>{% block title %}Ximg{% endblock %}</title>
+    <!-- Английская версия -->
+    <meta name="description" content="{% translate 'File exchange service with a secure feature to remove metadata.' %}">
+    <title>
+        {% block title %}
+            {% translate "File Exchange — Security and Metadata Removal" %}
+        {% endblock %}
+    </title>
+
 
     <link rel="stylesheet" href="{% static 'photohostapp/css/style.css' %}">
     <link rel="icon"  href="{% static 'source/Favicon.svg' %}">
