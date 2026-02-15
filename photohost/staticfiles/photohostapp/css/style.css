@@ -649,3 +649,199 @@ section detail
   background: linear-gradient(to right, transparent, rgba(34,120,81,0.65), transparent);
 }
 
+/* donate button */
+
+  .nav-donate-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border-radius:14px;
+    text-decoration:none;
+    font-weight:800;
+    color:#0f172a;
+    border:1px solid rgba(239,68,68,.25);
+    background: rgba(239,68,68,.10);
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .nav-donate-btn:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 10px 22px rgba(239,68,68,.18);
+  }
+
+/* Center Donate between first and secure note with equal distance */
+.nav-links.nav-links--center-donate{
+  display: flex;
+  align-items: center;
+  gap: 12px; /* base spacing between items */
+}
+
+/* Make the donate slot expand equally on both sides */
+.nav-links.nav-links--center-donate .nav-mid{
+  flex: 1;                 /* takes remaining space */
+  display: flex;
+  justify-content: center; /* centers the donate button inside that space */
+}
+
+/* Prevent the other items from stretching */
+.nav-links.nav-links--center-donate > li:not(.nav-mid){
+  flex: 0 0 auto;
+}
+
+
+.nav-donate-pill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  padding: 14px 22px;
+  border-radius: 9999px;                 /* full pill */
+  border: 2px solid #ffd6d6;             /* soft pink border like screenshot */
+  background: #e9e9e9;                   /* light gray */
+  color: #7a7a7a;
+  text-decoration: none;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1;
+
+  /* subtle inset “pressed” look */
+  box-shadow:
+    inset 0 2px 6px rgba(10, 37, 64, 0.22),
+    0 1px 0 rgba(255,255,255,0.8);
+
+  transition: transform 300ms cubic-bezier(.68,-0.55,.27,2.5),
+              background-color 250ms ease,
+              border-color 250ms ease;
+}
+
+.nav-donate-pill:hover{
+  background: #efefef;
+  transform: scale(1.04);
+  border-color: #ffcccc;
+}
+
+.nav-donate-pill:active{
+  transform: scale(1.01);
+}
+
+.nav-donate-heart{
+  fill: #ff6e6e;
+}
+
+/* optional: make it look tighter on small screens */
+@media (max-width: 520px){
+  .nav-donate-pill{
+    font-size: 12px;
+    padding: 12px 18px;
+    border-width: 5px;
+    gap: 10px;
+  }
+  .nav-donate-heart{ width: 24px; height: 24px; }
+}
+
+/* Force pill styling even if other nav/link rules exist */
+ul.nav-links li .nav-donate-pill{
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 14px !important;
+
+  padding: 10px 22px !important;
+  border-radius: 9999px !important;          /* ✅ force radius */
+  border: 4px solid #ffd6d6 !important;      /* ✅ force border */
+  background: #e9e9e9 !important;
+  color: #7a7a7a !important;
+  text-decoration: none !important;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+
+  box-shadow:
+    inset 0 2px 6px rgba(10, 37, 64, 0.22),
+    0 1px 0 rgba(255,255,255,0.8) !important;
+
+  transition: transform 300ms cubic-bezier(.68,-0.55,.27,2.5),
+              background-color 250ms ease,
+              border-color 250ms ease !important;
+}
+
+ul.nav-links li .nav-donate-pill:hover{
+  background: #efefef !important;
+  transform: scale(1.04) !important;
+  border-color: #ffcccc !important;
+}
+
+ul.nav-links li .nav-donate-pill:active{
+  transform: scale(1.01) !important;
+}
+
+ul.nav-links li .nav-donate-pill .nav-donate-heart{
+  fill: #ff6e6e !important;
+}
+
+/* Attention pulse class (JS toggles this every 5s) */
+ul.nav-links li .nav-donate-pill.is-attention{
+  transform: scale(1.04) !important;
+  border-color: #ffcccc !important;
+  background: #efefef !important;
+}
+
+/* Gentle heart beat during attention pulse */
+@keyframes navDonateBeat {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+
+ul.nav-links li .nav-donate-pill.is-attention .nav-donate-heart{
+  animation: navDonateBeat 1.2s infinite;
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce){
+  ul.nav-links li .nav-donate-pill,
+  ul.nav-links li .nav-donate-pill:hover,
+  ul.nav-links li .nav-donate-pill.is-attention{
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+  ul.nav-links li .nav-donate-pill .nav-donate-heart{
+    animation: none !important;
+  }
+}
+
+.donate-cta{
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  text-align: center;
+
+  font-size: 13px;
+  color: rgba(15,23,42,.65);
+  margin-top: 4px;
+}
+
+.donate-cta__link{
+  font-weight: 800;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(239,68,68,.55);
+  color: #8000d7;
+}
+
+.donate-cta__link:hover{
+  border-bottom-style: solid;
+}
+
+.donate-cta__icon{
+  color: #84cc16;   /* similar green */
+  flex: 0 0 auto;
+}

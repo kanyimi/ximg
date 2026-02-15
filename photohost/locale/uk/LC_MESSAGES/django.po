@@ -427,8 +427,8 @@ msgstr "Налаштування"
 
 #: .\templates\includes\donate_modal.html:14
 
-msgid "Support ximg"
-msgstr "Підтримати ximg"
+msgid "Support Ximg"
+msgstr "Підтримати Ximg"
 
 #: .\templates\includes\donate_modal.html:17
 msgid "Donations help keep the service online and improve security."
