@@ -841,7 +841,51 @@ ul.nav-links li .nav-donate-pill.is-attention .nav-donate-heart{
   border-bottom-style: solid;
 }
 
-.donate-cta__icon{
-  color: #84cc16;   /* similar green */
-  flex: 0 0 auto;
+/* --- NAV: mobile fix so brand (img) doesn't get cut off --- */
+@media (max-width: 768px){
+  .nav-links{
+    padding: 0 12px !important;     /* ✅ remove 160px padding */
+    margin: 12px 12px 16px !important;
+    gap: 10px !important;
+    justify-content: space-between; /* ✅ keep left + right visible */
+    flex-wrap: wrap;                /* ✅ allow wrapping if needed */
+  }
+
+  /* don't force big auto spacing on mobile */
+  .nav-links li.nav-first{
+    margin-right: 0 !important;
+  }
+
+  /* donate slot should not steal the whole row */
+  .nav-links.nav-links--center-donate .nav-mid{
+    flex: 0 0 auto !important;
+    width: auto !important;
+    justify-content: center;
+  }
+
+  /* slightly smaller donate pill on mobile */
+  .nav-donate-pill{
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+    border-width: 5px !important;
+    gap: 10px !important;
+  }
+
+  .nav-donate-heart{
+    width: 22px !important;
+    height: 22px !important;
+  }
+}
+
+/* extra-tight phones */
+@media (max-width: 420px){
+  .nav-links{
+    padding: 0 8px !important;
+    margin: 10px 8px 12px !important;
+  }
+
+  /* make brand take full width if it needs to, then donate below */
+  .nav-links li.nav-first{
+    flex: 1 1 100% !important;
+  }
 }
