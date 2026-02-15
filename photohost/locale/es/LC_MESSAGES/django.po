@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-13 16:39+0300\n"
+"POT-Creation-Date: 2026-02-14 22:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,17 +64,32 @@ msgstr "Volver al inicio"
 
 #: .\templates\base.html:11
 msgid "File exchange service with a secure feature to remove metadata."
-msgstr "Servicio de intercambio de archivos con una función segura para eliminar metadatos."
+msgstr ""
+"Servicio de intercambio de archivos con una función segura para eliminar "
+"metadatos."
 
 #: .\templates\base.html:14
 msgid "File Exchange — Security and Metadata Removal"
 msgstr "Intercambio de archivos — Seguridad y eliminación de metadatos"
 
-#: .\templates\base.html:45
+#: .\templates\base.html:56
+msgid "Donate"
+msgstr "Donar"
+
+#: .\templates\base.html:62
 msgid "secure note"
 msgstr "nota segura"
 
-#: .\templates\base.html:86
+#: .\templates\base.html:98
+msgid "Ximg is free to use because of donations from people like you."
+msgstr "Ximg es gratuito gracias a las donaciones de personas como tú."
+
+#: .\templates\base.html:106
+
+msgid "Donate now"
+msgstr "Donar ahora"
+
+#: .\templates\base.html:122
 msgid "All mirrors of"
 msgstr "Todos los espejos de"
 
@@ -263,10 +278,15 @@ msgid "Note ID:"
 msgstr "Nota"
 
 #: .\templates\dashboard\partials\secret_notes.html:324
+#: .\templates\includes\donate_modal.html:57
+#: .\templates\includes\donate_modal.html:84
+#: .\templates\includes\donate_modal.html:134
 msgid "Copy"
 msgstr "Copiar"
 
 #: .\templates\dashboard\partials\secret_notes.html:326
+#: .\templates\includes\donate_modal.html:23
+#: .\templates\includes\donate_modal.html:108
 msgid "Close"
 msgstr "Cerrar"
 
@@ -406,13 +426,32 @@ msgstr "Crear Nota"
 msgid "Settings"
 msgstr "Ajustes"
 
-#: .\templates\photohostapp\multi_upload_result.html:7
-msgid "Upload is completed"
-msgstr "Carga completada"
+#: .\templates\includes\donate_modal.html:14
+msgid "Support Ximg"
+msgstr "Apoya a Ximg"
 
+#: .\templates\includes\donate_modal.html:17
+msgid "Donations help keep the service online and improve security."
+msgstr "Las donaciones ayudan a mantener el servicio en línea y mejorar la seguridad."
+
+#: .\templates\includes\donate_modal.html:100
+msgid "Tip: Always double-check the address before sending."
+msgstr "Consejo: Verifica siempre la dirección antes de enviar."
+
+#: .\templates\includes\donate_modal.html:131
+
+msgid "Copied to clipboard"
+msgstr "Copiado al portapapeles"
+
+#: .\templates\includes\donate_modal.html:132
+#: .\templates\includes\donate_modal.html:142
 #: .\templates\photohostapp\multi_upload_result.html:51
 msgid "Copied"
 msgstr "Copiado"
+
+#: .\templates\photohostapp\multi_upload_result.html:7
+msgid "Upload is completed"
+msgstr "Carga completada"
 
 #: .\templates\photohostapp\multi_upload_result.html:69
 msgid "All URLs"
@@ -526,7 +565,7 @@ msgstr "destruir permanentemente esta nota"
 
 #: .\templates\secret_notes\confirm_read.html:30
 msgid "Are you sure you want to continue?"
-msgstr "¿Estás seguro de que quieres continuar?"
+msgstr "Estás seguro de que quieres continuar?"
 
 #: .\templates\secret_notes\confirm_read.html:44
 msgid "Yes, show me the note"

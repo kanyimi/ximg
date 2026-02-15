@@ -1,0 +1,145 @@
+{% load i18n %}
+{% load static %}
+
+<!-- Donate Modal -->
+<div class="modal fade" id="donateModal" tabindex="-1" aria-labelledby="donateModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content" style="border-radius:18px; overflow:hidden;">
+
+      <div class="modal-header"
+           style="border-bottom:1px solid rgba(15,23,42,.10); position:relative; padding-right:64px;">
+
+        <div>
+          <h5 class="modal-title" id="donateModalLabel" style="font-weight:800; margin:0;">
+            {% translate "Support ximg" %}
+          </h5>
+          <div style="font-size:13px; color: rgba(15,23,42,.65); margin-top:4px;">
+            {% translate "Donations help keep the service online and improve security." %}
+          </div>
+        </div>
+        <button type="button"
+                class="btn"
+                data-bs-dismiss="modal"
+                aria-label="{% translate 'Close' %}"
+                style="
+                  position:absolute;
+                  top:12px;
+                  right:12px;
+                  width:38px;
+                  height:38px;
+                  border-radius:12px;
+                  border:1px solid rgba(239,68,68,.30);
+                  background:rgba(239,68,68,.08);
+                  display:grid;
+                  place-items:center;
+                  padding:0;
+                ">
+          <i class="fa fa-times" style="color:#ef4444; font-size:16px; line-height:1;"></i>
+        </button>
+
+      </div>
+
+      <div class="modal-body" style="padding:18px;">
+        <div class="row g-3">
+          <!-- BTC -->
+          <div class="col-12">
+            <div style="border:1px solid rgba(15,23,42,.10); border-radius:16px; padding:14px; background:rgba(248,250,252,.9);">
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+                <div style="font-weight:800;">
+                  <i class="fa-brands fa-bitcoin" style="font-size:48px;color:gold"></i>
+                  BTC
+                </div>
+
+                <button type="button"
+                        class="btn btn-sm btn-outline-dark js-copy-wallet"
+                        data-copy="#walletBtc"
+                        style="border-radius:12px; font-weight:700;">
+                  <i class="fa-regular fa-copy"></i> {% translate "Copy" %}
+                </button>
+              </div>
+
+              <input id="walletBtc"
+                     type="text"
+                     value="3EhurAFRoguxgDVMdhmVwNveC3j2wJ7yt5"
+                     readonly
+                     class="form-control mt-2"
+                     style="border-radius:14px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+              <div class="js-copy-status mt-2" style="font-size:12px; color: rgba(15,23,42,.65);"></div>
+            </div>
+          </div>
+
+<!--          &lt;!&ndash; XMR &ndash;&gt;-->
+<!--          <div class="col-12">-->
+<!--            <div style="border:1px solid rgba(15,23,42,.10); border-radius:16px; padding:14px; background:rgba(248,250,252,.9);">-->
+<!--              <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">-->
+<!--                <div style="font-weight:800;">-->
+<!--                  <i class="fa-solid fa-user-secret"></i>-->
+<!--                  XMR-->
+<!--                </div>-->
+
+<!--                <button type="button"-->
+<!--                        class="btn btn-sm btn-outline-dark js-copy-wallet"-->
+<!--                        data-copy="#walletXmr"-->
+<!--                        style="border-radius:12px; font-weight:700;">-->
+<!--                  <i class="fa-regular fa-copy"></i> {% translate "Copy" %}-->
+<!--                </button>-->
+<!--              </div>-->
+
+<!--              <textarea id="walletXmr"-->
+<!--                        readonly-->
+<!--                        class="form-control mt-2"-->
+<!--                        rows="3"-->
+<!--                        style="border-radius:14px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace; resize: none;">PASTE_XMR_ADDRESS_HERE</textarea>-->
+<!--              <div class="js-copy-status mt-2" style="font-size:12px; color: rgba(15,23,42,.65);"></div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+          <!-- Optional note -->
+          <div class="col-12">
+            <div style="font-size:12px; color: rgba(15,23,42,.60);">
+              {% translate "Tip: Always double-check the address before sending." %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer" style="border-top:1px solid rgba(15,23,42,.10);">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="border-radius:12px;">
+          {% translate "Close" %}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Copy wallet logic (works anywhere because it's delegated)
+  document.addEventListener("click", async (e) => {
+    const btn = e.target.closest(".js-copy-wallet");
+    if (!btn) return;
+
+    const sel = btn.getAttribute("data-copy");
+    const el = sel ? document.querySelector(sel) : null;
+    if (!el) return;
+
+    const value = (el.value || el.textContent || "").trim();
+    const card = btn.closest(".col-12") || btn.closest(".modal-body");
+    const status = card ? card.querySelector(".js-copy-status") : null;
+
+    try {
+      await navigator.clipboard.writeText(value);
+      if (status) status.textContent = "✅ {% translate 'Copied to clipboard' %}";
+      btn.innerHTML = `<i class="fa-solid fa-check"></i> {% translate "Copied" %}`;
+      setTimeout(() => {
+        btn.innerHTML = `<i class="fa-regular fa-copy"></i> {% translate "Copy" %}`;
+        if (status) status.textContent = "";
+      }, 1500);
+    } catch (err) {
+      // Fallback
+      el.focus();
+      el.select?.();
+      document.execCommand("copy");
+      if (status) status.textContent = "✅ {% translate 'Copied' %}";
+    }
+  });
+</script>

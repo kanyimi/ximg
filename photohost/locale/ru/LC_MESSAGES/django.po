@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-13 16:39+0300\n"
+"POT-Creation-Date: 2026-02-14 22:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,11 +71,23 @@ msgstr "Файл обменник с безопасной функцией уд�
 msgid "File Exchange — Security and Metadata Removal"
 msgstr "Файл обменник — Безопасность и Удаление Мета Данных"
 
-#: .\templates\base.html:45
+#: .\templates\base.html:56
+msgid "Donate"
+msgstr "Пожертвовать"
+
+#: .\templates\base.html:62
 msgid "secure note"
 msgstr "секретная заметка"
 
-#: .\templates\base.html:86
+#: .\templates\base.html:98
+msgid "Ximg is free to use because of donations from people like you."
+msgstr "Ximg бесплатен благодаря пожертвованиям таких людей, как вы."
+
+#: .\templates\base.html:106
+msgid "Donate now"
+msgstr "Пожертвовать"
+
+#: .\templates\base.html:122
 msgid "All mirrors of"
 msgstr "Все зеркала"
 
@@ -262,10 +274,15 @@ msgid "Note ID:"
 msgstr "Примечание"
 
 #: .\templates\dashboard\partials\secret_notes.html:324
+#: .\templates\includes\donate_modal.html:57
+#: .\templates\includes\donate_modal.html:84
+#: .\templates\includes\donate_modal.html:134
 msgid "Copy"
 msgstr "Копировать"
 
 #: .\templates\dashboard\partials\secret_notes.html:326
+#: .\templates\includes\donate_modal.html:23
+#: .\templates\includes\donate_modal.html:108
 msgid "Close"
 msgstr "Закрыть"
 
@@ -405,13 +422,32 @@ msgstr "Создать заметку"
 msgid "Settings"
 msgstr "Настройки"
 
-#: .\templates\photohostapp\multi_upload_result.html:7
-msgid "Upload is completed"
-msgstr "Загрузка завершена"
+#: .\templates\includes\donate_modal.html:14
 
+msgid "Support Ximg"
+msgstr "Поддержать Ximg"
+
+#: .\templates\includes\donate_modal.html:17
+msgid "Donations help keep the service online and improve security."
+msgstr "Пожертвования помогают поддерживать сервис онлайн и улучшать безопасность."
+
+#: .\templates\includes\donate_modal.html:100
+msgid "Tip: Always double-check the address before sending."
+msgstr "Совет: Всегда проверяйте адрес перед отправкой."
+
+#: .\templates\includes\donate_modal.html:131
+msgid "Copied to clipboard"
+msgstr "Скопировано в буфер обмена"
+
+#: .\templates\includes\donate_modal.html:132
+#: .\templates\includes\donate_modal.html:142
 #: .\templates\photohostapp\multi_upload_result.html:51
 msgid "Copied"
 msgstr "Скопировано"
+
+#: .\templates\photohostapp\multi_upload_result.html:7
+msgid "Upload is completed"
+msgstr "Загрузка завершена"
 
 #: .\templates\photohostapp\multi_upload_result.html:69
 msgid "All URLs"

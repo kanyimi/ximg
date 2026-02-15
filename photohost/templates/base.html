@@ -30,7 +30,7 @@
 </head>
 <body>
 
-<ul class="nav-links">
+<ul class="nav-links nav-links--center-donate">
   <li class="nav-first">
         <a href="{% url 'photohostapp:create' %}"
            style="display: inline-flex; align-items: center; gap: 6px; font-size: 30px;">
@@ -40,6 +40,23 @@
           img
         </a>
   </li>
+
+    <!-- Donate is a flexible middle slot -->
+<li class="nav-mid">
+  <a href="#"
+     class="nav-donate-btn nav-donate-pill"
+     data-bs-toggle="modal"
+     data-bs-target="#donateModal">
+
+
+    <svg class="nav-donate-heart" height="28" width="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 0H24V24H0z" fill="none"></path>
+      <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+    </svg>
+       <span class="nav-donate-text" style="color:#227851;">{% translate "Donate" %}</span>
+  </a>
+</li>
+
 
   <li><a href="{% url 'secret_notes:create' %}">
     <i class="fas fa-lock" style="font-size:24px"></i> {% translate "secure note" %}
@@ -67,10 +84,29 @@
   </a></li>
 </ul>
 
+{% include "includes/donate_modal.html" %}
 
   {% include 'includes/alerts.html' %}
 <div class="container-fluid">
 
+<div class="donate-cta">
+    <svg class="nav-donate-heart" height="28" width="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0 0H24V24H0z" fill="none"></path>
+      <path d="M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2z"></path>
+    </svg>
+  <span>
+    {% translate "Ximg is free to use because of donations from people like you." %}
+  </span>
+
+  <a href="#"
+     class="donate-cta__link"
+     data-bs-toggle="modal"
+     data-bs-target="#donateModal"
+     role="button">
+    {% translate "Donate now" %}
+  </a>
+</div>
+    <br>
     {% block content %}{% endblock %}
 
     <!-- Footer (ALWAYS at bottom) -->
@@ -116,6 +152,36 @@ document.getElementById("copyAllMirrors").addEventListener("click", function () 
     });
 });
 
+
+  (function () {
+    if (window.__donatePulseBound) return;
+    window.__donatePulseBound = true;
+
+    function getBtn() {
+      return document.querySelector(".nav-donate-pill");
+    }
+
+    function pulseOnce(btn) {
+      if (!btn) return;
+
+      // don't pulse if modal is open
+      const modalOpen = document.querySelector("#donateModal.show");
+      if (modalOpen) return;
+
+      btn.classList.add("is-attention");
+      setTimeout(() => btn.classList.remove("is-attention"), 1600);
+    }
+
+    // start interval
+    setInterval(() => {
+      pulseOnce(getBtn());
+    }, 5000);
+
+    // optional: small delay after load so first pulse is noticeable
+    window.addEventListener("load", () => {
+      setTimeout(() => pulseOnce(getBtn()), 1200);
+    });
+  })();
 </script>
 
 </body>
