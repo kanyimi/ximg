@@ -5,7 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+
+    {% block robots_meta %}
+      <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    {% endblock %}
 
     <!-- Английская версия -->
     <meta name="description" content="{% translate 'File exchange service with a secure feature to remove metadata.' %}">

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+{% block robots_meta %}
+  <meta name="robots" content="index, follow">
+{% endblock %}
+
 {% block content %}
 <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
     <!-- Upload Form Card -->

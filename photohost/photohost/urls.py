@@ -12,7 +12,6 @@ urlpatterns += i18n_patterns(
     path("dashboard/", include("dashboard.urls")),
     path("", include("photohostapp.urls", namespace="photohostapp")),
     path("secret/", include("secret_notes.urls")),
-
 )
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
