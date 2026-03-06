@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 22:37+0300\n"
+"POT-Creation-Date: 2026-03-06 09:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,7 +42,7 @@ msgstr "1 mes"
 msgid "2 months"
 msgstr "2 meses"
 
-#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:111
+#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:115
 msgid "Deletion time"
 msgstr "Tiempo de eliminación"
 
@@ -62,34 +62,45 @@ msgstr "¡Ups! El elemento o la página que buscas no existe."
 msgid "Go Back Home"
 msgstr "Volver al inicio"
 
-#: .\templates\base.html:11
-msgid "File exchange service with a secure feature to remove metadata."
-msgstr ""
-"Servicio de intercambio de archivos con una función segura para eliminar "
-"metadatos."
+#: .\templates\base.html:15 .\templates\base.html:20
+msgid "XIMG - Private file sharing and photo hosting"
+msgstr "XIMG - Private file sharing and photo hosting&quot"
 
-#: .\templates\base.html:14
-msgid "File Exchange — Security and Metadata Removal"
-msgstr "Intercambio de archivos — Seguridad y eliminación de metadatos"
+#: .\templates\base.html:18
+msgid ""
+"Anonymous free file sharing and photo hosting. Upload and share files "
+"privately. File storage for up to 60 days! EXIF metadata removal function."
+msgstr "Alojamiento de fotografías e intercambio de archivos anónimo y gratuito. Cargue y comparta archivos de forma privada. ¡Almacenamiento de archivos por hasta 60 días! Función de eliminación de metadatos EXIF.&quot"
 
-#: .\templates\base.html:56
+#: .\templates\base.html:19
+msgid "website"
+msgstr "website&quot"
+
+#: .\templates\base.html:22
+msgid "https://ximg.to/en"
+msgstr "https://ximg.to/es"
+
+#: .\templates\base.html:23
+msgid "en_EN"
+msgstr "es_ES"
+
+#: .\templates\base.html:62
 msgid "Donate"
 msgstr "Donar"
 
-#: .\templates\base.html:62
+#: .\templates\base.html:68
 msgid "secure note"
 msgstr "nota segura"
 
-#: .\templates\base.html:98
+#: .\templates\base.html:104
 msgid "Ximg is free to use because of donations from people like you."
 msgstr "Ximg es gratuito gracias a las donaciones de personas como tú."
 
-#: .\templates\base.html:106
-
+#: .\templates\base.html:112
 msgid "Donate now"
 msgstr "Donar ahora"
 
-#: .\templates\base.html:122
+#: .\templates\base.html:128
 msgid "All mirrors of"
 msgstr "Todos los espejos de"
 
@@ -279,14 +290,14 @@ msgstr "Nota"
 
 #: .\templates\dashboard\partials\secret_notes.html:324
 #: .\templates\includes\donate_modal.html:57
-#: .\templates\includes\donate_modal.html:84
-#: .\templates\includes\donate_modal.html:134
+#: .\templates\includes\donate_modal.html:92
+#: .\templates\includes\donate_modal.html:142
 msgid "Copy"
 msgstr "Copiar"
 
 #: .\templates\dashboard\partials\secret_notes.html:326
 #: .\templates\includes\donate_modal.html:23
-#: .\templates\includes\donate_modal.html:108
+#: .\templates\includes\donate_modal.html:116
 msgid "Close"
 msgstr "Cerrar"
 
@@ -432,19 +443,19 @@ msgstr "Apoya a Ximg"
 
 #: .\templates\includes\donate_modal.html:17
 msgid "Donations help keep the service online and improve security."
-msgstr "Las donaciones ayudan a mantener el servicio en línea y mejorar la seguridad."
+msgstr ""
+"Las donaciones ayudan a mantener el servicio en línea y mejorar la seguridad."
 
-#: .\templates\includes\donate_modal.html:100
+#: .\templates\includes\donate_modal.html:108
 msgid "Tip: Always double-check the address before sending."
 msgstr "Consejo: Verifica siempre la dirección antes de enviar."
 
-#: .\templates\includes\donate_modal.html:131
-
+#: .\templates\includes\donate_modal.html:139
 msgid "Copied to clipboard"
 msgstr "Copiado al portapapeles"
 
-#: .\templates\includes\donate_modal.html:132
-#: .\templates\includes\donate_modal.html:142
+#: .\templates\includes\donate_modal.html:140
+#: .\templates\includes\donate_modal.html:150
 #: .\templates\photohostapp\multi_upload_result.html:51
 msgid "Copied"
 msgstr "Copiado"
@@ -465,72 +476,72 @@ msgstr "Todas las URLs copiadas"
 msgid "Download All in ZIP"
 msgstr "Descargar Todo en ZIP"
 
-#: .\templates\photohostapp\upload.html:9
+#: .\templates\photohostapp\upload.html:13
 msgid "file Hosting with automatic"
 msgstr "alojamiento de archivos con automático"
 
-#: .\templates\photohostapp\upload.html:10
+#: .\templates\photohostapp\upload.html:14
 msgid "EXIF (metadata) cleaning"
 msgstr "limpieza automática de EXIF (metadatos)"
 
-#: .\templates\photohostapp\upload.html:17
+#: .\templates\photohostapp\upload.html:21
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: .\templates\photohostapp\upload.html:19
+#: .\templates\photohostapp\upload.html:23
 msgid "Uploading files..."
 msgstr "Subiendo archivos..."
 
-#: .\templates\photohostapp\upload.html:37
+#: .\templates\photohostapp\upload.html:41
 msgid "of"
 msgstr "de"
 
-#: .\templates\photohostapp\upload.html:37
+#: .\templates\photohostapp\upload.html:41
 msgid "files uploaded"
 msgstr "archivos subidos"
 
-#: .\templates\photohostapp\upload.html:50
+#: .\templates\photohostapp\upload.html:54
 msgid "Cancel Upload"
 msgstr "Cancelar Carga"
 
-#: .\templates\photohostapp\upload.html:69
+#: .\templates\photohostapp\upload.html:73
 msgid " Select files to upload"
 msgstr "Seleccionar archivos para subir"
 
-#: .\templates\photohostapp\upload.html:74
+#: .\templates\photohostapp\upload.html:78
 msgid "Or Drag and Drop"
 msgstr "O Arrastrar y Soltar"
 
-#: .\templates\photohostapp\upload.html:96
+#: .\templates\photohostapp\upload.html:100
 msgid "Keep original filenames"
 msgstr "Guardar nombres de archivos originales"
 
-#: .\templates\photohostapp\upload.html:100
+#: .\templates\photohostapp\upload.html:104
 msgid "The function allows you to"
 msgstr "La función te permite"
 
-#: .\templates\photohostapp\upload.html:100
+#: .\templates\photohostapp\upload.html:104
 msgid "save the original file names"
 msgstr "guardar los nombres de archivo originales"
 
-#: .\templates\photohostapp\upload.html:100
+#: .\templates\photohostapp\upload.html:104
 msgid "after uploading to the hosting"
 msgstr "después de subirlos al hosting"
 
-#: .\templates\photohostapp\upload.html:116
+#: .\templates\photohostapp\upload.html:120
 msgid "Data stored from 1 to 60 days"
 msgstr "Datos almacenados de 1 a 60 días"
 
-#: .\templates\photohostapp\upload.html:124
+#: .\templates\photohostapp\upload.html:128
 msgid "Upload"
 msgstr "Subido"
 
-#: .\templates\photohostapp\upload.html:129
+#: .\templates\photohostapp\upload.html:133
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr ""
 "Eliminamos ExIf (metadatos) de archivos multimedia (JPG, PDF, PSD y otros)"
 
-#: .\templates\photohostapp\upload.html:131
+#: .\templates\photohostapp\upload.html:135
 msgid "Supported files"
 msgstr "Archivos compatibles"
 
@@ -839,6 +850,14 @@ msgstr "Contenido de la Nota"
 #: .\templates\secret_notes\view.html:29
 msgid "Copy to Clipboard"
 msgstr "Copiar al Portapapeles"
+
+#~ msgid "File exchange service with a secure feature to remove metadata."
+#~ msgstr ""
+#~ "Servicio de intercambio de archivos con una función segura para eliminar "
+#~ "metadatos."
+
+#~ msgid "File Exchange — Security and Metadata Removal"
+#~ msgstr "Intercambio de archivos — Seguridad y eliminación de metadatos"
 
 #~ msgid "Album mode (all files have a single link)"
 #~ msgstr "Modo álbum (todos los archivos tienen un solo enlace)"

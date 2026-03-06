@@ -10,14 +10,17 @@
       <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     {% endblock %}
 
-    <!-- Английская версия -->
-    <meta name="description" content="{% translate 'File exchange service with a secure feature to remove metadata.' %}">
     <title>
         {% block title %}
-            {% translate "File Exchange — Security and Metadata Removal" %}
+            {% translate "XIMG - Private file sharing and photo hosting" %}
         {% endblock %}
     </title>
-
+    <meta name="description" content="{% translate 'Anonymous free file sharing and photo hosting. Upload and share files privately. File storage for up to 60 days! EXIF metadata removal function.' %}">
+    <meta property="og:type" content="{% translate 'website' %}">
+    <meta property="og:title" content="{% translate 'XIMG - Private file sharing and photo hosting' %}">
+    <meta property="og:description" content="{% translate 'Anonymous free file sharing and photo hosting. Upload and share files privately. File storage for up to 60 days! EXIF metadata removal function.' %}">
+    <meta property="og:url" content="{% translate 'https://ximg.to/en' %}">
+    <meta property="og:locale" content="{% translate 'en_EN' %}">
 
     <link rel="stylesheet" href="{% static 'photohostapp/css/style.css' %}">
     <link rel="icon"  href="{% static 'source/Favicon.svg' %}">

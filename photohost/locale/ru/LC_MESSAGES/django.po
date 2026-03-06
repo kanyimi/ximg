@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-14 22:37+0300\n"
+"POT-Creation-Date: 2026-03-06 09:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "1 месяц"
 msgid "2 months"
 msgstr "2 месяца"
 
-#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:111
+#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:115
 msgid "Deletion time"
 msgstr "Время удаления"
 
@@ -63,31 +63,45 @@ msgstr "Упс! Элемент или страница, которую вы ищ
 msgid "Go Back Home"
 msgstr "Вернуться на главную"
 
-#: .\templates\base.html:11
-msgid "File exchange service with a secure feature to remove metadata."
-msgstr "Файл обменник с безопасной функцией удаления мета-данных."
+#: .\templates\base.html:15 .\templates\base.html:20
+msgid "XIMG - Private file sharing and photo hosting"
+msgstr "XIMG - Private file sharing and photo hosting"
 
-#: .\templates\base.html:14
-msgid "File Exchange — Security and Metadata Removal"
-msgstr "Файл обменник — Безопасность и Удаление Мета Данных"
+#: .\templates\base.html:18 .\templates\base.html:21
+msgid ""
+"Anonymous free file sharing and photo hosting. Upload and share files "
+"privately. File storage for up to 60 days! EXIF metadata removal function."
+msgstr "Anonymous free file sharing and photo hosting. Upload and share files privately. File storage for up to 60 days! EXIF metadata removal function."
 
-#: .\templates\base.html:56
+#: .\templates\base.html:19
+msgid "website"
+msgstr "website"
+
+#: .\templates\base.html:22
+msgid "https://ximg.to/en"
+msgstr "https://ximg.to/ru"
+
+#: .\templates\base.html:23
+msgid "en_EN"
+msgstr "ru_RU"
+
+#: .\templates\base.html:62
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: .\templates\base.html:62
+#: .\templates\base.html:68
 msgid "secure note"
 msgstr "секретная заметка"
 
-#: .\templates\base.html:98
+#: .\templates\base.html:104
 msgid "Ximg is free to use because of donations from people like you."
 msgstr "Ximg бесплатен благодаря пожертвованиям таких людей, как вы."
 
-#: .\templates\base.html:106
+#: .\templates\base.html:112
 msgid "Donate now"
 msgstr "Пожертвовать"
 
-#: .\templates\base.html:122
+#: .\templates\base.html:128
 msgid "All mirrors of"
 msgstr "Все зеркала"
 
@@ -275,14 +289,14 @@ msgstr "Примечание"
 
 #: .\templates\dashboard\partials\secret_notes.html:324
 #: .\templates\includes\donate_modal.html:57
-#: .\templates\includes\donate_modal.html:84
-#: .\templates\includes\donate_modal.html:134
+#: .\templates\includes\donate_modal.html:92
+#: .\templates\includes\donate_modal.html:142
 msgid "Copy"
 msgstr "Копировать"
 
 #: .\templates\dashboard\partials\secret_notes.html:326
 #: .\templates\includes\donate_modal.html:23
-#: .\templates\includes\donate_modal.html:108
+#: .\templates\includes\donate_modal.html:116
 msgid "Close"
 msgstr "Закрыть"
 
@@ -423,24 +437,24 @@ msgid "Settings"
 msgstr "Настройки"
 
 #: .\templates\includes\donate_modal.html:14
-
 msgid "Support Ximg"
 msgstr "Поддержать Ximg"
 
 #: .\templates\includes\donate_modal.html:17
 msgid "Donations help keep the service online and improve security."
-msgstr "Пожертвования помогают поддерживать сервис онлайн и улучшать безопасность."
+msgstr ""
+"Пожертвования помогают поддерживать сервис онлайн и улучшать безопасность."
 
-#: .\templates\includes\donate_modal.html:100
+#: .\templates\includes\donate_modal.html:108
 msgid "Tip: Always double-check the address before sending."
 msgstr "Совет: Всегда проверяйте адрес перед отправкой."
 
-#: .\templates\includes\donate_modal.html:131
+#: .\templates\includes\donate_modal.html:139
 msgid "Copied to clipboard"
 msgstr "Скопировано в буфер обмена"
 
-#: .\templates\includes\donate_modal.html:132
-#: .\templates\includes\donate_modal.html:142
+#: .\templates\includes\donate_modal.html:140
+#: .\templates\includes\donate_modal.html:150
 #: .\templates\photohostapp\multi_upload_result.html:51
 msgid "Copied"
 msgstr "Скопировано"
@@ -461,71 +475,71 @@ msgstr "Все URL скопированы"
 msgid "Download All in ZIP"
 msgstr "Скачать всё в ZIP"
 
-#: .\templates\photohostapp\upload.html:9
+#: .\templates\photohostapp\upload.html:13
 msgid "file Hosting with automatic"
 msgstr "Хостинг файлов с автоматической"
 
-#: .\templates\photohostapp\upload.html:10
+#: .\templates\photohostapp\upload.html:14
 msgid "EXIF (metadata) cleaning"
 msgstr "очисткой EXIF (метаданных)"
 
-#: .\templates\photohostapp\upload.html:17
+#: .\templates\photohostapp\upload.html:21
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: .\templates\photohostapp\upload.html:19
+#: .\templates\photohostapp\upload.html:23
 msgid "Uploading files..."
 msgstr "Загрузка файлов..."
 
-#: .\templates\photohostapp\upload.html:37
+#: .\templates\photohostapp\upload.html:41
 msgid "of"
 msgstr "из"
 
-#: .\templates\photohostapp\upload.html:37
+#: .\templates\photohostapp\upload.html:41
 msgid "files uploaded"
 msgstr "файлов загружено"
 
-#: .\templates\photohostapp\upload.html:50
+#: .\templates\photohostapp\upload.html:54
 msgid "Cancel Upload"
 msgstr "Отменить загрузку"
 
-#: .\templates\photohostapp\upload.html:69
+#: .\templates\photohostapp\upload.html:73
 msgid " Select files to upload"
 msgstr "Выбрать файлы для загрузки"
 
-#: .\templates\photohostapp\upload.html:74
+#: .\templates\photohostapp\upload.html:78
 msgid "Or Drag and Drop"
 msgstr "Или перетащите файлы"
 
-#: .\templates\photohostapp\upload.html:96
+#: .\templates\photohostapp\upload.html:100
 msgid "Keep original filenames"
 msgstr "Сохранить старые имена файлов"
 
-#: .\templates\photohostapp\upload.html:100
+#: .\templates\photohostapp\upload.html:104
 msgid "The function allows you to"
 msgstr "Функция позволяет"
 
-#: .\templates\photohostapp\upload.html:100
+#: .\templates\photohostapp\upload.html:104
 msgid "save the original file names"
 msgstr "сохранить оригинальные имена файлов"
 
-#: .\templates\photohostapp\upload.html:100
+#: .\templates\photohostapp\upload.html:104
 msgid "after uploading to the hosting"
 msgstr "после загрузки на хостинг"
 
-#: .\templates\photohostapp\upload.html:116
+#: .\templates\photohostapp\upload.html:120
 msgid "Data stored from 1 to 60 days"
 msgstr "Данные хранятся от 1 до 60 дней"
 
-#: .\templates\photohostapp\upload.html:124
+#: .\templates\photohostapp\upload.html:128
 msgid "Upload"
 msgstr "Загрузить"
 
-#: .\templates\photohostapp\upload.html:129
+#: .\templates\photohostapp\upload.html:133
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr "Мы удаляем ExIf (метатеги) из медиафайлов (JPG, PDF, PSD и других)"
 
-#: .\templates\photohostapp\upload.html:131
+#: .\templates\photohostapp\upload.html:135
 msgid "Supported files"
 msgstr "Поддерживаемые файлы"
 
@@ -836,6 +850,12 @@ msgstr "Содержимое заметки"
 #: .\templates\secret_notes\view.html:29
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
+
+#~ msgid "File exchange service with a secure feature to remove metadata."
+#~ msgstr "Файл обменник с безопасной функцией удаления мета-данных."
+
+#~ msgid "File Exchange — Security and Metadata Removal"
+#~ msgstr "Файл обменник — Безопасность и Удаление Мета Данных"
 
 #~ msgid "Album mode (all files have a single link)"
 #~ msgstr "Режим альбома (все файлы имеют одну ссылку)"
