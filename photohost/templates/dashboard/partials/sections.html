@@ -6,6 +6,7 @@
       <button class="dash-btn" type="submit">{% translate "Search" %}</button>
     </form>
   </div>
+
   <div class="dash-table-wrap">
     <table class="dash-table">
       <thead>
@@ -14,6 +15,7 @@
           <th>{% translate "Created" %}</th>
           <th>{% translate "Expires" %}</th>
           <th>{% translate "Open" %}</th>
+          <th>{% translate "Delete" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -23,9 +25,27 @@
             <td>{{ s.created_at|date:"d.m.Y" }}</td>
             <td>{{ s.expires_at|date:"d.m.Y" }}</td>
             <td>
-              <a class="dash-link-small" href="{% url 'photohostapp:section_detail' slug=s.slug %}" target="_blank" style="color:#227851;">
+              <a class="dash-link-small"
+                 href="{% url 'photohostapp:section_detail' slug=s.slug %}"
+                 target="_blank"
+                 style="color:#227851;">
                 {% translate "View" %}
               </a>
+            </td>
+            <td>
+              <form method="post"
+                    action="{% url 'dashboard:delete_section' section_id=s.id %}"
+                    class="dash-delete-form"
+                    style="display:inline;">
+                {% csrf_token %}
+                <button type="submit"
+                        class="dash-link-small dash-delete-btn"
+                        title="{% translate 'Delete section' %}"
+                        data-confirm="{% blocktranslate with slug=s.slug %}Delete section {{ slug }} and all files in it?{% endblocktranslate %}"
+                        style="background:none;border:none;padding:0;cursor:pointer;color:#c62828;">
+                  <i class="fa fa-trash" style="font-size:24px"></i>
+                </button>
+              </form>
             </td>
           </tr>
         {% empty %}
@@ -34,33 +54,33 @@
       </tbody>
     </table>
   </div>
+
   {% if page_obj.paginator.num_pages > 1 %}
-  <div class="dash-pager">
-    <div class="dash-pager-left">
-      {% if page_obj.has_previous %}
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page=1"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></a>
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></a>
-      {% else %}
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></span>
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></span>
-      {% endif %}
-    </div>
+    <div class="dash-pager">
+      <div class="dash-pager-left">
+        {% if page_obj.has_previous %}
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page=1"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></a>
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></a>
+        {% else %}
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></span>
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></span>
+        {% endif %}
+      </div>
 
-    <div class="dash-pager-mid">
-      Page <strong>{{ page_obj.number }}</strong> of <strong>{{ page_obj.paginator.num_pages }}</strong>
-      <span class="dash-muted">({{ page_obj.paginator.count }} sections)</span>
-    </div>
+      <div class="dash-pager-mid">
+        Page <strong>{{ page_obj.number }}</strong> of <strong>{{ page_obj.paginator.num_pages }}</strong>
+        <span class="dash-muted">({{ page_obj.paginator.count }} sections)</span>
+      </div>
 
-    <div class="dash-pager-right">
-      {% if page_obj.has_next %}
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></a>
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></a>
-      {% else %}
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></span>
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></span>
-      {% endif %}
+      <div class="dash-pager-right">
+        {% if page_obj.has_next %}
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></a>
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></a>
+        {% else %}
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></span>
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></span>
+        {% endif %}
+      </div>
     </div>
-  </div>
-{% endif %}
-
+  {% endif %}
 </div>

@@ -36,7 +36,9 @@
 
     const url = new URL(partial, window.location.origin);
     Object.entries(params).forEach(([k, v]) => {
-      if (v !== undefined && v !== null && String(v).length) url.searchParams.set(k, v);
+      if (v !== undefined && v !== null && String(v).length) {
+        url.searchParams.set(k, v);
+      }
     });
 
     setActive(route);
@@ -58,7 +60,9 @@
       const newUrl = new URL(prettyUrlFor(route), window.location.origin);
 
       Object.entries(params).forEach(([k, v]) => {
-        if (v !== undefined && v !== null && String(v).length) newUrl.searchParams.set(k, v);
+        if (v !== undefined && v !== null && String(v).length) {
+          newUrl.searchParams.set(k, v);
+        }
       });
 
       history.pushState({ route, params }, "", newUrl.toString());
@@ -93,6 +97,48 @@
     await loadRoute(route, {}, false);
   }
 
+  async function submitDeleteForm(route, form) {
+    const btn = form.querySelector("[data-confirm]");
+    const message = btn?.getAttribute("data-confirm") || "Are you sure?";
+    if (!window.confirm(message)) return;
+
+    const fd = new FormData(form);
+    const csrf = getCsrfToken();
+
+    const res = await fetch(form.action, {
+      method: "POST",
+      body: fd,
+      headers: {
+        "X-Requested-With": "XMLHttpRequest",
+        ...(csrf ? { "X-CSRFToken": csrf } : {}),
+      },
+      credentials: "same-origin",
+    });
+
+    if (!res.ok) {
+      let txt = "";
+      try {
+        txt = await res.text();
+      } catch (_) {
+        txt = "";
+      }
+      alert(txt || `Delete failed (${res.status}).`);
+      return;
+    }
+
+    const currentParams = Object.fromEntries(new URL(window.location.href).searchParams.entries());
+    await loadRoute(route, currentParams, false);
+  }
+
+  function bindDeleteForms(route) {
+    document.querySelectorAll(".dash-delete-form").forEach((form) => {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        submitDeleteForm(route, form);
+      });
+    });
+  }
+
   function wireDynamicForms(route) {
     // Stats range form
     if (route === "stats") {
@@ -107,7 +153,7 @@
     }
 
     // =========================
-    // Sections (search + pagination)
+    // Sections (search + pagination + delete)
     // =========================
     if (route === "sections") {
       const form = document.getElementById("sectionsSearchForm");
@@ -115,12 +161,10 @@
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           const fd = new FormData(form);
-          // reset to page 1 when searching
           loadRoute("sections", { q: fd.get("q"), page: 1 });
         });
       }
 
-      // Pagination links (AJAX)
       document.querySelectorAll(".dash-pager a").forEach((a) => {
         a.addEventListener("click", (e) => {
           e.preventDefault();
@@ -130,10 +174,12 @@
           loadRoute("sections", { q: qVal, page });
         });
       });
+
+      bindDeleteForms("sections");
     }
 
     // =========================
-    // Files (search + pagination)
+    // Files (search + pagination + delete)
     // =========================
     if (route === "files") {
       const form = document.getElementById("filesSearchForm");
@@ -141,12 +187,10 @@
         form.addEventListener("submit", (e) => {
           e.preventDefault();
           const fd = new FormData(form);
-          // reset to page 1 when searching
           loadRoute("files", { q: fd.get("q"), page: 1 });
         });
       }
 
-      // Pagination links (AJAX)
       document.querySelectorAll(".dash-pager a").forEach((a) => {
         a.addEventListener("click", (e) => {
           e.preventDefault();
@@ -156,6 +200,8 @@
           loadRoute("files", { q: qVal, page });
         });
       });
+
+      bindDeleteForms("files");
     }
 
     // =========================
@@ -165,7 +211,6 @@
       const currentUrl = new URL(window.location.href);
 
       function currentTabFromDomOrUrl() {
-        // Prefer DOM state if present (server sets is-active)
         const btn = document.querySelector(".dash-tabs .dash-tab.is-active");
         if (btn && btn.id === "tab-active-btn") return "active";
         if (btn && btn.id === "tab-retention-btn") return "retention";
@@ -182,7 +227,6 @@
         };
       }
 
-      // Search (resets ALL pages to 1, keeps tab)
       const form = document.getElementById("notesSearchForm");
       if (form) {
         form.addEventListener("submit", (e) => {
@@ -199,7 +243,6 @@
         });
       }
 
-      // Tabs (Active / Retention / Flagged) -> reload partial with tab param
       const tabActiveBtn = document.getElementById("tab-active-btn");
       const tabRetentionBtn = document.getElementById("tab-retention-btn");
       const tabFlaggedBtn = document.getElementById("tab-flagged-btn");
@@ -223,14 +266,12 @@
         });
       };
 
-      // Server already set correct tab; keep it
       const initialTab = currentTabFromDomOrUrl();
       if (tabs.length) setTab(initialTab);
 
-      // Clicking a tab loads from server (so tab param is persisted)
       tabs.forEach((t) =>
         t.btn.addEventListener("click", () => {
-          const q = (new URL(window.location.href)).searchParams.get("q") || "";
+          const q = new URL(window.location.href).searchParams.get("q") || "";
           const pages = currentPagesFromUrl();
 
           loadRoute("secret_notes", {
@@ -241,7 +282,6 @@
         })
       );
 
-      // Pagination links inside secret notes (AJAX)
       document.querySelectorAll(".dash-pager a").forEach((a) => {
         a.addEventListener("click", (e) => {
           e.preventDefault();
@@ -251,7 +291,6 @@
         });
       });
 
-      // Modal (shared)
       const modal = document.getElementById("retentionModal");
       const modalId = document.getElementById("retentionModalId");
       const modalText = document.getElementById("retentionModalText");
@@ -271,21 +310,18 @@
         modal.setAttribute("aria-hidden", "true");
       }
 
-      // Bind view buttons (your class)
       document.querySelectorAll(".js-view-note").forEach((btn) => {
         btn.addEventListener("click", () => {
           const noteId = btn.getAttribute("data-note-id") || "";
           const plaintext = btn.getAttribute("data-plaintext") || "";
           openModal(noteId, plaintext);
 
-          // Keep correct tab highlighted if button is inside retention/flagged panes
           const pane = btn.closest(".dash-tabpane");
           if (pane?.id === "tab-retention") setTab("retention");
           if (pane?.id === "tab-flagged") setTab("flagged");
         });
       });
 
-      // Close handlers
       if (modal) {
         modal.querySelectorAll("[data-close='1']").forEach((el) => {
           el.addEventListener("click", closeModal);
@@ -295,12 +331,13 @@
           document.__dashModalEscBound = true;
           document.addEventListener("keydown", (e) => {
             const m = document.getElementById("retentionModal");
-            if (e.key === "Escape" && m && m.classList.contains("is-open")) closeModal();
+            if (e.key === "Escape" && m && m.classList.contains("is-open")) {
+              closeModal();
+            }
           });
         }
       }
 
-      // Copy plaintext
       if (copyBtn && modalText) {
         copyBtn.addEventListener("click", async () => {
           try {
@@ -338,15 +375,14 @@
     }
   }
 
-  // Sidebar collapse
   if (shell && window.matchMedia("(max-width: 768px)").matches) {
     shell.classList.add("is-collapsed");
   }
+
   if (toggle && shell) {
     toggle.addEventListener("click", () => shell.classList.toggle("is-collapsed"));
   }
 
-  // Intercept SPA nav clicks (only data-route links)
   navLinks.forEach((a) => {
     a.addEventListener("click", (e) => {
       e.preventDefault();
@@ -354,13 +390,11 @@
     });
   });
 
-  // Back/forward buttons
   window.addEventListener("popstate", (e) => {
     const st = e.state;
     if (st && st.route) loadRoute(st.route, st.params || {}, false);
   });
 
-  // Initial route based on URL path
   const path = window.location.pathname;
 
   const initial =
@@ -370,18 +404,15 @@
     path.includes("/dashboard/2fa/") ? "twofa" :
     (shell?.dataset.initialRoute || "stats");
 
-  // Preserve query params
   const params = Object.fromEntries(new URL(window.location.href).searchParams.entries());
   loadRoute(initial, params, false);
 })();
-
 
 /* =========================================================
    Image Preview Modal (Files page)
    Put this at the END of dashboard.js
    ========================================================= */
 (function () {
-  // Prevent double-binding if dashboard.js is loaded twice
   if (window.__dashImgPreviewBound) return;
   window.__dashImgPreviewBound = true;
 
@@ -389,7 +420,6 @@
     let modal = document.getElementById("imgPreviewModal");
     if (modal) return modal;
 
-    // Create modal markup once and append to body
     modal = document.createElement("div");
     modal.id = "imgPreviewModal";
     modal.className = "dash-img-modal";
@@ -447,7 +477,6 @@
     }
   }
 
-  // Open modal when clicking image preview links in Files table
   document.addEventListener("click", function (e) {
     const a = e.target.closest(".js-img-preview");
     if (!a) return;
@@ -456,7 +485,6 @@
     openImgModal(a.href, a.dataset.filename || "");
   });
 
-  // Close: overlay click or close button click
   document.addEventListener("click", function (e) {
     const modal = document.getElementById("imgPreviewModal");
     if (!modal || !modal.classList.contains("is-open")) return;
@@ -465,13 +493,13 @@
       closeImgModal();
       return;
     }
+
     if (e.target && e.target.dataset && e.target.dataset.close === "1") {
       closeImgModal();
       return;
     }
   });
 
-  // Close on ESC
   document.addEventListener("keydown", function (e) {
     const modal = document.getElementById("imgPreviewModal");
     if (e.key === "Escape" && modal && modal.classList.contains("is-open")) {
@@ -479,7 +507,6 @@
     }
   });
 })();
-
 
 
 //(function () {
@@ -552,7 +579,6 @@
 //  }
 //
 //  function getCsrfToken() {
-//    // Django CSRF token (works if your base template includes {% csrf_token %} in forms)
 //    const el = document.querySelector('[name=csrfmiddlewaretoken]');
 //    return el ? el.value : "";
 //  }
@@ -569,15 +595,12 @@
 //    });
 //
 //    if (!res.ok) {
-//      // Try to show server errors if returned as html
 //      const txt = await res.text();
 //      content.innerHTML = txt || `<div class="dash-error">Action failed (${res.status}).</div>`;
-//      // Re-wire because content changed
 //      wireDynamicForms(route);
 //      return;
 //    }
 //
-//    // Reload the same route to refresh status
 //    await loadRoute(route, {}, false);
 //  }
 //
@@ -594,43 +617,100 @@
 //      }
 //    }
 //
-//    // Sections search
+//    // =========================
+//    // Sections (search + pagination)
+//    // =========================
 //    if (route === "sections") {
 //      const form = document.getElementById("sectionsSearchForm");
 //      if (form) {
 //        form.addEventListener("submit", (e) => {
 //          e.preventDefault();
 //          const fd = new FormData(form);
-//          loadRoute("sections", { q: fd.get("q") });
+//          // reset to page 1 when searching
+//          loadRoute("sections", { q: fd.get("q"), page: 1 });
 //        });
 //      }
+//
+//      // Pagination links (AJAX)
+//      document.querySelectorAll(".dash-pager a").forEach((a) => {
+//        a.addEventListener("click", (e) => {
+//          e.preventDefault();
+//          const url = new URL(a.href);
+//          const page = url.searchParams.get("page") || 1;
+//          const qVal = url.searchParams.get("q") || "";
+//          loadRoute("sections", { q: qVal, page });
+//        });
+//      });
 //    }
 //
-//    // Files search
+//    // =========================
+//    // Files (search + pagination)
+//    // =========================
 //    if (route === "files") {
 //      const form = document.getElementById("filesSearchForm");
 //      if (form) {
 //        form.addEventListener("submit", (e) => {
 //          e.preventDefault();
 //          const fd = new FormData(form);
-//          loadRoute("files", { q: fd.get("q") });
+//          // reset to page 1 when searching
+//          loadRoute("files", { q: fd.get("q"), page: 1 });
 //        });
 //      }
+//
+//      // Pagination links (AJAX)
+//      document.querySelectorAll(".dash-pager a").forEach((a) => {
+//        a.addEventListener("click", (e) => {
+//          e.preventDefault();
+//          const url = new URL(a.href);
+//          const page = url.searchParams.get("page") || 1;
+//          const qVal = url.searchParams.get("q") || "";
+//          loadRoute("files", { q: qVal, page });
+//        });
+//      });
 //    }
 //
-//    // Secret notes: search + tabs + modal
+//    // =========================
+//    // Secret Notes (search + tabs + pagination + modal)
+//    // =========================
 //    if (route === "secret_notes") {
-//      // Search
+//      const currentUrl = new URL(window.location.href);
+//
+//      function currentTabFromDomOrUrl() {
+//        // Prefer DOM state if present (server sets is-active)
+//        const btn = document.querySelector(".dash-tabs .dash-tab.is-active");
+//        if (btn && btn.id === "tab-active-btn") return "active";
+//        if (btn && btn.id === "tab-retention-btn") return "retention";
+//        if (btn && btn.id === "tab-flagged-btn") return "flagged";
+//        return currentUrl.searchParams.get("tab") || "active";
+//      }
+//
+//      function currentPagesFromUrl() {
+//        const u = new URL(window.location.href);
+//        return {
+//          page_active: u.searchParams.get("page_active") || 1,
+//          page_retention: u.searchParams.get("page_retention") || 1,
+//          page_flagged: u.searchParams.get("page_flagged") || 1,
+//        };
+//      }
+//
+//      // Search (resets ALL pages to 1, keeps tab)
 //      const form = document.getElementById("notesSearchForm");
 //      if (form) {
 //        form.addEventListener("submit", (e) => {
 //          e.preventDefault();
 //          const fd = new FormData(form);
-//          loadRoute("secret_notes", { q: fd.get("q") });
+//          const tab = currentTabFromDomOrUrl();
+//          loadRoute("secret_notes", {
+//            q: fd.get("q"),
+//            tab,
+//            page_active: 1,
+//            page_retention: 1,
+//            page_flagged: 1,
+//          });
 //        });
 //      }
 //
-//      // Tabs (Active / Retention / Flagged)
+//      // Tabs (Active / Retention / Flagged) -> reload partial with tab param
 //      const tabActiveBtn = document.getElementById("tab-active-btn");
 //      const tabRetentionBtn = document.getElementById("tab-retention-btn");
 //      const tabFlaggedBtn = document.getElementById("tab-flagged-btn");
@@ -654,8 +734,33 @@
 //        });
 //      };
 //
-//      tabs.forEach((t) => t.btn.addEventListener("click", () => setTab(t.key)));
-//      if (tabs.length) setTab(tabs[0].key);
+//      // Server already set correct tab; keep it
+//      const initialTab = currentTabFromDomOrUrl();
+//      if (tabs.length) setTab(initialTab);
+//
+//      // Clicking a tab loads from server (so tab param is persisted)
+//      tabs.forEach((t) =>
+//        t.btn.addEventListener("click", () => {
+//          const q = (new URL(window.location.href)).searchParams.get("q") || "";
+//          const pages = currentPagesFromUrl();
+//
+//          loadRoute("secret_notes", {
+//            q,
+//            tab: t.key,
+//            ...pages,
+//          });
+//        })
+//      );
+//
+//      // Pagination links inside secret notes (AJAX)
+//      document.querySelectorAll(".dash-pager a").forEach((a) => {
+//        a.addEventListener("click", (e) => {
+//          e.preventDefault();
+//          const url = new URL(a.href);
+//          const params = Object.fromEntries(url.searchParams.entries());
+//          loadRoute("secret_notes", params);
+//        });
+//      });
 //
 //      // Modal (shared)
 //      const modal = document.getElementById("retentionModal");
@@ -684,6 +789,7 @@
 //          const plaintext = btn.getAttribute("data-plaintext") || "";
 //          openModal(noteId, plaintext);
 //
+//          // Keep correct tab highlighted if button is inside retention/flagged panes
 //          const pane = btn.closest(".dash-tabpane");
 //          if (pane?.id === "tab-retention") setTab("retention");
 //          if (pane?.id === "tab-flagged") setTab("flagged");
@@ -723,12 +829,8 @@
 //      }
 //    }
 //
-//    // ✅ 2FA settings partial: enable/disable without leaving shell
+//    // ✅ 2FA settings partial
 //    if (route === "twofa") {
-//      // If your 2FA partial includes forms, wire them here.
-//      // Expected:
-//      // - form#twofaEnableForm action="/dashboard/2fa/enable/" (or whatever you use)
-//      // - form#twofaDisableForm action="/dashboard/2fa/disable/"
 //      const enableForm = document.getElementById("twofaEnableForm");
 //      if (enableForm) {
 //        enableForm.addEventListener("submit", (e) => {
@@ -839,7 +941,6 @@
 //    modal.classList.add("is-open");
 //    modal.setAttribute("aria-hidden", "false");
 //
-//    // Focus close for accessibility
 //    if (closeBtn) closeBtn.focus();
 //  }
 //
@@ -851,14 +952,13 @@
 //    modal.classList.remove("is-open");
 //    modal.setAttribute("aria-hidden", "true");
 //
-//    // Stop loading / free memory
 //    if (img) {
 //      img.src = "";
 //      img.alt = "";
 //    }
 //  }
 //
-//  // ✅ Open modal when clicking image preview links in Files table
+//  // Open modal when clicking image preview links in Files table
 //  document.addEventListener("click", function (e) {
 //    const a = e.target.closest(".js-img-preview");
 //    if (!a) return;
@@ -867,7 +967,7 @@
 //    openImgModal(a.href, a.dataset.filename || "");
 //  });
 //
-//  // ✅ Close: overlay click or close button click
+//  // Close: overlay click or close button click
 //  document.addEventListener("click", function (e) {
 //    const modal = document.getElementById("imgPreviewModal");
 //    if (!modal || !modal.classList.contains("is-open")) return;
@@ -882,7 +982,7 @@
 //    }
 //  });
 //
-//  // ✅ Close on ESC
+//  // Close on ESC
 //  document.addEventListener("keydown", function (e) {
 //    const modal = document.getElementById("imgPreviewModal");
 //    if (e.key === "Escape" && modal && modal.classList.contains("is-open")) {
@@ -890,5 +990,4 @@
 //    }
 //  });
 //})();
-//
 //

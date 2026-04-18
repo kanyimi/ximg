@@ -7,6 +7,7 @@
       <button class="dash-btn" type="submit">{% translate "Search" %}</button>
     </form>
   </div>
+
   <div class="dash-table-wrap">
     <table class="dash-table">
       <thead>
@@ -15,6 +16,7 @@
           <th>{% translate "Section" %}</th>
           <th>{% translate "Uploaded" %}</th>
           <th>{% translate "Download" %}</th>
+          <th>{% translate "Delete" %}</th>
         </tr>
       </thead>
       <tbody>
@@ -23,64 +25,78 @@
             <td title="{{ f.original_name }}">{{ f.original_name }}</td>
             <td><code>{{ f.section.slug }}</code></td>
             <td>{{ f.uploaded_at|date:"d.m.Y" }}</td>
+
             <td>
               {% with name=f.original_name|lower %}
                 {% if name|slice:"-4:" == ".png" or name|slice:"-4:" == ".jpg" or name|slice:"-5:" == ".jpeg" or name|slice:"-4:" == ".gif" or name|slice:"-5:" == ".webp" %}
-              <a class="dash-link-small js-img-preview"
-                 href="{% url 'dashboard:preview_file' slug=f.section.slug file_id=f.id %}"
-                 data-filename="{{ f.original_name|escape }}">
-                <i class="fa fa-eye" style="font-size:24px"></i>
-              </a>
+                  <a class="dash-link-small js-img-preview"
+                     href="{% url 'dashboard:preview_file' slug=f.section.slug file_id=f.id %}"
+                     data-filename="{{ f.original_name|escape }}">
+                    <i class="fa fa-eye" style="font-size:24px"></i>
+                  </a>
                 {% else %}
                   <a class="dash-link-small"
                      href="{% url 'photohostapp:download_file' slug=f.section.slug file_id=f.id %}"
-                     target="_blank" style="color:#227851;">
+                     target="_blank"
+                     style="color:#227851;">
                     <i class="fa fa-download" style="font-size:24px"></i>
                   </a>
                 {% endif %}
               {% endwith %}
             </td>
 
-
+            <td>
+              <form method="post"
+                    action="{% url 'dashboard:delete_file' file_id=f.id %}"
+                    class="dash-delete-form"
+                    style="display:inline;">
+                {% csrf_token %}
+                <button type="submit"
+                        class="dash-link-small dash-delete-btn"
+                        title="{% translate 'Delete file' %}"
+                        data-confirm="{% blocktranslate with name=f.original_name %}Delete file {{ name }}?{% endblocktranslate %}"
+                        style="background:none;border:none;padding:0;cursor:pointer;color:#c62828;">
+                  <i class="fa fa-trash" style="font-size:24px"></i>
+                </button>
+              </form>
+            </td>
           </tr>
         {% empty %}
-          <tr><td colspan="4" class="dash-muted">{% translate "No files found." %}</td></tr>
+          <tr><td colspan="5" class="dash-muted">{% translate "No files found." %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
+
   {% if page_obj.paginator.num_pages > 1 %}
-  <div class="dash-pager">
-    <div class="dash-pager-left">
-      {% if page_obj.has_previous %}
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page=1"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></a>
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></a>
-      {% else %}
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></span>
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></span>
-      {% endif %}
-    </div>
+    <div class="dash-pager">
+      <div class="dash-pager-left">
+        {% if page_obj.has_previous %}
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page=1"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></a>
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></a>
+        {% else %}
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-left" style="font-size:24px;color:#227851;"></i></span>
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-left" style="font-size:24px;color:#227851;"></i></span>
+        {% endif %}
+      </div>
 
-    <div class="dash-pager-mid">
-      Page <strong>{{ page_obj.number }}</strong> of <strong>{{ page_obj.paginator.num_pages }}</strong>
-      <span class="dash-muted">({{ page_obj.paginator.count }} files)</span>
-    </div>
+      <div class="dash-pager-mid">
+        Page <strong>{{ page_obj.number }}</strong> of <strong>{{ page_obj.paginator.num_pages }}</strong>
+        <span class="dash-muted">({{ page_obj.paginator.count }} files)</span>
+      </div>
 
-    <div class="dash-pager-right">
-      {% if page_obj.has_next %}
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></a>
-        <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></a>
-      {% else %}
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></span>
-        <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></span>
-      {% endif %}
+      <div class="dash-pager-right">
+        {% if page_obj.has_next %}
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></a>
+          <a class="dash-pager-btn" href="?q={{ q|urlencode }}&page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></a>
+        {% else %}
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-right" style="font-size:24px;color:#227851;"></i></span>
+          <span class="dash-pager-btn is-disabled"><i class="fa fa-angle-double-right" style="font-size:24px;color:#227851;"></i></span>
+        {% endif %}
+      </div>
     </div>
-  </div>
-{% endif %}
-
+  {% endif %}
 </div>
-
-
 
 <!-- Image Preview Modal -->
 <div id="imgPreviewModal" class="dash-img-modal" aria-hidden="true">
@@ -100,6 +116,3 @@
     </div>
   </div>
 </div>
-
-
-

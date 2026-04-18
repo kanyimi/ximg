@@ -809,3 +809,12 @@
   opacity: .5;
   pointer-events: none;
 }
+
+.dash-delete-btn {
+  color: #c62828 !important;
+}
+
+.dash-delete-btn:hover {
+  color: #b71c1c !important;
+  transform: scale(1.05);
+}

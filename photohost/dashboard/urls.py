@@ -27,5 +27,8 @@ urlpatterns = [
     path("<slug:slug>/file/<int:file_id>/preview/", views.preview_file, name="preview_file"),
     path("partials/secret-notes/", views.secret_notes_partial, name="secret_notes_partial"),  # ✅ add
 
+    path("file/<int:file_id>/delete/", views.dashboard_delete_file, name="delete_file"),
+    path("section/<int:section_id>/delete/", views.dashboard_delete_section, name="delete_section"),
+
     path("logout/", views.logout_view, name="logout"),
 ]

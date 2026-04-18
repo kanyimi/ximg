@@ -26,7 +26,8 @@ from django.http import Http404, FileResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET
 from django.core.paginator import Paginator
-
+from django.views.decorators.http import require_POST
+from django.db import transaction
 def _parse_range(request):
     """
     Accepts:
@@ -623,3 +624,37 @@ def api_secret_notes(request):
         })
 
     return JsonResponse({"notes": notes, "retention": retention})
+
+@require_POST
+@dashboard_2fa_required
+def dashboard_delete_file(request, file_id):
+    sf = get_object_or_404(StoredFile.objects.select_related("section"), id=file_id)
+
+    with transaction.atomic():
+        if sf.file:
+            sf.file.delete(save=False)
+        sf.delete()
+
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        return JsonResponse({"status": "success", "message": "File deleted."})
+
+    messages.success(request, "File deleted.")
+    return redirect("dashboard:files")
+
+@require_POST
+@dashboard_2fa_required
+def dashboard_delete_section(request, section_id):
+    section = get_object_or_404(Section, id=section_id)
+
+    with transaction.atomic():
+        for sf in section.files.all():
+            if sf.file:
+                sf.file.delete(save=False)
+
+        section.delete()
+
+    if request.headers.get("X-Requested-With") == "XMLHttpRequest":
+        return JsonResponse({"status": "success", "message": "Section deleted."})
+
+    messages.success(request, "Section deleted.")
+    return redirect("dashboard:sections")
