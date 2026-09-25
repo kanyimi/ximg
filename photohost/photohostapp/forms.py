@@ -13,6 +13,8 @@ class SectionCreateForm(forms.ModelForm):
         (14, _("2 weeks")),
         (30, _("1 month")),
         (60, _("2 months")),
+        (90, _("3 months")),
+        (180, _("6 months")),
     )
 
     lifetime_days = forms.TypedChoiceField(

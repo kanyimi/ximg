@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-06 09:59+0300\n"
+"POT-Creation-Date: 2026-09-24 22:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,15 @@ msgstr "1 месяц"
 msgid "2 months"
 msgstr "2 месяца"
 
-#: .\photohostapp\forms.py:23 .\templates\photohostapp\upload.html:115
+#: .\photohostapp\forms.py:16
+msgid "3 months"
+msgstr "3 месяца"
+
+#: .\photohostapp\forms.py:17
+msgid "6 months"
+msgstr "6 месяцев"
+
+#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:115
 msgid "Deletion time"
 msgstr "Время удаления"
 
@@ -71,7 +79,9 @@ msgstr "XIMG - Private file sharing and photo hosting"
 msgid ""
 "Anonymous free file sharing and photo hosting. Upload and share files "
 "privately. File storage for up to 60 days! EXIF metadata removal function."
-msgstr "Anonymous free file sharing and photo hosting. Upload and share files privately. File storage for up to 60 days! EXIF metadata removal function."
+msgstr ""
+"Anonymous free file sharing and photo hosting. Upload and share files "
+"privately. File storage for up to 60 days! EXIF metadata removal function."
 
 #: .\templates\base.html:19
 msgid "website"
@@ -158,27 +168,43 @@ msgstr "Защищённая зона • Только для сотрудник
 msgid "Search"
 msgstr "Поиск"
 
-#: .\templates\dashboard\partials\files.html:14
+#: .\templates\dashboard\partials\files.html:15
 msgid "Original name"
 msgstr "Сохранить старые имена файлов"
 
-#: .\templates\dashboard\partials\files.html:15
+#: .\templates\dashboard\partials\files.html:16
 #: .\templates\photohostapp\section_detail.html:7
 #: .\templates\photohostapp\section_detail.html:45
 msgid "Section"
 msgstr "Раздел"
 
-#: .\templates\dashboard\partials\files.html:16
+#: .\templates\dashboard\partials\files.html:17
 msgid "Uploaded"
 msgstr "Загружено"
 
-#: .\templates\dashboard\partials\files.html:17
+#: .\templates\dashboard\partials\files.html:18
 #: .\templates\photohostapp\section_detail.html:86
 #: .\templates\photohostapp\section_detail.html:121
 msgid "Download"
 msgstr "Скачать"
 
-#: .\templates\dashboard\partials\files.html:47
+#: .\templates\dashboard\partials\files.html:19
+#: .\templates\dashboard\partials\sections.html:18
+
+msgid "Delete"
+msgstr "удалена"
+
+#: .\templates\dashboard\partials\files.html:56
+
+msgid "Delete file"
+msgstr "Удалить файл"
+
+#: .\templates\dashboard\partials\files.html:57
+#, python-format
+msgid "Delete file %(name)s?"
+msgstr ""
+
+#: .\templates\dashboard\partials\files.html:65
 msgid "No files found."
 msgstr "Файлы не найдены."
 
@@ -201,13 +227,13 @@ msgstr "ID"
 #: .\templates\dashboard\partials\secret_notes.html:58
 #: .\templates\dashboard\partials\secret_notes.html:146
 #: .\templates\dashboard\partials\secret_notes.html:230
-#: .\templates\dashboard\partials\sections.html:14
+#: .\templates\dashboard\partials\sections.html:15
 msgid "Created"
 msgstr "Создать заметку"
 
 #: .\templates\dashboard\partials\secret_notes.html:59
 #: .\templates\dashboard\partials\secret_notes.html:147
-#: .\templates\dashboard\partials\sections.html:15
+#: .\templates\dashboard\partials\sections.html:16
 #: .\templates\photohostapp\section_detail.html:43
 #: .\templates\photohostapp\section_detail.html:65
 #: .\templates\secret_notes\created.html:81
@@ -219,7 +245,7 @@ msgid "Delete after read"
 msgstr "Удалить после прочтения"
 
 #: .\templates\dashboard\partials\secret_notes.html:62
-#: .\templates\dashboard\partials\sections.html:16
+#: .\templates\dashboard\partials\sections.html:17
 msgid "Open"
 msgstr "Открыть заметку"
 
@@ -263,7 +289,7 @@ msgstr "Предпросмотр"
 #: .\templates\dashboard\partials\secret_notes.html:171
 #: .\templates\dashboard\partials\secret_notes.html:233
 #: .\templates\dashboard\partials\secret_notes.html:251
-#: .\templates\dashboard\partials\sections.html:27
+#: .\templates\dashboard\partials\sections.html:32
 msgid "View"
 msgstr "Тестовый просмотр"
 
@@ -300,11 +326,20 @@ msgstr "Копировать"
 msgid "Close"
 msgstr "Закрыть"
 
-#: .\templates\dashboard\partials\sections.html:13
+#: .\templates\dashboard\partials\sections.html:14
 msgid "Slug"
 msgstr "Slug"
 
-#: .\templates\dashboard\partials\sections.html:32
+#: .\templates\dashboard\partials\sections.html:43
+msgid "Delete section"
+msgstr ""
+
+#: .\templates\dashboard\partials\sections.html:44
+#, python-format
+msgid "Delete section %(slug)s and all files in it?"
+msgstr ""
+
+#: .\templates\dashboard\partials\sections.html:52
 msgid "No sections found."
 msgstr "Разделы не найдены."
 
@@ -320,53 +355,102 @@ msgstr "Конец"
 msgid "Apply"
 msgstr "Применить"
 
-#: .\templates\dashboard\partials\stats.html:19
-msgid "Files uploaded"
-msgstr "файлов загружено"
+#: .\templates\dashboard\partials\stats.html:28
+#: .\templates\dashboard\shell.html:40
+msgid "Files"
+msgstr "Файлы"
 
-#: .\templates\dashboard\partials\stats.html:24
-msgid "Sections created"
-msgstr "Раздел истёк"
+#: .\templates\dashboard\partials\stats.html:31
+msgid "Uploaded files statistics"
+msgstr "Статистика загруженных файлов"
 
-#: .\templates\dashboard\partials\stats.html:29
-msgid "Notes created"
-msgstr "Заметка удалена"
+#: .\templates\dashboard\partials\stats.html:45
 
-#: .\templates\dashboard\partials\stats.html:34
+
+msgid "Total uploaded"
+msgstr "Всего загружено"
+
+#: .\templates\dashboard\partials\stats.html:61
+#: .\templates\dashboard\partials\stats.html:133
+#: .\templates\dashboard\partials\stats.html:205
+#: .\templates\dashboard\partials\stats.html:311
+msgid "Available"
+msgstr "Доступно"
+
+#: .\templates\dashboard\partials\stats.html:77
+#: .\templates\dashboard\partials\stats.html:149
+#: .\templates\dashboard\partials\stats.html:221
+
+msgid "Deleted"
+msgstr "удалена"
+
+#: .\templates\dashboard\partials\stats.html:99
+#: .\templates\dashboard\shell.html:32
+#: .\templates\photohostapp\multi_upload_result.html:8
+msgid "Sections"
+msgstr "Разделы"
+
+#: .\templates\dashboard\partials\stats.html:103
+
+msgid "Section statistics"
+msgstr "статистика по разделам"
+
+#: .\templates\dashboard\partials\stats.html:117
+#: .\templates\dashboard\partials\stats.html:189
+
+msgid "Total created"
+msgstr "Всего создано"
+
+#: .\templates\dashboard\partials\stats.html:171
+
+msgid "Notes"
+msgstr "секретные записки"
+
+#: .\templates\dashboard\partials\stats.html:175
+
+msgid "Secret note statistics"
+msgstr "Статистика секретных заметок"
+
+#: .\templates\dashboard\partials\stats.html:244
 msgid "Visitors"
 msgstr "Посетители"
 
-#: .\templates\dashboard\partials\stats.html:41
+#: .\templates\dashboard\partials\stats.html:248
+msgid "Unique visitors during selected period"
+msgstr "Уникальные посетители за выбранный период"
+
+#: .\templates\dashboard\partials\stats.html:261
+
+msgid "Unique visitors"
+msgstr "Уникальные посетители"
+
+#: .\templates\dashboard\partials\stats.html:276
 msgid "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval."
 msgstr ""
 "Период может быть 1 день, 2 дня, 1 неделя, 1 месяц или любой календарный "
 "интервал."
 
-#: .\templates\dashboard\partials\stats.html:47
+#: .\templates\dashboard\partials\stats.html:282
 msgid "Server"
 msgstr "Сервер"
 
-#: .\templates\dashboard\partials\stats.html:53
+#: .\templates\dashboard\partials\stats.html:288
 msgid "Total storage"
 msgstr "Общий объём хранилища"
 
-#: .\templates\dashboard\partials\stats.html:58
+#: .\templates\dashboard\partials\stats.html:293
 msgid "Free storage"
 msgstr "Свободное место"
 
-#: .\templates\dashboard\partials\stats.html:63
+#: .\templates\dashboard\partials\stats.html:298
 msgid "Used storage"
 msgstr "Использовано"
 
-#: .\templates\dashboard\partials\stats.html:76
-msgid "Available"
-msgstr "Доступно"
-
-#: .\templates\dashboard\partials\stats.html:90
+#: .\templates\dashboard\partials\stats.html:325
 msgid "Uptime"
 msgstr "Время работы"
 
-#: .\templates\dashboard\partials\stats.html:97
+#: .\templates\dashboard\partials\stats.html:332
 msgid "Load avg "
 msgstr "Средняя нагрузка "
 
@@ -418,15 +502,6 @@ msgstr "Панель управления"
 #: .\templates\dashboard\shell.html:24
 msgid "Statistics"
 msgstr "Статус"
-
-#: .\templates\dashboard\shell.html:32
-#: .\templates\photohostapp\multi_upload_result.html:8
-msgid "Sections"
-msgstr "Разделы"
-
-#: .\templates\dashboard\shell.html:40
-msgid "Files"
-msgstr "Файлы"
 
 #: .\templates\dashboard\shell.html:48
 msgid "Secret Notes"
@@ -528,8 +603,8 @@ msgid "after uploading to the hosting"
 msgstr "после загрузки на хостинг"
 
 #: .\templates\photohostapp\upload.html:120
-msgid "Data stored from 1 to 60 days"
-msgstr "Данные хранятся от 1 до 60 дней"
+msgid "Data stored from 1 to 180 days"
+msgstr "Данные хранятся от 1 до 180 дней"
 
 #: .\templates\photohostapp\upload.html:128
 msgid "Upload"
@@ -850,6 +925,24 @@ msgstr "Содержимое заметки"
 #: .\templates\secret_notes\view.html:29
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
+
+#~ msgid "Files available"
+#~ msgstr "Доступные файлы"
+
+#~ msgid "Files deleted"
+#~ msgstr "Удаленные файлы"
+
+#~ msgid "Total sections created"
+#~ msgstr "Общее количество созданных разделов"
+
+#~ msgid "Sections available"
+#~ msgstr "Доступные разделы"
+
+#~ msgid "Sections deleted"
+#~ msgstr "Удаленные разделы"
+
+#~ msgid "Files uploaded"
+#~ msgstr "файлов загружено"
 
 #~ msgid "File exchange service with a secure feature to remove metadata."
 #~ msgstr "Файл обменник с безопасной функцией удаления мета-данных."

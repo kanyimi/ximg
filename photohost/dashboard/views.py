@@ -7,7 +7,7 @@ from django.http import HttpResponseBadRequest
 from django.db.models import Q
 from photohostapp.models import Section, StoredFile
 from secret_notes.models import SecretNote
-from .models import SiteVisit,  ReadOnceNoteRetention, FlaggedSecretNote, DashboardProfile
+from .models import SiteVisit,  ReadOnceNoteRetention, FlaggedSecretNote, DashboardProfile, DashboardContentStat
 from django.http import JsonResponse
 from .auth_utils import dashboard_2fa_required, staff_required
 # Import here to avoid circular import problems
@@ -311,6 +311,32 @@ def files_page(request):
     return render(request, "dashboard/shell.html", {"initial_route": "files"})
 
 
+# @dashboard_2fa_required
+# def stats_partial(request):
+#     try:
+#         start, end = _parse_range(request)
+#     except ValueError as e:
+#         return HttpResponseBadRequest(str(e))
+#
+#     start_dt, end_dt = _dt_bounds(start, end)
+#
+#     files_count = StoredFile.objects.filter(uploaded_at__gte=start_dt, uploaded_at__lt=end_dt).count()
+#     sections_count = Section.objects.filter(created_at__gte=start_dt, created_at__lt=end_dt).count()
+#     notes_count = SecretNote.objects.filter(created_at__gte=start_dt, created_at__lt=end_dt).count()
+#
+#     visitors_count = SiteVisit.objects.filter(date__gte=start, date__lte=end).values("visitor_id").distinct().count()
+#
+#     server_stats = _get_server_stats()
+#
+#     return render(request, "dashboard/partials/stats.html", {
+#         "start": start,
+#         "end": end,
+#         "files_count": files_count,
+#         "sections_count": sections_count,
+#         "notes_count": notes_count,
+#         "visitors_count": visitors_count,
+#         "server_stats": server_stats,
+#     })
 @dashboard_2fa_required
 def stats_partial(request):
     try:
@@ -320,25 +346,105 @@ def stats_partial(request):
 
     start_dt, end_dt = _dt_bounds(start, end)
 
-    files_count = StoredFile.objects.filter(uploaded_at__gte=start_dt, uploaded_at__lt=end_dt).count()
-    sections_count = Section.objects.filter(created_at__gte=start_dt, created_at__lt=end_dt).count()
-    notes_count = SecretNote.objects.filter(created_at__gte=start_dt, created_at__lt=end_dt).count()
+    #
+    # FILES
+    #
+    file_stats = DashboardContentStat.objects.filter(
+        content_type=DashboardContentStat.CONTENT_FILE,
+        created_at__gte=start_dt,
+        created_at__lt=end_dt,
+    )
 
-    visitors_count = SiteVisit.objects.filter(date__gte=start, date__lte=end).values("visitor_id").distinct().count()
+    files_total = file_stats.count()
+
+    files_available = StoredFile.objects.filter(
+        uploaded_at__gte=start_dt,
+        uploaded_at__lt=end_dt,
+    ).count()
+
+    files_deleted = file_stats.filter(
+        deleted_at__isnull=False,
+    ).count()
+
+    #
+    # SECTIONS
+    #
+    section_stats = DashboardContentStat.objects.filter(
+        content_type=DashboardContentStat.CONTENT_SECTION,
+        created_at__gte=start_dt,
+        created_at__lt=end_dt,
+    )
+
+    sections_total = section_stats.count()
+
+    sections_available = Section.objects.filter(
+        created_at__gte=start_dt,
+        created_at__lt=end_dt,
+    ).count()
+
+    sections_deleted = section_stats.filter(
+        deleted_at__isnull=False,
+    ).count()
+
+    #
+    # NOTES
+    #
+    note_stats = DashboardContentStat.objects.filter(
+        content_type=DashboardContentStat.CONTENT_NOTE,
+        created_at__gte=start_dt,
+        created_at__lt=end_dt,
+    )
+
+    notes_total = note_stats.count()
+
+    notes_available = SecretNote.objects.filter(
+        created_at__gte=start_dt,
+        created_at__lt=end_dt,
+    ).count()
+
+    notes_deleted = note_stats.filter(
+        deleted_at__isnull=False,
+    ).count()
+
+    #
+    # VISITORS
+    #
+    visitors_count = (
+        SiteVisit.objects
+        .filter(
+            date__gte=start,
+            date__lte=end,
+        )
+        .values("visitor_id")
+        .distinct()
+        .count()
+    )
 
     server_stats = _get_server_stats()
 
-    return render(request, "dashboard/partials/stats.html", {
-        "start": start,
-        "end": end,
-        "files_count": files_count,
-        "sections_count": sections_count,
-        "notes_count": notes_count,
-        "visitors_count": visitors_count,
-        "server_stats": server_stats,
-    })
+    return render(
+        request,
+        "dashboard/partials/stats.html",
+        {
+            "start": start,
+            "end": end,
 
+            "files_total": files_total,
+            "files_available": files_available,
+            "files_deleted": files_deleted,
 
+            "sections_total": sections_total,
+            "sections_available": sections_available,
+            "sections_deleted": sections_deleted,
+
+            "notes_total": notes_total,
+            "notes_available": notes_available,
+            "notes_deleted": notes_deleted,
+            "visitors_count": visitors_count,
+
+            "server_stats": server_stats,
+        },
+    )
 
 @dashboard_2fa_required
 def secret_notes_page(request):

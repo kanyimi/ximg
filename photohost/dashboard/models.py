@@ -61,3 +61,42 @@ class DashboardProfile(models.Model):
     def __str__(self):
         return f"DashboardProfile({self.user.username})"
 
+
+
+class DashboardContentStat(models.Model):
+    CONTENT_FILE = "file"
+    CONTENT_SECTION = "section"
+    CONTENT_NOTE = "note"
+
+    CONTENT_TYPES = [
+        (CONTENT_FILE, "File"),
+        (CONTENT_SECTION, "Section"),
+        (CONTENT_NOTE, "Note"),
+    ]
+
+    content_type = models.CharField(
+        max_length=20,
+        choices=CONTENT_TYPES,
+        db_index=True,
+    )
+
+    object_id = models.CharField(
+        max_length=255,
+        db_index=True,
+    )
+
+    created_at = models.DateTimeField(db_index=True)
+
+    deleted_at = models.DateTimeField(
+        null=True,
+        blank=True,
+        db_index=True,
+    )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["content_type", "object_id"],
+                name="unique_dashboard_content_stat",
+            )
+        ]

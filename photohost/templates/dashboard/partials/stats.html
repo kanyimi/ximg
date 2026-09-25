@@ -14,28 +14,263 @@
     </form>
   </div>
 
-  <div class="dash-grid">
-    <div class="dash-metric">
-      <div class="dash-metric-label">{% translate "Files uploaded" %}</div>
-      <div class="dash-metric-value">{{ files_count }}</div>
+ <div class="stats-dashboard">
+
+  <!-- Files -->
+  <div class="stats-group">
+    <div class="stats-group-header">
+      <div class="stats-group-icon">
+        <i class="fa-solid fa-file"></i>
+      </div>
+
+      <div>
+        <div class="stats-group-title">
+          {% translate "Files" %}
+        </div>
+        <div class="stats-group-subtitle">
+          {% translate "Uploaded files statistics" %}
+        </div>
+      </div>
     </div>
 
-    <div class="dash-metric">
-      <div class="dash-metric-label">{% translate "Sections created" %}</div>
-      <div class="dash-metric-value">{{ sections_count }}</div>
+    <div class="stats-group-grid">
+
+      <div class="stats-item">
+        <div class="stats-item-icon">
+          <i class="fa-solid fa-cloud-arrow-up"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Total uploaded" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ files_total }}
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-item">
+        <div class="stats-item-icon stats-icon-success">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Available" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ files_available }}
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-item">
+        <div class="stats-item-icon stats-icon-danger">
+          <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Deleted" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ files_deleted }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Sections -->
+  <div class="stats-group">
+    <div class="stats-group-header">
+      <div class="stats-group-icon">
+        <i class="fa-solid fa-folder-tree"></i>
+      </div>
+
+      <div>
+        <div class="stats-group-title">
+          {% translate "Sections" %}
+        </div>
+
+        <div class="stats-group-subtitle">
+          {% translate "Section statistics" %}
+        </div>
+      </div>
     </div>
 
-    <div class="dash-metric">
-      <div class="dash-metric-label">{% translate "Notes created" %}</div>
-      <div class="dash-metric-value">{{ notes_count }}</div>
+    <div class="stats-group-grid">
+
+      <div class="stats-item">
+        <div class="stats-item-icon">
+          <i class="fa-solid fa-layer-group"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Total created" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ sections_total }}
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-item">
+        <div class="stats-item-icon stats-icon-success">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Available" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ sections_available }}
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-item">
+        <div class="stats-item-icon stats-icon-danger">
+          <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Deleted" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ sections_deleted }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Notes -->
+  <div class="stats-group">
+    <div class="stats-group-header">
+      <div class="stats-group-icon">
+        <i class="fa-solid fa-note-sticky"></i>
+      </div>
+
+      <div>
+        <div class="stats-group-title">
+          {% translate "Notes" %}
+        </div>
+
+        <div class="stats-group-subtitle">
+          {% translate "Secret note statistics" %}
+        </div>
+      </div>
     </div>
 
-    <div class="dash-metric">
-      <div class="dash-metric-label">{% translate "Visitors" %}</div>
-      <div class="dash-metric-value">{{ visitors_count }}</div>
+    <div class="stats-group-grid">
+
+      <div class="stats-item">
+        <div class="stats-item-icon">
+          <i class="fa-solid fa-pen-to-square"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Total created" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ notes_total }}
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-item">
+        <div class="stats-item-icon stats-icon-success">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Available" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ notes_available }}
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-item">
+        <div class="stats-item-icon stats-icon-danger">
+          <i class="fa-solid fa-trash"></i>
+        </div>
+
+        <div class="stats-item-content">
+          <div class="stats-item-label">
+            {% translate "Deleted" %}
+          </div>
+
+          <div class="stats-item-value">
+            {{ notes_deleted }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Visitors -->
+  <div class="stats-group stats-group-visitors">
+
+    <div class="stats-group-header">
+      <div class="stats-group-icon">
+        <i class="fa-solid fa-users"></i>
+      </div>
+
+      <div>
+        <div class="stats-group-title">
+          {% translate "Visitors" %}
+        </div>
+
+        <div class="stats-group-subtitle">
+          {% translate "Unique visitors during selected period" %}
+        </div>
+      </div>
+    </div>
+
+    <div class="visitor-stat">
+
+      <div class="visitor-stat-icon">
+        <i class="fa-solid fa-chart-line"></i>
+      </div>
+
+      <div>
+        <div class="stats-item-label">
+          {% translate "Unique visitors" %}
+        </div>
+
+        <div class="visitor-stat-value">
+          {{ visitors_count }}
+        </div>
+      </div>
+
     </div>
 
   </div>
+
+</div>
 
   <p class="dash-help">
     {% translate "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval." %}
