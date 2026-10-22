@@ -112,7 +112,8 @@ fileInput.addEventListener("change", function () {
 dropZone.addEventListener("drop", e => {
     const files = e.dataTransfer.files;
     fileInput.files = files;
-        // NEW: Trigger change event to show Set password checkbox
+
+    // NEW: Trigger change event to show Set password checkbox
     fileInput.dispatchEvent(new Event("change", { bubbles: true }));
     handleFiles(files);
 });
