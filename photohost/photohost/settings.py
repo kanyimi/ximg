@@ -141,17 +141,6 @@ LOCALE_PATHS = [
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Automatically generate hashed filenames for cache busting
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.ManifestStaticFilesStorage",
-    },
-}
-
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 
