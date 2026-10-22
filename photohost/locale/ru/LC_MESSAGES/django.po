@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-24 22:09+0300\n"
+"POT-Creation-Date: 2026-10-22 16:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,7 +51,7 @@ msgstr "3 месяца"
 msgid "6 months"
 msgstr "6 месяцев"
 
-#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:115
+#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:175
 msgid "Deletion time"
 msgstr "Время удаления"
 
@@ -150,6 +150,7 @@ msgstr "Имя пользователя"
 
 #: .\templates\dashboard\login.html:34
 #: .\templates\dashboard\partials\secret_notes.html:61
+#: .\templates\photohostapp\section_password.html:42
 #: .\templates\secret_notes\password.html:38
 msgid "Password"
 msgstr "Пароль"
@@ -173,8 +174,7 @@ msgid "Original name"
 msgstr "Сохранить старые имена файлов"
 
 #: .\templates\dashboard\partials\files.html:16
-#: .\templates\photohostapp\section_detail.html:7
-#: .\templates\photohostapp\section_detail.html:45
+#: .\templates\photohostapp\section_detail.html:9
 msgid "Section"
 msgstr "Раздел"
 
@@ -183,19 +183,17 @@ msgid "Uploaded"
 msgstr "Загружено"
 
 #: .\templates\dashboard\partials\files.html:18
-#: .\templates\photohostapp\section_detail.html:86
-#: .\templates\photohostapp\section_detail.html:121
+#: .\templates\photohostapp\section_detail.html:50
+#: .\templates\photohostapp\section_detail.html:85
 msgid "Download"
 msgstr "Скачать"
 
 #: .\templates\dashboard\partials\files.html:19
 #: .\templates\dashboard\partials\sections.html:18
-
 msgid "Delete"
 msgstr "удалена"
 
 #: .\templates\dashboard\partials\files.html:56
-
 msgid "Delete file"
 msgstr "Удалить файл"
 
@@ -234,8 +232,7 @@ msgstr "Создать заметку"
 #: .\templates\dashboard\partials\secret_notes.html:59
 #: .\templates\dashboard\partials\secret_notes.html:147
 #: .\templates\dashboard\partials\sections.html:16
-#: .\templates\photohostapp\section_detail.html:43
-#: .\templates\photohostapp\section_detail.html:65
+#: .\templates\photohostapp\section_detail.html:29
 #: .\templates\secret_notes\created.html:81
 msgid "Expires"
 msgstr "Истекает"
@@ -332,7 +329,7 @@ msgstr "Slug"
 
 #: .\templates\dashboard\partials\sections.html:43
 msgid "Delete section"
-msgstr ""
+msgstr "Удалить раздел"
 
 #: .\templates\dashboard\partials\sections.html:44
 #, python-format
@@ -355,102 +352,94 @@ msgstr "Конец"
 msgid "Apply"
 msgstr "Применить"
 
-#: .\templates\dashboard\partials\stats.html:28
+#: .\templates\dashboard\partials\stats.html:24
 #: .\templates\dashboard\shell.html:40
 msgid "Files"
 msgstr "Файлы"
 
-#: .\templates\dashboard\partials\stats.html:31
+#: .\templates\dashboard\partials\stats.html:27
 msgid "Uploaded files statistics"
 msgstr "Статистика загруженных файлов"
 
-#: .\templates\dashboard\partials\stats.html:45
-
-
+#: .\templates\dashboard\partials\stats.html:41
 msgid "Total uploaded"
 msgstr "Всего загружено"
 
-#: .\templates\dashboard\partials\stats.html:61
-#: .\templates\dashboard\partials\stats.html:133
-#: .\templates\dashboard\partials\stats.html:205
-#: .\templates\dashboard\partials\stats.html:311
+#: .\templates\dashboard\partials\stats.html:57
+#: .\templates\dashboard\partials\stats.html:126
+#: .\templates\dashboard\partials\stats.html:195
+#: .\templates\dashboard\partials\stats.html:297
 msgid "Available"
 msgstr "Доступно"
 
-#: .\templates\dashboard\partials\stats.html:77
-#: .\templates\dashboard\partials\stats.html:149
-#: .\templates\dashboard\partials\stats.html:221
-
+#: .\templates\dashboard\partials\stats.html:73
+#: .\templates\dashboard\partials\stats.html:142
+#: .\templates\dashboard\partials\stats.html:211
 msgid "Deleted"
 msgstr "удалена"
 
-#: .\templates\dashboard\partials\stats.html:99
+#: .\templates\dashboard\partials\stats.html:92
 #: .\templates\dashboard\shell.html:32
 #: .\templates\photohostapp\multi_upload_result.html:8
 msgid "Sections"
 msgstr "Разделы"
 
-#: .\templates\dashboard\partials\stats.html:103
-
+#: .\templates\dashboard\partials\stats.html:96
 msgid "Section statistics"
 msgstr "статистика по разделам"
 
-#: .\templates\dashboard\partials\stats.html:117
-#: .\templates\dashboard\partials\stats.html:189
-
+#: .\templates\dashboard\partials\stats.html:110
+#: .\templates\dashboard\partials\stats.html:179
 msgid "Total created"
 msgstr "Всего создано"
 
-#: .\templates\dashboard\partials\stats.html:171
-
+#: .\templates\dashboard\partials\stats.html:161
 msgid "Notes"
 msgstr "секретные записки"
 
-#: .\templates\dashboard\partials\stats.html:175
-
+#: .\templates\dashboard\partials\stats.html:165
 msgid "Secret note statistics"
 msgstr "Статистика секретных заметок"
 
-#: .\templates\dashboard\partials\stats.html:244
+#: .\templates\dashboard\partials\stats.html:230
 msgid "Visitors"
 msgstr "Посетители"
 
-#: .\templates\dashboard\partials\stats.html:248
+#: .\templates\dashboard\partials\stats.html:234
 msgid "Unique visitors during selected period"
 msgstr "Уникальные посетители за выбранный период"
 
-#: .\templates\dashboard\partials\stats.html:261
-
+#: .\templates\dashboard\partials\stats.html:247
 msgid "Unique visitors"
 msgstr "Уникальные посетители"
 
-#: .\templates\dashboard\partials\stats.html:276
+#: .\templates\dashboard\partials\stats.html:262
 msgid "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval."
 msgstr ""
 "Период может быть 1 день, 2 дня, 1 неделя, 1 месяц или любой календарный "
 "интервал."
 
-#: .\templates\dashboard\partials\stats.html:282
+#: .\templates\dashboard\partials\stats.html:268
 msgid "Server"
 msgstr "Сервер"
 
-#: .\templates\dashboard\partials\stats.html:288
+#: .\templates\dashboard\partials\stats.html:274
 msgid "Total storage"
 msgstr "Общий объём хранилища"
 
-#: .\templates\dashboard\partials\stats.html:293
+#: .\templates\dashboard\partials\stats.html:279
 msgid "Free storage"
 msgstr "Свободное место"
 
-#: .\templates\dashboard\partials\stats.html:298
+#: .\templates\dashboard\partials\stats.html:284
 msgid "Used storage"
 msgstr "Использовано"
 
-#: .\templates\dashboard\partials\stats.html:325
+#: .\templates\dashboard\partials\stats.html:311
 msgid "Uptime"
 msgstr "Время работы"
 
-#: .\templates\dashboard\partials\stats.html:332
+#: .\templates\dashboard\partials\stats.html:318
 msgid "Load avg "
 msgstr "Средняя нагрузка "
 
@@ -546,75 +535,111 @@ msgstr "Все URL"
 msgid "All URLs copied"
 msgstr "Все URL скопированы"
 
-#: .\templates\photohostapp\section_detail.html:133
+#: .\templates\photohostapp\section_detail.html:97
 msgid "Download All in ZIP"
 msgstr "Скачать всё в ZIP"
 
-#: .\templates\photohostapp\upload.html:13
+#: .\templates\photohostapp\section_password.html:21
+
+msgid "Password protected section"
+msgstr "Раздел, защищенный паролем"
+
+#: .\templates\photohostapp\section_password.html:25
+msgid "This section is private. Enter the password to access its files."
+msgstr "Этот раздел является закрытым. Введите пароль для доступа к его файлам."
+
+#: .\templates\photohostapp\section_password.html:50
+
+msgid "Enter password"
+msgstr "Введите пароль"
+
+#: .\templates\photohostapp\section_password.html:61
+msgid "Unlock section"
+msgstr "Разблокируйте раздел"
+
+#: .\templates\photohostapp\upload.html:16
 msgid "file Hosting with automatic"
 msgstr "Хостинг файлов с автоматической"
 
-#: .\templates\photohostapp\upload.html:14
+#: .\templates\photohostapp\upload.html:17
 msgid "EXIF (metadata) cleaning"
 msgstr "очисткой EXIF (метаданных)"
 
-#: .\templates\photohostapp\upload.html:21
+#: .\templates\photohostapp\upload.html:24
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: .\templates\photohostapp\upload.html:23
+#: .\templates\photohostapp\upload.html:26
 msgid "Uploading files..."
 msgstr "Загрузка файлов..."
 
-#: .\templates\photohostapp\upload.html:41
+#: .\templates\photohostapp\upload.html:44
 msgid "of"
 msgstr "из"
 
-#: .\templates\photohostapp\upload.html:41
+#: .\templates\photohostapp\upload.html:44
 msgid "files uploaded"
 msgstr "файлов загружено"
 
-#: .\templates\photohostapp\upload.html:54
+#: .\templates\photohostapp\upload.html:57
 msgid "Cancel Upload"
 msgstr "Отменить загрузку"
 
-#: .\templates\photohostapp\upload.html:73
+#: .\templates\photohostapp\upload.html:76
 msgid " Select files to upload"
 msgstr "Выбрать файлы для загрузки"
 
-#: .\templates\photohostapp\upload.html:78
+#: .\templates\photohostapp\upload.html:81
 msgid "Or Drag and Drop"
 msgstr "Или перетащите файлы"
 
-#: .\templates\photohostapp\upload.html:100
+#: .\templates\photohostapp\upload.html:103
 msgid "Keep original filenames"
 msgstr "Сохранить старые имена файлов"
 
-#: .\templates\photohostapp\upload.html:104
+#: .\templates\photohostapp\upload.html:107
 msgid "The function allows you to"
 msgstr "Функция позволяет"
 
-#: .\templates\photohostapp\upload.html:104
+#: .\templates\photohostapp\upload.html:107
 msgid "save the original file names"
 msgstr "сохранить оригинальные имена файлов"
 
-#: .\templates\photohostapp\upload.html:104
+#: .\templates\photohostapp\upload.html:107
 msgid "after uploading to the hosting"
 msgstr "после загрузки на хостинг"
 
-#: .\templates\photohostapp\upload.html:120
+#: .\templates\photohostapp\upload.html:122
+
+msgid "Set password"
+msgstr "Установить пароль"
+
+#: .\templates\photohostapp\upload.html:131
+msgid "Make the section private by protecting the section with a password."
+msgstr "Сделайте раздел приватным, защитив его паролем."
+
+#: .\templates\photohostapp\upload.html:146
+
+msgid "Section password"
+msgstr "Пароль к разделу"
+
+#: .\templates\photohostapp\upload.html:154
+msgid "Password must contain at least 8 characters."
+msgstr "Пароль должен содержать не менее 8 символов."
+
+#: .\templates\photohostapp\upload.html:180
 msgid "Data stored from 1 to 180 days"
 msgstr "Данные хранятся от 1 до 180 дней"
 
-#: .\templates\photohostapp\upload.html:128
+#: .\templates\photohostapp\upload.html:188
 msgid "Upload"
 msgstr "Загрузить"
 
-#: .\templates\photohostapp\upload.html:133
+#: .\templates\photohostapp\upload.html:193
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr "Мы удаляем ExIf (метатеги) из медиафайлов (JPG, PDF, PSD и других)"
 
-#: .\templates\photohostapp\upload.html:135
+#: .\templates\photohostapp\upload.html:195
 msgid "Supported files"
 msgstr "Поддерживаемые файлы"
 

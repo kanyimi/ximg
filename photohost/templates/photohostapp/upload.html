@@ -5,6 +5,9 @@
   <meta name="robots" content="index, follow">
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'photohostapp/css/upload.css' %}">
+{% endblock %}
 {% block content %}
 <div class="container-fluid" xmlns="http://www.w3.org/1999/html">
     <!-- Upload Form Card -->
@@ -108,6 +111,63 @@
                         </div>
                     </div>
 
+                    <!-- Password protection -->
+                    <div class="col-md-12 mt-3" id="passwordOption" style="display:none;">
+
+                        <div class="form-check">
+
+                            {{ sform.set_password }}
+
+                            <label class="form-check-label" for="id_set_password">
+                                {% translate "Set password" %}
+                            </label>
+
+                            <span class="info-tooltip">
+                                <img src="{% static 'source/Info.svg' %}"
+                                     alt="info"
+                                     style="height:20px;">
+
+                                <span class="tooltip-text">
+                                    {% translate "Make the section private by protecting the section with a password." %}
+                                </span>
+                            </span>
+
+                        </div>
+
+                <!-- Password input -->
+                   <div id="passwordInputContainer"
+                         class="mt-3 password-input-container"
+                         style="display:none;">
+
+                        <div class="password-input-row">
+
+                            <label for="sectionPassword"
+                                   class="form-label fw-semibold password-label">
+                                {% translate "Section password" %}:
+                            </label>
+
+                            <div class="password-field-wrapper">
+
+                                {{ sform.section_password }}
+
+                                <div class="form-text">
+                                    {% translate "Password must contain at least 8 characters." %}
+                                </div>
+
+                                {% if sform.section_password.errors %}
+                                    <div class="text-danger mt-2">
+                                        {{ sform.section_password.errors }}
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    </div>
+
                     <!-- Expiration -->
                     <div class="col-md-8 ms-4">
                         <div class="d-flex align-items-center gap-4">
@@ -144,132 +204,139 @@
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* ==========================================
+       1. Supported Files Modal
+       ========================================== */
+
     const modal = document.getElementById('supportedFilesModal');
     const openBtn = document.getElementById('openSupportedFiles');
-    const closeBtn = modal.querySelector('.modal-close');
+    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
 
-    openBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        modal.classList.add('show');
-    });
+    if (modal && openBtn) {
+        openBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.add('show');
+        });
+    }
 
-    closeBtn.addEventListener('click', () => {
-        modal.classList.remove('show');
-    });
+    if (modal && closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+    }
 
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+    }
+
+
+    /* ==========================================
+       2. Section Password Protection
+       ========================================== */
+
+    const fileInput = document.getElementById('fileInput');
+    const passwordOption = document.getElementById('passwordOption');
+    const passwordCheckbox = document.getElementById('id_set_password');
+    const passwordContainer = document.getElementById('passwordInputContainer');
+    const passwordInput = document.getElementById('sectionPassword');
+
+    if (
+        fileInput &&
+        passwordOption &&
+        passwordCheckbox &&
+        passwordContainer &&
+        passwordInput
+    ) {
+
+        /* ------------------------------------------
+           Show or hide password input
+           ------------------------------------------ */
+
+        function updatePasswordField() {
+
+            const enabled = passwordCheckbox.checked;
+
+            passwordContainer.style.display = enabled
+                ? 'block'
+                : 'none';
+
+            passwordInput.required = enabled;
+            passwordInput.disabled = !enabled;
+
+            if (!enabled) {
+                passwordInput.value = '';
+            }
+        }
+
+
+        /* ------------------------------------------
+           Show password option when files selected
+           ------------------------------------------ */
+
+        function updatePasswordOption() {
+
+            const hasFiles = fileInput.files.length > 0;
+
+            passwordOption.style.display = hasFiles
+                ? 'block'
+                : 'none';
+
+            if (!hasFiles) {
+                passwordCheckbox.checked = false;
+            }
+
+            updatePasswordField();
+        }
+
+
+        /* ------------------------------------------
+           File selection event
+           ------------------------------------------ */
+
+        fileInput.addEventListener('change', () => {
+            updatePasswordOption();
+        });
+
+
+        /* ------------------------------------------
+           Password checkbox event
+           ------------------------------------------ */
+
+        passwordCheckbox.addEventListener('change', () => {
+            updatePasswordField();
+
+            if (passwordCheckbox.checked) {
+                passwordInput.focus();
+            }
+        });
+
+
+        /* ------------------------------------------
+           Initialize on page load
+           ------------------------------------------ */
+
+        updatePasswordOption();
+    }
+
+
+    /* ==========================================
+       3. Close Supported Files Modal with ESC
+       ========================================== */
+
+    document.addEventListener('keydown', (e) => {
+
+        if (e.key === 'Escape' && modal) {
             modal.classList.remove('show');
         }
+
     });
+
 });
 </script>
 {% endblock %}
 
-{% block extra_css %}
-<style>
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-}
-
-.modal-overlay.show {
-    display: flex;
-}
-
-.modal-content {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    max-width: 500px;
-    width: 90%;
-    position: relative;
-    animation: fadeIn 0.2s ease-out;
-}
-
-.modal-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    border: none;
-    background: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: #666;
-}
-
-.file-types {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-}
-
-.file-type-badge {
-    background: #227851;
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-}
-
-/* Upload file list item */
-.upload-file-item {
-    padding: 8px 12px;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.upload-file-item:last-child {
-    border-bottom: none;
-}
-
-.file-status {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.file-status.uploading {
-    background-color: #007bff;
-    animation: pulse 1.5s infinite;
-}
-
-.file-status.completed {
-    background-color: #28a745;
-}
-
-.file-status.failed {
-    background-color: #dc3545;
-}
-
-.file-status.pending {
-    background-color: #6c757d;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-</style>
-{% endblock %}

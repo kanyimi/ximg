@@ -25,9 +25,59 @@ class SectionCreateForm(forms.ModelForm):
         label=_("Deletion time"),
     )
 
+    set_password = forms.BooleanField(
+        required=False,
+        label="Set password"
+    )
+
+    section_password = forms.CharField(
+        required=False,
+        min_length=8,
+        max_length=128,
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "placeholder": "Enter section password",
+                "autocomplete": "new-password",
+                "id": "sectionPassword",
+            }
+        )
+    )
     class Meta:
         model = Section
         fields = ["keep_original_filenames", "lifetime_days"]
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        set_password = cleaned_data.get("set_password")
+        password = cleaned_data.get("section_password")
+
+        if set_password and not password:
+            self.add_error(
+                "section_password",
+                "Please enter a password."
+            )
+
+        return cleaned_data
+
+    def save(self, commit=True):
+        section = super().save(commit=False)
+
+        if self.cleaned_data.get("set_password"):
+            section.set_section_password(
+                self.cleaned_data["section_password"]
+            )
+        else:
+            section.set_section_password("")
+
+        if commit:
+            section.save()
+            self.save_m2m()
+
+        return section
+
+
 
 
 class MultiFileInput(forms.FileInput):

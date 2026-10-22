@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.crypto import get_random_string
 import uuid
-
+from django.contrib.auth.hashers import make_password, check_password
 class Section(models.Model):
     title = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(unique=True, max_length=32, blank=True)
@@ -10,6 +10,53 @@ class Section(models.Model):
     lifetime_days = models.PositiveSmallIntegerField(default=7)
     keep_original_filenames = models.BooleanField(default=False)
     batch_id = models.UUIDField(null=True, blank=True, db_index=True)
+
+    # NEW: Optional password protection
+    password_hash = models.CharField(
+        max_length=128,
+        blank=True,
+        default=""
+    )
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = get_random_string(8)
+        super().save(*args, **kwargs)
+
+    @property
+    def is_password_protected(self):
+        return bool(self.password_hash)
+
+    def set_section_password(self, raw_password):
+        self.password_hash = (
+            make_password(raw_password) if raw_password else ""
+        )
+
+    def check_section_password(self, raw_password):
+        if not self.password_hash:
+            return True
+        return check_password(raw_password, self.password_hash)
+
+    @property
+    def expires_at(self):
+        return self.created_at + timezone.timedelta(
+            days=self.lifetime_days
+        )
+
+    def is_expired(self):
+        exp = self.expires_at
+
+        if timezone.is_naive(exp):
+            exp = timezone.make_aware(
+                exp,
+                timezone.get_current_timezone()
+            )
+
+        return timezone.now() >= exp
+
+    def __str__(self):
+        return f"Section {self.slug}"
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = get_random_string(8)

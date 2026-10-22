@@ -1,0 +1,163 @@
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.file-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.file-type-badge {
+    background: #227851;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* Upload file list item */
+.upload-file-item {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.upload-file-item:last-child {
+    border-bottom: none;
+}
+
+.file-status {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.file-status.uploading {
+    background-color: #007bff;
+    animation: pulse 1.5s infinite;
+}
+
+.file-status.completed {
+    background-color: #28a745;
+}
+
+.file-status.failed {
+    background-color: #dc3545;
+}
+
+.file-status.pending {
+    background-color: #6c757d;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+    /* Password container alignment */
+.password-input-container {
+    width: 100%;
+    padding-left: 24px;
+}
+
+/* Label and input side by side */
+.password-input-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    width: 100%;
+}
+
+/* Password label */
+.password-label {
+    flex: 0 0 145px;
+    margin-bottom: 0;
+    padding-top: 9px;
+    white-space: nowrap;
+}
+
+/* Password input and help text */
+.password-field-wrapper {
+    flex: 1;
+    min-width: 0;
+    max-width: 320px;
+}
+
+.password-field-wrapper input {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tablet and mobile */
+@media (max-width: 576px) {
+    .password-input-container {
+        padding-left: 12px;
+    }
+
+    .password-input-row {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .password-label {
+        flex: none;
+        padding-top: 0;
+        white-space: normal;
+    }
+
+    .password-field-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+}
