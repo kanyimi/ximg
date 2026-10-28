@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-22 16:56+0300\n"
+"POT-Creation-Date: 2026-10-28 12:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,9 +51,13 @@ msgstr "3 месяца"
 msgid "6 months"
 msgstr "6 месяцев"
 
-#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:175
+#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:206
 msgid "Deletion time"
 msgstr "Время удаления"
+
+#: .\photohostapp\forms.py:35 .\templates\photohostapp\upload.html:127
+msgid "Multi-upload"
+msgstr "мульти-загрузки"
 
 #: .\templates\404.html:5
 msgid "Section expired"
@@ -174,6 +178,7 @@ msgid "Original name"
 msgstr "Сохранить старые имена файлов"
 
 #: .\templates\dashboard\partials\files.html:16
+#: .\templates\photohostapp\multi_upload_detail.html:192
 #: .\templates\photohostapp\section_detail.html:9
 msgid "Section"
 msgstr "Раздел"
@@ -523,6 +528,51 @@ msgstr "Скопировано в буфер обмена"
 msgid "Copied"
 msgstr "Скопировано"
 
+#: .\templates\photohostapp\multi_upload_detail.html:171
+
+msgid "Multi-upload completed"
+msgstr "Загрузка завершена"
+
+#: .\templates\photohostapp\multi_upload_detail.html:173
+msgid ""
+"Each file has been uploaded to an independent section. Copy the individual "
+"links below to share them."
+msgstr "Каждый файл был загружен в отдельный раздел. Скопируйте отдельные ссылки ниже, чтобы поделиться ими."
+
+#: .\templates\photohostapp\multi_upload_detail.html:196
+
+msgid "Password protected"
+msgstr "Защищено паролем"
+
+#: .\templates\photohostapp\multi_upload_detail.html:202
+
+msgid "Section link"
+msgstr "Ссылка на раздел"
+
+#: .\templates\photohostapp\multi_upload_detail.html:219
+
+msgid "Copy section link"
+msgstr "Скопировать ссылку на раздел"
+
+#: .\templates\photohostapp\multi_upload_detail.html:220
+
+msgid "Copy link"
+msgstr "Копировать"
+
+#: .\templates\photohostapp\multi_upload_detail.html:235
+
+msgid "Open section"
+msgstr "Открытый раздел"
+
+#: .\templates\photohostapp\multi_upload_detail.html:242
+msgid "No available files in this batch."
+msgstr "В этом пакете нет доступных файлов."
+
+#: .\templates\photohostapp\multi_upload_detail.html:251
+
+msgid "Upload more files"
+msgstr "Загружайте больше файлов"
+
 #: .\templates\photohostapp\multi_upload_result.html:7
 msgid "Upload is completed"
 msgstr "Загрузка завершена"
@@ -540,16 +590,15 @@ msgid "Download All in ZIP"
 msgstr "Скачать всё в ZIP"
 
 #: .\templates\photohostapp\section_password.html:21
-
 msgid "Password protected section"
 msgstr "Раздел, защищенный паролем"
 
 #: .\templates\photohostapp\section_password.html:25
 msgid "This section is private. Enter the password to access its files."
-msgstr "Этот раздел является закрытым. Введите пароль для доступа к его файлам."
+msgstr ""
+"Этот раздел является закрытым. Введите пароль для доступа к его файлам."
 
 #: .\templates\photohostapp\section_password.html:50
-
 msgid "Enter password"
 msgstr "Введите пароль"
 
@@ -609,37 +658,41 @@ msgstr "сохранить оригинальные имена файлов"
 msgid "after uploading to the hosting"
 msgstr "после загрузки на хостинг"
 
-#: .\templates\photohostapp\upload.html:122
+#: .\templates\photohostapp\upload.html:138
+msgid ""
+"Each file will be uploaded into its own independent section, with a separate "
+"shareable link."
+msgstr "Каждый файл будет загружен в отдельный раздел с отдельной ссылкой, доступной для общего доступа."
 
+#: .\templates\photohostapp\upload.html:153
 msgid "Set password"
 msgstr "Установить пароль"
 
-#: .\templates\photohostapp\upload.html:131
+#: .\templates\photohostapp\upload.html:162
 msgid "Make the section private by protecting the section with a password."
 msgstr "Сделайте раздел приватным, защитив его паролем."
 
-#: .\templates\photohostapp\upload.html:146
-
+#: .\templates\photohostapp\upload.html:177
 msgid "Section password"
 msgstr "Пароль к разделу"
 
-#: .\templates\photohostapp\upload.html:154
+#: .\templates\photohostapp\upload.html:185
 msgid "Password must contain at least 8 characters."
 msgstr "Пароль должен содержать не менее 8 символов."
 
-#: .\templates\photohostapp\upload.html:180
+#: .\templates\photohostapp\upload.html:211
 msgid "Data stored from 1 to 180 days"
 msgstr "Данные хранятся от 1 до 180 дней"
 
-#: .\templates\photohostapp\upload.html:188
+#: .\templates\photohostapp\upload.html:219
 msgid "Upload"
 msgstr "Загрузить"
 
-#: .\templates\photohostapp\upload.html:193
+#: .\templates\photohostapp\upload.html:224
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr "Мы удаляем ExIf (метатеги) из медиафайлов (JPG, PDF, PSD и других)"
 
-#: .\templates\photohostapp\upload.html:195
+#: .\templates\photohostapp\upload.html:226
 msgid "Supported files"
 msgstr "Поддерживаемые файлы"
 
@@ -980,9 +1033,6 @@ msgstr "Копировать в буфер обмена"
 
 #~ msgid "Multi-upload mode (each file has a separate link)"
 #~ msgstr "Режим множественной загрузки (каждый файл имеет отдельную ссылку)"
-
-#~ msgid "Upload mode"
-#~ msgstr "Режим загрузки"
 
 #~ msgid "Coordinates"
 #~ msgstr "Координаты"

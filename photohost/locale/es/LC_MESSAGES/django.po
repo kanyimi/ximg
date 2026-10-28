@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-22 16:56+0300\n"
+"POT-Creation-Date: 2026-10-28 12:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,9 +50,13 @@ msgstr "3 meses"
 msgid "6 months"
 msgstr "6 meses"
 
-#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:175
+#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:206
 msgid "Deletion time"
 msgstr "Tiempo de eliminación"
+
+#: .\photohostapp\forms.py:35 .\templates\photohostapp\upload.html:127
+msgid "Multi-upload"
+msgstr "Carga múltiple"
 
 #: .\templates\404.html:5
 msgid "Section expired"
@@ -176,6 +180,7 @@ msgid "Original name"
 msgstr "Guardar nombres de archivos originales"
 
 #: .\templates\dashboard\partials\files.html:16
+#: .\templates\photohostapp\multi_upload_detail.html:192
 #: .\templates\photohostapp\section_detail.html:9
 msgid "Section"
 msgstr "Sección"
@@ -525,6 +530,52 @@ msgstr "Copiado al portapapeles"
 msgid "Copied"
 msgstr "Copiado"
 
+#: .\templates\photohostapp\multi_upload_detail.html:171
+
+msgid "Multi-upload completed"
+msgstr "Carga múltiple completada"
+
+#: .\templates\photohostapp\multi_upload_detail.html:173
+msgid ""
+"Each file has been uploaded to an independent section. Copy the individual "
+"links below to share them."
+msgstr "Cada archivo se ha subido a una sección independiente. Copie al individuo"
+"enlaces a continuación para compartirlos."
+
+#: .\templates\photohostapp\multi_upload_detail.html:196
+
+msgid "Password protected"
+msgstr "Protegido con Contraseña"
+
+#: .\templates\photohostapp\multi_upload_detail.html:202
+
+msgid "Section link"
+msgstr "Enlace de sección"
+
+#: .\templates\photohostapp\multi_upload_detail.html:219
+
+msgid "Copy section link"
+msgstr "Copiar enlace de sección"
+
+#: .\templates\photohostapp\multi_upload_detail.html:220
+
+msgid "Copy link"
+msgstr "Copiar"
+
+#: .\templates\photohostapp\multi_upload_detail.html:235
+
+msgid "Open section"
+msgstr "Sección abierta"
+
+#: .\templates\photohostapp\multi_upload_detail.html:242
+msgid "No available files in this batch."
+msgstr "No hay archivos disponibles en este lote."
+
+#: .\templates\photohostapp\multi_upload_detail.html:251
+
+msgid "Upload more files"
+msgstr "Subir más archivos"
+
 #: .\templates\photohostapp\multi_upload_result.html:7
 msgid "Upload is completed"
 msgstr "Carga completada"
@@ -542,16 +593,15 @@ msgid "Download All in ZIP"
 msgstr "Descargar Todo en ZIP"
 
 #: .\templates\photohostapp\section_password.html:21
-
 msgid "Password protected section"
 msgstr "Sección protegida con contraseña"
 
 #: .\templates\photohostapp\section_password.html:25
 msgid "This section is private. Enter the password to access its files."
-msgstr "Esta sección es privada. Ingrese la contraseña para acceder a sus archivos."
+msgstr ""
+"Esta sección es privada. Ingrese la contraseña para acceder a sus archivos."
 
 #: .\templates\photohostapp\section_password.html:50
-
 msgid "Enter password"
 msgstr "Introduzca la contraseña"
 
@@ -611,38 +661,42 @@ msgstr "guardar los nombres de archivo originales"
 msgid "after uploading to the hosting"
 msgstr "después de subirlos al hosting"
 
-#: .\templates\photohostapp\upload.html:122
+#: .\templates\photohostapp\upload.html:138
+msgid ""
+"Each file will be uploaded into its own independent section, with a separate "
+"shareable link."
+msgstr "Cada archivo se cargará en su propia sección independiente, con un enlace para compartir por separado."
 
+#: .\templates\photohostapp\upload.html:153
 msgid "Set password"
 msgstr "Establecer contraseña"
 
-#: .\templates\photohostapp\upload.html:131
+#: .\templates\photohostapp\upload.html:162
 msgid "Make the section private by protecting the section with a password."
 msgstr "Haga que la sección sea privada protegiéndola con una contraseña."
 
-#: .\templates\photohostapp\upload.html:146
-
+#: .\templates\photohostapp\upload.html:177
 msgid "Section password"
 msgstr "Contraseña de sección"
 
-#: .\templates\photohostapp\upload.html:154
+#: .\templates\photohostapp\upload.html:185
 msgid "Password must contain at least 8 characters."
 msgstr "La contraseña debe contener al menos 8 caracteres."
 
-#: .\templates\photohostapp\upload.html:180
+#: .\templates\photohostapp\upload.html:211
 msgid "Data stored from 1 to 180 days"
 msgstr "Datos almacenados de 1 a 180 días"
 
-#: .\templates\photohostapp\upload.html:188
+#: .\templates\photohostapp\upload.html:219
 msgid "Upload"
 msgstr "Subido"
 
-#: .\templates\photohostapp\upload.html:193
+#: .\templates\photohostapp\upload.html:224
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr ""
 "Eliminamos ExIf (metadatos) de archivos multimedia (JPG, PDF, PSD y otros)"
 
-#: .\templates\photohostapp\upload.html:195
+#: .\templates\photohostapp\upload.html:226
 msgid "Supported files"
 msgstr "Archivos compatibles"
 
@@ -983,9 +1037,6 @@ msgstr "Copiar al Portapapeles"
 
 #~ msgid "Multi-upload mode (each file has a separate link)"
 #~ msgstr "Modo de carga múltiple (cada archivo tiene un enlace separado)"
-
-#~ msgid "Upload mode"
-#~ msgstr "Modo de carga"
 
 #~ msgid "Coordinates"
 #~ msgstr "Coordenadas"
