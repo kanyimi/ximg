@@ -15,6 +15,11 @@ urlpatterns = [
         views.section_password,
         name="section_password"
     ),
+    path(
+        "multi-upload/<uuid:batch_id>/",
+        views.multi_upload_detail,
+        name="multi_upload_detail"
+    ),
     # path(
     #     "section/<slug:slug>/file/<int:file_id>/view/",
     #     views.view_file,

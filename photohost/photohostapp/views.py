@@ -119,66 +119,206 @@ def section_password(request, slug):
 
 @require_http_methods(["GET", "POST"])
 def create_section_and_upload(request):
+
     if request.method == "POST":
         sform = SectionCreateForm(request.POST)
 
+        is_ajax = (
+            request.headers.get("X-Requested-With")
+            == "XMLHttpRequest"
+        )
+
         if sform.is_valid():
+
             files = request.FILES.getlist("files")
 
             if not files:
-                if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                    return JsonResponse({'status': 'error', 'message': 'No files selected.'}, status=400)
+                if is_ajax:
+                    return JsonResponse({
+                        "status": "error",
+                        "message": "No files selected."
+                    }, status=400)
+
                 messages.error(request, "No files selected.")
                 return redirect("photohostapp:create")
 
             total_size = sum(f.size for f in files)
+
             if total_size > MAX_SECTION_SIZE_BYTES:
-                if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                    return JsonResponse({'status': 'error', 'message': 'Total upload size must not exceed 300 MB.'}, status=400)
-                messages.error(request, "Total upload size must not exceed 300 MB.")
+                if is_ajax:
+                    return JsonResponse({
+                        "status": "error",
+                        "message": (
+                            "Total upload size must not exceed 300 MB."
+                        )
+                    }, status=400)
+
+                messages.error(
+                    request,
+                    "Total upload size must not exceed 300 MB."
+                )
                 return redirect("photohostapp:create")
 
-            # Always create ONE section (album)
+            # Multi-upload is meaningful only with 2+ files.
+            multi_upload = (
+                sform.cleaned_data.get("multi_upload", False)
+                and len(files) > 1
+            )
+
+            if multi_upload:
+
+                batch_id = uuid.uuid4()
+
+                for f in files:
+
+                    # Create an independent section for this file.
+                    section = sform.save(commit=False)
+
+                    # Each file belongs to the same upload batch.
+                    section.pk = None
+                    section.batch_id = batch_id
+
+                    # Generate a separate slug for every section.
+                    section.slug = ""
+
+                    section.save()
+
+                    # Process file and remove EXIF metadata.
+                    processed_name, content = (
+                        remove_exif_and_get_file(f)
+                    )
+
+                    sf = StoredFile(section=section)
+
+                    sf.file.save(
+                        f.name,
+                        content,
+                        save=True
+                    )
+
+                    if section.keep_original_filenames:
+                        sf.original_name = os.path.basename(f.name)
+                    else:
+                        sf.original_name = os.path.basename(
+                            sf.file.name
+                        )
+
+                    sf.save(update_fields=["original_name"])
+
+                    # Allow the uploader to open their newly
+                    # created password-protected sections.
+                    if section.is_password_protected:
+                        request.session[
+                            section_access_key(section)
+                        ] = section_access_signature(section)
+
+                # Restrict the batch results page to this session.
+                request.session[
+                    f"multi_upload_batch_{batch_id}"
+                ] = True
+
+                redirect_url = reverse(
+                    "photohostapp:multi_upload_detail",
+                    kwargs={"batch_id": batch_id}
+                )
+
+                if is_ajax:
+                    return JsonResponse({
+                        "status": "success",
+                        "message": (
+                            "Files uploaded into independent "
+                            "sections successfully."
+                        ),
+                        "redirect_url": redirect_url
+                    })
+
+                messages.success(
+                    request,
+                    "Files uploaded into independent sections."
+                )
+
+                return redirect(redirect_url)
+
+            # =====================================
+            # NORMAL UPLOAD: ONE SECTION
+            # =====================================
+
             section = sform.save()
 
             for f in files:
-                processed_name, content = remove_exif_and_get_file(f)
+
+                processed_name, content = (
+                    remove_exif_and_get_file(f)
+                )
 
                 sf = StoredFile(section=section)
 
-                # Save using ORIGINAL filename input, so upload_to() can decide UUID vs original
-                sf.file.save(f.name, content, save=True)
+                sf.file.save(
+                    f.name,
+                    content,
+                    save=True
+                )
 
-                # NOW decide what to store in DB for "original_name"
                 if section.keep_original_filenames:
-                    sf.original_name = os.path.basename(f.name)  # keep original
+                    sf.original_name = os.path.basename(f.name)
                 else:
-                    sf.original_name = os.path.basename(sf.file.name)  # store UUID name
+                    sf.original_name = os.path.basename(
+                        sf.file.name
+                    )
 
                 sf.save(update_fields=["original_name"])
 
-            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            # Allow the uploader to open their new section.
+            if section.is_password_protected:
+                request.session[
+                    section_access_key(section)
+                ] = section_access_signature(section)
+
+            redirect_url = reverse(
+                "photohostapp:section_detail",
+                kwargs={"slug": section.slug}
+            )
+
+            if is_ajax:
                 return JsonResponse({
-                    'status': 'success',
-                    'message': 'Files uploaded successfully.',
-                    'redirect_url': reverse('photohostapp:section_detail', kwargs={'slug': section.slug})
+                    "status": "success",
+                    "message": "Files uploaded successfully.",
+                    "redirect_url": redirect_url
                 })
 
-            messages.success(request, "Files uploaded successfully.")
-            return redirect("photohostapp:section_detail", slug=section.slug)
+            messages.success(
+                request,
+                "Files uploaded successfully."
+            )
 
-        # Form validation failed
-        if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+            return redirect(redirect_url)
+
+        # =====================================
+        # FORM VALIDATION FAILED
+        # =====================================
+
+        if is_ajax:
             return JsonResponse({
-                'status': 'error',
-                'message': 'Form validation failed.',
-                'errors': sform.errors
+                "status": "error",
+                "message": "Form validation failed.",
+                "errors": sform.errors
             }, status=400)
 
-    # GET
-    sform = SectionCreateForm()
-    return render(request, "photohostapp/upload.html", {"sform": sform})
+        # Re-render form with validation errors.
+        return render(
+            request,
+            "photohostapp/upload.html",
+            {"sform": sform},
+            status=400
+        )
 
+    sform = SectionCreateForm()
+
+    return render(
+        request,
+        "photohostapp/upload.html",
+        {"sform": sform}
+    )
 
 def section_detail(request, slug):
     try:
@@ -228,6 +368,69 @@ def section_detail(request, slug):
 
 
 
+
+@never_cache
+@require_http_methods(["GET"])
+def multi_upload_detail(request, batch_id):
+
+    # Only the session that uploaded this batch
+    # can view its combined results page.
+    if not request.session.get(
+        f"multi_upload_batch_{batch_id}", False
+    ):
+        raise Http404("Batch not found")
+
+    sections = (
+        Section.objects
+        .filter(batch_id=batch_id)
+        .order_by("created_at", "pk")
+        .prefetch_related("files")
+    )
+
+    sections = [
+        section
+        for section in sections
+        if not section.is_expired()
+    ]
+
+    if not sections:
+        raise Http404("Batch not found or expired")
+
+    items = []
+
+    for section in sections:
+
+        # Don't display protected section contents
+        # unless this session has access.
+        if not has_section_access(request, section):
+            continue
+
+        stored_file = section.files.first()
+
+        if stored_file is None:
+            continue
+
+        section_url = request.build_absolute_uri(
+            reverse(
+                "photohostapp:section_detail",
+                kwargs={"slug": section.slug}
+            )
+        )
+
+        items.append({
+            "section": section,
+            "file": stored_file,
+            "section_url": section_url,
+        })
+
+    return render(
+        request,
+        "photohostapp/multi_upload_detail.html",
+        {
+            "items": items,
+            "batch_id": batch_id,
+        }
+    )
 
 def download_zip(request, slug):
     section = get_object_or_404(Section, slug=slug)

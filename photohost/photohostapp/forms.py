@@ -29,6 +29,17 @@ class SectionCreateForm(forms.ModelForm):
         required=False,
         label="Set password"
     )
+    multi_upload = forms.BooleanField(
+        required=False,
+        initial=False,
+        label="Multi-upload",
+        widget=forms.CheckboxInput(
+            attrs={
+                "class": "form-check-input",
+                "id": "id_multi_upload",
+            }
+        ),
+    )
 
     section_password = forms.CharField(
         required=False,

@@ -111,6 +111,37 @@
                         </div>
                     </div>
 
+
+
+                    <!-- Multi-upload option -->
+                    <div class="col-md-12 mt-3"
+                         id="multiUploadOption"
+                         style="display:none;">
+
+                        <div class="form-check">
+
+                            {{ sform.multi_upload }}
+
+                            <label class="form-check-label"
+                                   for="id_multi_upload">
+                                {% translate "Multi-upload" %}
+                            </label>
+
+                            <span class="info-tooltip">
+                                <img
+                                    src="{% static 'source/Info.svg' %}"
+                                    alt="info"
+                                    style="height:20px;"
+                                >
+
+                                <span class="tooltip-text">
+                                    {% translate "Each file will be uploaded into its own independent section, with a separate shareable link." %}
+                                </span>
+                            </span>
+
+                        </div>
+
+                    </div>
                     <!-- Password protection -->
                     <div class="col-md-12 mt-3" id="passwordOption" style="display:none;">
 
@@ -203,138 +234,178 @@
 
 {% block extra_js %}
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-    /* ==========================================
-       1. Supported Files Modal
-       ========================================== */
+    // ==========================================
+    // 1. Supported Files Modal
+    // ==========================================
 
-    const modal = document.getElementById('supportedFilesModal');
-    const openBtn = document.getElementById('openSupportedFiles');
-    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+    const modal = document.getElementById("supportedFilesModal");
+    const openBtn = document.getElementById("openSupportedFiles");
+    const closeBtn = modal
+        ? modal.querySelector(".modal-close")
+        : null;
 
     if (modal && openBtn) {
-        openBtn.addEventListener('click', (e) => {
+        openBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            modal.classList.add('show');
+            modal.classList.add("show");
         });
     }
 
     if (modal && closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            modal.classList.remove('show');
+        closeBtn.addEventListener("click", () => {
+            modal.classList.remove("show");
         });
     }
 
     if (modal) {
-        modal.addEventListener('click', (e) => {
+        modal.addEventListener("click", (e) => {
             if (e.target === modal) {
-                modal.classList.remove('show');
+                modal.classList.remove("show");
             }
         });
     }
 
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal) {
+            modal.classList.remove("show");
+        }
+    });
 
-    /* ==========================================
-       2. Section Password Protection
-       ========================================== */
+    // ==========================================
+    // 2. File Selection
+    // ==========================================
 
-    const fileInput = document.getElementById('fileInput');
-    const passwordOption = document.getElementById('passwordOption');
-    const passwordCheckbox = document.getElementById('id_set_password');
-    const passwordContainer = document.getElementById('passwordInputContainer');
-    const passwordInput = document.getElementById('sectionPassword');
+    const fileInput = document.getElementById("fileInput");
 
-    if (
-        fileInput &&
-        passwordOption &&
-        passwordCheckbox &&
-        passwordContainer &&
-        passwordInput
-    ) {
+    // ==========================================
+    // 3. Multi-upload Checkbox
+    // ==========================================
 
-        /* ------------------------------------------
-           Show or hide password input
-           ------------------------------------------ */
+    const multiUploadOption =
+        document.getElementById("multiUploadOption");
 
-        function updatePasswordField() {
+    const multiUploadCheckbox =
+        document.getElementById("id_multi_upload");
 
-            const enabled = passwordCheckbox.checked;
+    function updateMultiUploadOption() {
 
-            passwordContainer.style.display = enabled
-                ? 'block'
-                : 'none';
-
-            passwordInput.required = enabled;
-            passwordInput.disabled = !enabled;
-
-            if (!enabled) {
-                passwordInput.value = '';
-            }
+        if (
+            !fileInput ||
+            !multiUploadOption ||
+            !multiUploadCheckbox
+        ) {
+            return;
         }
 
+        const fileCount = fileInput.files.length;
 
-        /* ------------------------------------------
-           Show password option when files selected
-           ------------------------------------------ */
+        const showMultiUpload = fileCount > 1;
 
-        function updatePasswordOption() {
+        multiUploadOption.style.display =
+            showMultiUpload ? "block" : "none";
 
-            const hasFiles = fileInput.files.length > 0;
+        if (!showMultiUpload) {
+            multiUploadCheckbox.checked = false;
+        }
+    }
 
-            passwordOption.style.display = hasFiles
-                ? 'block'
-                : 'none';
+    // ==========================================
+    // 4. Section Password Protection
+    // ==========================================
 
-            if (!hasFiles) {
-                passwordCheckbox.checked = false;
-            }
+    const passwordOption =
+        document.getElementById("passwordOption");
 
-            updatePasswordField();
+    const passwordCheckbox =
+        document.getElementById("id_set_password");
+
+    const passwordContainer =
+        document.getElementById("passwordInputContainer");
+
+    const passwordInput =
+        document.getElementById("sectionPassword");
+
+    function updatePasswordField() {
+
+        if (
+            !passwordCheckbox ||
+            !passwordContainer ||
+            !passwordInput
+        ) {
+            return;
         }
 
+        const enabled = passwordCheckbox.checked;
 
-        /* ------------------------------------------
-           File selection event
-           ------------------------------------------ */
+        passwordContainer.style.display =
+            enabled ? "block" : "none";
 
-        fileInput.addEventListener('change', () => {
+        passwordInput.required = enabled;
+        passwordInput.disabled = !enabled;
+
+        if (!enabled) {
+            passwordInput.value = "";
+        }
+    }
+
+    function updatePasswordOption() {
+
+        if (
+            !fileInput ||
+            !passwordOption ||
+            !passwordCheckbox
+        ) {
+            return;
+        }
+
+        const hasFiles = fileInput.files.length > 0;
+
+        passwordOption.style.display =
+            hasFiles ? "block" : "none";
+
+        if (!hasFiles) {
+            passwordCheckbox.checked = false;
+        }
+
+        updatePasswordField();
+    }
+
+    // ==========================================
+    // 5. Update Options When Files Change
+    // ==========================================
+
+    if (fileInput) {
+
+        fileInput.addEventListener("change", () => {
+            updateMultiUploadOption();
             updatePasswordOption();
         });
 
-
-        /* ------------------------------------------
-           Password checkbox event
-           ------------------------------------------ */
-
-        passwordCheckbox.addEventListener('change', () => {
-            updatePasswordField();
-
-            if (passwordCheckbox.checked) {
-                passwordInput.focus();
-            }
-        });
-
-
-        /* ------------------------------------------
-           Initialize on page load
-           ------------------------------------------ */
-
+        updateMultiUploadOption();
         updatePasswordOption();
     }
 
+    // ==========================================
+    // 6. Password Checkbox Event
+    // ==========================================
 
-    /* ==========================================
-       3. Close Supported Files Modal with ESC
-       ========================================== */
+    if (passwordCheckbox) {
 
-    document.addEventListener('keydown', (e) => {
+        passwordCheckbox.addEventListener("change", () => {
 
-        if (e.key === 'Escape' && modal) {
-            modal.classList.remove('show');
-        }
+            updatePasswordField();
 
-    });
+            if (
+                passwordCheckbox.checked &&
+                passwordInput
+            ) {
+                passwordInput.focus();
+            }
+
+        });
+    }
 
 });
 </script>

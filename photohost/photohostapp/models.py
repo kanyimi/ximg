@@ -11,7 +11,6 @@ class Section(models.Model):
     keep_original_filenames = models.BooleanField(default=False)
     batch_id = models.UUIDField(null=True, blank=True, db_index=True)
 
-    # NEW: Optional password protection
     password_hash = models.CharField(
         max_length=128,
         blank=True,
@@ -51,27 +50,6 @@ class Section(models.Model):
                 exp,
                 timezone.get_current_timezone()
             )
-
-        return timezone.now() >= exp
-
-    def __str__(self):
-        return f"Section {self.slug}"
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = get_random_string(8)
-        super().save(*args, **kwargs)
-
-    @property
-    def expires_at(self):
-        return self.created_at + timezone.timedelta(days=self.lifetime_days)
-
-    def is_expired(self):
-        exp = self.expires_at
-
-        # Normalize timezone safety
-        if timezone.is_naive(exp):
-            exp = timezone.make_aware(exp, timezone.get_current_timezone())
 
         return timezone.now() >= exp
 

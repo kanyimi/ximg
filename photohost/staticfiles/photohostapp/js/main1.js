@@ -84,15 +84,9 @@ function handleFiles(files) {
 }
 
 // ==============================
-// Click-to-select
-// ==============================
-fileInput.addEventListener("change", function () {
-    handleFiles(this.files);
-});
-
-// ==============================
 // Drag-and-drop handlers
 // ==============================
+
 ["dragenter", "dragover"].forEach(event => {
     dropZone.addEventListener(event, e => {
         e.preventDefault();
@@ -110,12 +104,18 @@ fileInput.addEventListener("change", function () {
 });
 
 dropZone.addEventListener("drop", e => {
+
     const files = e.dataTransfer.files;
+
     fileInput.files = files;
 
-    // NEW: Trigger change event to show Set password checkbox
-    fileInput.dispatchEvent(new Event("change", { bubbles: true }));
+    // Update Multi-upload and Set password checkboxes.
+    fileInput.dispatchEvent(
+        new Event("change", { bubbles: true })
+    );
+
     handleFiles(files);
+
 });
 
 // ==============================
