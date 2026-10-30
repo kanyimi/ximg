@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 12:33+0300\n"
+"POT-Creation-Date: 2026-10-30 15:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,67 +19,70 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\photohostapp\forms.py:10 .\templates\secret_notes\create.html:51
+#: .\photohost\photohostapp\forms.py:10
+#: .\photohost\templates\secret_notes\create.html:51
 msgid "1 day"
 msgstr "1 день"
 
-#: .\photohostapp\forms.py:11 .\templates\secret_notes\create.html:52
+#: .\photohost\photohostapp\forms.py:11
+#: .\photohost\templates\secret_notes\create.html:52
 msgid "3 days"
 msgstr "3 дня"
 
-#: .\photohostapp\forms.py:12 .\templates\secret_notes\create.html:53
+#: .\photohost\photohostapp\forms.py:12
+#: .\photohost\templates\secret_notes\create.html:53
 msgid "1 week"
 msgstr "1 неделя"
 
-#: .\photohostapp\forms.py:13 .\templates\secret_notes\create.html:54
+#: .\photohost\photohostapp\forms.py:13
+#: .\photohost\templates\secret_notes\create.html:54
 msgid "2 weeks"
 msgstr "2 недели"
 
-#: .\photohostapp\forms.py:14 .\templates\secret_notes\create.html:55
+#: .\photohost\photohostapp\forms.py:14
+#: .\photohost\templates\secret_notes\create.html:55
 msgid "1 month"
 msgstr "1 месяц"
 
-#: .\photohostapp\forms.py:15 .\templates\secret_notes\create.html:56
+#: .\photohost\photohostapp\forms.py:15
+#: .\photohost\templates\secret_notes\create.html:56
 msgid "2 months"
 msgstr "2 месяца"
 
-#: .\photohostapp\forms.py:16
+#: .\photohost\photohostapp\forms.py:16
 msgid "3 months"
 msgstr "3 месяца"
 
-#: .\photohostapp\forms.py:17
+#: .\photohost\photohostapp\forms.py:17
 msgid "6 months"
 msgstr "6 месяцев"
 
-#: .\photohostapp\forms.py:25 .\templates\photohostapp\upload.html:206
+#: .\photohost\photohostapp\forms.py:25
+#: .\photohost\templates\photohostapp\upload.html:206
 msgid "Deletion time"
 msgstr "Время удаления"
 
-#: .\photohostapp\forms.py:35 .\templates\photohostapp\upload.html:127
-msgid "Multi-upload"
-msgstr "мульти-загрузки"
-
-#: .\templates\404.html:5
+#: .\photohost\templates\404.html:5
 msgid "Section expired"
 msgstr "Раздел истёк"
 
-#: .\templates\404.html:9
+#: .\photohost\templates\404.html:9
 msgid "404 - Section expired or Does not exist"
 msgstr "404 - Раздел истёк или не существует"
 
-#: .\templates\404.html:10
+#: .\photohost\templates\404.html:10
 msgid "Oops! The item or page you're looking for does not exist."
 msgstr "Упс! Элемент или страница, которую вы ищете, не существует."
 
-#: .\templates\404.html:15
+#: .\photohost\templates\404.html:15
 msgid "Go Back Home"
 msgstr "Вернуться на главную"
 
-#: .\templates\base.html:15 .\templates\base.html:20
+#: .\photohost\templates\base.html:15 .\photohost\templates\base.html:20
 msgid "XIMG - Private file sharing and photo hosting"
 msgstr "XIMG - Private file sharing and photo hosting"
 
-#: .\templates\base.html:18 .\templates\base.html:21
+#: .\photohost\templates\base.html:18 .\photohost\templates\base.html:21
 msgid ""
 "Anonymous free file sharing and photo hosting. Upload and share files "
 "privately. File storage for up to 60 days! EXIF metadata removal function."
@@ -87,389 +90,390 @@ msgstr ""
 "Anonymous free file sharing and photo hosting. Upload and share files "
 "privately. File storage for up to 60 days! EXIF metadata removal function."
 
-#: .\templates\base.html:19
+#: .\photohost\templates\base.html:19
 msgid "website"
 msgstr "website"
 
-#: .\templates\base.html:22
+#: .\photohost\templates\base.html:22
 msgid "https://ximg.to/en"
 msgstr "https://ximg.to/ru"
 
-#: .\templates\base.html:23
+#: .\photohost\templates\base.html:23
 msgid "en_EN"
 msgstr "ru_RU"
 
-#: .\templates\base.html:62
+#: .\photohost\templates\base.html:62
 msgid "Donate"
 msgstr "Пожертвовать"
 
-#: .\templates\base.html:68
+#: .\photohost\templates\base.html:68
 msgid "secure note"
 msgstr "секретная заметка"
 
-#: .\templates\base.html:104
+#: .\photohost\templates\base.html:104
 msgid "Ximg is free to use because of donations from people like you."
 msgstr "Ximg бесплатен благодаря пожертвованиям таких людей, как вы."
 
-#: .\templates\base.html:112
+#: .\photohost\templates\base.html:112
 msgid "Donate now"
 msgstr "Пожертвовать"
 
-#: .\templates\base.html:128
+#: .\photohost\templates\base.html:128
 msgid "All mirrors of"
 msgstr "Все зеркала"
 
-#: .\templates\dashboard\2fa_verify.html:11
+#: .\photohost\templates\dashboard\2fa_verify.html:11
 msgid "Verification"
 msgstr "Раздел"
 
-#: .\templates\dashboard\2fa_verify.html:12
+#: .\photohost\templates\dashboard\2fa_verify.html:12
 msgid "Enter the 6-digit code from your authenticator app."
 msgstr "Введите 6-значный код из приложения-аутентификатора."
 
-#: .\templates\dashboard\2fa_verify.html:25
-#: .\templates\dashboard\partials\twofa.html:52
+#: .\photohost\templates\dashboard\2fa_verify.html:25
+#: .\photohost\templates\dashboard\partials\twofa.html:52
 msgid "Code"
 msgstr "Код"
 
-#: .\templates\dashboard\2fa_verify.html:28
+#: .\photohost\templates\dashboard\2fa_verify.html:28
 msgid "Verify"
 msgstr "Подтвердить"
 
-#: .\templates\dashboard\2fa_verify.html:32 .\templates\dashboard\shell.html:67
+#: .\photohost\templates\dashboard\2fa_verify.html:32
+#: .\photohost\templates\dashboard\shell.html:67
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\templates\dashboard\login.html:12
+#: .\photohost\templates\dashboard\login.html:12
 msgid "Dashboard Login"
 msgstr "Вход в панель управления"
 
-#: .\templates\dashboard\login.html:14
+#: .\photohost\templates\dashboard\login.html:14
 msgid "Sign in to access admin statistics and content."
 msgstr "Войдите, чтобы получить доступ к статистике и контенту администратора."
 
-#: .\templates\dashboard\login.html:29
+#: .\photohost\templates\dashboard\login.html:29
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: .\templates\dashboard\login.html:34
-#: .\templates\dashboard\partials\secret_notes.html:61
-#: .\templates\photohostapp\section_password.html:42
-#: .\templates\secret_notes\password.html:38
+#: .\photohost\templates\dashboard\login.html:34
+#: .\photohost\templates\dashboard\partials\secret_notes.html:61
+#: .\photohost\templates\photohostapp\section_password.html:42
+#: .\photohost\templates\secret_notes\password.html:38
 msgid "Password"
 msgstr "Пароль"
 
-#: .\templates\dashboard\login.html:38
+#: .\photohost\templates\dashboard\login.html:38
 msgid "Login"
 msgstr "Войти"
 
-#: .\templates\dashboard\login.html:42
+#: .\photohost\templates\dashboard\login.html:42
 msgid "Protected area • Staff accounts only"
 msgstr "Защищённая зона • Только для сотрудников"
 
-#: .\templates\dashboard\partials\files.html:7
-#: .\templates\dashboard\partials\secret_notes.html:7
-#: .\templates\dashboard\partials\sections.html:6
+#: .\photohost\templates\dashboard\partials\files.html:7
+#: .\photohost\templates\dashboard\partials\secret_notes.html:7
+#: .\photohost\templates\dashboard\partials\sections.html:6
 msgid "Search"
 msgstr "Поиск"
 
-#: .\templates\dashboard\partials\files.html:15
+#: .\photohost\templates\dashboard\partials\files.html:15
 msgid "Original name"
 msgstr "Сохранить старые имена файлов"
 
-#: .\templates\dashboard\partials\files.html:16
-#: .\templates\photohostapp\multi_upload_detail.html:192
-#: .\templates\photohostapp\section_detail.html:9
+#: .\photohost\templates\dashboard\partials\files.html:16
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:65
+#: .\photohost\templates\photohostapp\section_detail.html:9
 msgid "Section"
 msgstr "Раздел"
 
-#: .\templates\dashboard\partials\files.html:17
+#: .\photohost\templates\dashboard\partials\files.html:17
 msgid "Uploaded"
 msgstr "Загружено"
 
-#: .\templates\dashboard\partials\files.html:18
-#: .\templates\photohostapp\section_detail.html:50
-#: .\templates\photohostapp\section_detail.html:85
+#: .\photohost\templates\dashboard\partials\files.html:18
+#: .\photohost\templates\photohostapp\section_detail.html:50
+#: .\photohost\templates\photohostapp\section_detail.html:85
 msgid "Download"
 msgstr "Скачать"
 
-#: .\templates\dashboard\partials\files.html:19
-#: .\templates\dashboard\partials\sections.html:18
+#: .\photohost\templates\dashboard\partials\files.html:19
+#: .\photohost\templates\dashboard\partials\sections.html:18
 msgid "Delete"
 msgstr "удалена"
 
-#: .\templates\dashboard\partials\files.html:56
+#: .\photohost\templates\dashboard\partials\files.html:56
 msgid "Delete file"
 msgstr "Удалить файл"
 
-#: .\templates\dashboard\partials\files.html:57
+#: .\photohost\templates\dashboard\partials\files.html:57
 #, python-format
 msgid "Delete file %(name)s?"
 msgstr ""
 
-#: .\templates\dashboard\partials\files.html:65
+#: .\photohost\templates\dashboard\partials\files.html:65
 msgid "No files found."
 msgstr "Файлы не найдены."
 
-#: .\templates\dashboard\partials\secret_notes.html:19
+#: .\photohost\templates\dashboard\partials\secret_notes.html:19
 msgid "Active notes"
 msgstr "секретная заметка"
 
-#: .\templates\dashboard\partials\secret_notes.html:29
+#: .\photohost\templates\dashboard\partials\secret_notes.html:29
 msgid "Retention copies"
 msgstr "Время удаления"
 
-#: .\templates\dashboard\partials\secret_notes.html:39
+#: .\photohost\templates\dashboard\partials\secret_notes.html:39
 msgid "Flagged notes"
 msgstr "Отмеченные заметки"
 
-#: .\templates\dashboard\partials\secret_notes.html:57
+#: .\photohost\templates\dashboard\partials\secret_notes.html:57
 msgid "ID"
 msgstr "ID"
 
-#: .\templates\dashboard\partials\secret_notes.html:58
-#: .\templates\dashboard\partials\secret_notes.html:146
-#: .\templates\dashboard\partials\secret_notes.html:230
-#: .\templates\dashboard\partials\sections.html:15
+#: .\photohost\templates\dashboard\partials\secret_notes.html:58
+#: .\photohost\templates\dashboard\partials\secret_notes.html:146
+#: .\photohost\templates\dashboard\partials\secret_notes.html:230
+#: .\photohost\templates\dashboard\partials\sections.html:15
 msgid "Created"
 msgstr "Создать заметку"
 
-#: .\templates\dashboard\partials\secret_notes.html:59
-#: .\templates\dashboard\partials\secret_notes.html:147
-#: .\templates\dashboard\partials\sections.html:16
-#: .\templates\photohostapp\section_detail.html:29
-#: .\templates\secret_notes\created.html:81
+#: .\photohost\templates\dashboard\partials\secret_notes.html:59
+#: .\photohost\templates\dashboard\partials\secret_notes.html:147
+#: .\photohost\templates\dashboard\partials\sections.html:16
+#: .\photohost\templates\photohostapp\section_detail.html:29
+#: .\photohost\templates\secret_notes\created.html:81
 msgid "Expires"
 msgstr "Истекает"
 
-#: .\templates\dashboard\partials\secret_notes.html:60
+#: .\photohost\templates\dashboard\partials\secret_notes.html:60
 msgid "Delete after read"
 msgstr "Удалить после прочтения"
 
-#: .\templates\dashboard\partials\secret_notes.html:62
-#: .\templates\dashboard\partials\sections.html:17
+#: .\photohost\templates\dashboard\partials\secret_notes.html:62
+#: .\photohost\templates\dashboard\partials\sections.html:17
 msgid "Open"
 msgstr "Открыть заметку"
 
-#: .\templates\dashboard\partials\secret_notes.html:74
-#: .\templates\secret_notes\create.html:50
-#: .\templates\secret_notes\created.html:79
+#: .\photohost\templates\dashboard\partials\secret_notes.html:74
+#: .\photohost\templates\secret_notes\create.html:50
+#: .\photohost\templates\secret_notes\created.html:79
 msgid "Delete after reading"
 msgstr "Удалить после прочтения"
 
-#: .\templates\dashboard\partials\secret_notes.html:78
-#: .\templates\dashboard\partials\secret_notes.html:81
-#: .\templates\dashboard\partials\secret_notes.html:160
+#: .\photohost\templates\dashboard\partials\secret_notes.html:78
+#: .\photohost\templates\dashboard\partials\secret_notes.html:81
+#: .\photohost\templates\dashboard\partials\secret_notes.html:160
 msgid "Yes"
 msgstr "Да"
 
-#: .\templates\dashboard\partials\secret_notes.html:78
-#: .\templates\dashboard\partials\secret_notes.html:81
-#: .\templates\dashboard\partials\secret_notes.html:160
+#: .\photohost\templates\dashboard\partials\secret_notes.html:78
+#: .\photohost\templates\dashboard\partials\secret_notes.html:81
+#: .\photohost\templates\dashboard\partials\secret_notes.html:160
 msgid "No"
 msgstr "Примечание"
 
-#: .\templates\dashboard\partials\secret_notes.html:92
+#: .\photohost\templates\dashboard\partials\secret_notes.html:92
 msgid "No active notes found."
 msgstr "Активные заметки не найдены."
 
-#: .\templates\dashboard\partials\secret_notes.html:145
-#: .\templates\dashboard\partials\secret_notes.html:229
+#: .\photohost\templates\dashboard\partials\secret_notes.html:145
+#: .\photohost\templates\dashboard\partials\secret_notes.html:229
 msgid "Note ID"
 msgstr "Примечание"
 
-#: .\templates\dashboard\partials\secret_notes.html:148
+#: .\photohost\templates\dashboard\partials\secret_notes.html:148
 msgid "Had password"
 msgstr "Пароль"
 
-#: .\templates\dashboard\partials\secret_notes.html:149
-#: .\templates\dashboard\partials\secret_notes.html:232
+#: .\photohost\templates\dashboard\partials\secret_notes.html:149
+#: .\photohost\templates\dashboard\partials\secret_notes.html:232
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: .\templates\dashboard\partials\secret_notes.html:150
-#: .\templates\dashboard\partials\secret_notes.html:171
-#: .\templates\dashboard\partials\secret_notes.html:233
-#: .\templates\dashboard\partials\secret_notes.html:251
-#: .\templates\dashboard\partials\sections.html:32
+#: .\photohost\templates\dashboard\partials\secret_notes.html:150
+#: .\photohost\templates\dashboard\partials\secret_notes.html:171
+#: .\photohost\templates\dashboard\partials\secret_notes.html:233
+#: .\photohost\templates\dashboard\partials\secret_notes.html:251
+#: .\photohost\templates\dashboard\partials\sections.html:32
 msgid "View"
 msgstr "Тестовый просмотр"
 
-#: .\templates\dashboard\partials\secret_notes.html:176
+#: .\photohost\templates\dashboard\partials\secret_notes.html:176
 msgid "No retention copies found."
 msgstr "Копии для хранения не найдены."
 
-#: .\templates\dashboard\partials\secret_notes.html:231
+#: .\photohost\templates\dashboard\partials\secret_notes.html:231
 msgid "Matched terms"
 msgstr "Совпавшие термины"
 
-#: .\templates\dashboard\partials\secret_notes.html:256
+#: .\photohost\templates\dashboard\partials\secret_notes.html:256
 msgid "No flagged notes found."
 msgstr "Отмеченные заметки не найдены."
 
-#: .\templates\dashboard\partials\secret_notes.html:309
+#: .\photohost\templates\dashboard\partials\secret_notes.html:309
 msgid "Retention Note"
 msgstr "Время удаления"
 
-#: .\templates\dashboard\partials\secret_notes.html:310
+#: .\photohost\templates\dashboard\partials\secret_notes.html:310
 msgid "Note ID:"
 msgstr "Примечание"
 
-#: .\templates\dashboard\partials\secret_notes.html:324
-#: .\templates\includes\donate_modal.html:57
-#: .\templates\includes\donate_modal.html:92
-#: .\templates\includes\donate_modal.html:142
+#: .\photohost\templates\dashboard\partials\secret_notes.html:324
+#: .\photohost\templates\includes\donate_modal.html:57
+#: .\photohost\templates\includes\donate_modal.html:92
+#: .\photohost\templates\includes\donate_modal.html:142
 msgid "Copy"
 msgstr "Копировать"
 
-#: .\templates\dashboard\partials\secret_notes.html:326
-#: .\templates\includes\donate_modal.html:23
-#: .\templates\includes\donate_modal.html:116
+#: .\photohost\templates\dashboard\partials\secret_notes.html:326
+#: .\photohost\templates\includes\donate_modal.html:23
+#: .\photohost\templates\includes\donate_modal.html:116
 msgid "Close"
 msgstr "Закрыть"
 
-#: .\templates\dashboard\partials\sections.html:14
+#: .\photohost\templates\dashboard\partials\sections.html:14
 msgid "Slug"
 msgstr "Slug"
 
-#: .\templates\dashboard\partials\sections.html:43
+#: .\photohost\templates\dashboard\partials\sections.html:43
 msgid "Delete section"
 msgstr "Удалить раздел"
 
-#: .\templates\dashboard\partials\sections.html:44
+#: .\photohost\templates\dashboard\partials\sections.html:44
 #, python-format
 msgid "Delete section %(slug)s and all files in it?"
 msgstr ""
 
-#: .\templates\dashboard\partials\sections.html:52
+#: .\photohost\templates\dashboard\partials\sections.html:52
 msgid "No sections found."
 msgstr "Разделы не найдены."
 
-#: .\templates\dashboard\partials\stats.html:6
+#: .\photohost\templates\dashboard\partials\stats.html:6
 msgid "Start"
 msgstr "Начало"
 
-#: .\templates\dashboard\partials\stats.html:10
+#: .\photohost\templates\dashboard\partials\stats.html:10
 msgid "End"
 msgstr "Конец"
 
-#: .\templates\dashboard\partials\stats.html:13
+#: .\photohost\templates\dashboard\partials\stats.html:13
 msgid "Apply"
 msgstr "Применить"
 
-#: .\templates\dashboard\partials\stats.html:24
-#: .\templates\dashboard\shell.html:40
+#: .\photohost\templates\dashboard\partials\stats.html:24
+#: .\photohost\templates\dashboard\shell.html:40
 msgid "Files"
 msgstr "Файлы"
 
-#: .\templates\dashboard\partials\stats.html:27
+#: .\photohost\templates\dashboard\partials\stats.html:27
 msgid "Uploaded files statistics"
 msgstr "Статистика загруженных файлов"
 
-#: .\templates\dashboard\partials\stats.html:41
+#: .\photohost\templates\dashboard\partials\stats.html:41
 msgid "Total uploaded"
 msgstr "Всего загружено"
 
-#: .\templates\dashboard\partials\stats.html:57
-#: .\templates\dashboard\partials\stats.html:126
-#: .\templates\dashboard\partials\stats.html:195
-#: .\templates\dashboard\partials\stats.html:297
+#: .\photohost\templates\dashboard\partials\stats.html:57
+#: .\photohost\templates\dashboard\partials\stats.html:126
+#: .\photohost\templates\dashboard\partials\stats.html:195
+#: .\photohost\templates\dashboard\partials\stats.html:297
 msgid "Available"
 msgstr "Доступно"
 
-#: .\templates\dashboard\partials\stats.html:73
-#: .\templates\dashboard\partials\stats.html:142
-#: .\templates\dashboard\partials\stats.html:211
+#: .\photohost\templates\dashboard\partials\stats.html:73
+#: .\photohost\templates\dashboard\partials\stats.html:142
+#: .\photohost\templates\dashboard\partials\stats.html:211
 msgid "Deleted"
 msgstr "удалена"
 
-#: .\templates\dashboard\partials\stats.html:92
-#: .\templates\dashboard\shell.html:32
-#: .\templates\photohostapp\multi_upload_result.html:8
+#: .\photohost\templates\dashboard\partials\stats.html:92
+#: .\photohost\templates\dashboard\shell.html:32
+#: .\photohost\templates\photohostapp\multi_upload_result.html:8
 msgid "Sections"
 msgstr "Разделы"
 
-#: .\templates\dashboard\partials\stats.html:96
+#: .\photohost\templates\dashboard\partials\stats.html:96
 msgid "Section statistics"
 msgstr "статистика по разделам"
 
-#: .\templates\dashboard\partials\stats.html:110
-#: .\templates\dashboard\partials\stats.html:179
+#: .\photohost\templates\dashboard\partials\stats.html:110
+#: .\photohost\templates\dashboard\partials\stats.html:179
 msgid "Total created"
 msgstr "Всего создано"
 
-#: .\templates\dashboard\partials\stats.html:161
+#: .\photohost\templates\dashboard\partials\stats.html:161
 msgid "Notes"
 msgstr "секретные записки"
 
-#: .\templates\dashboard\partials\stats.html:165
+#: .\photohost\templates\dashboard\partials\stats.html:165
 msgid "Secret note statistics"
 msgstr "Статистика секретных заметок"
 
-#: .\templates\dashboard\partials\stats.html:230
+#: .\photohost\templates\dashboard\partials\stats.html:230
 msgid "Visitors"
 msgstr "Посетители"
 
-#: .\templates\dashboard\partials\stats.html:234
+#: .\photohost\templates\dashboard\partials\stats.html:234
 msgid "Unique visitors during selected period"
 msgstr "Уникальные посетители за выбранный период"
 
-#: .\templates\dashboard\partials\stats.html:247
+#: .\photohost\templates\dashboard\partials\stats.html:247
 msgid "Unique visitors"
 msgstr "Уникальные посетители"
 
-#: .\templates\dashboard\partials\stats.html:262
+#: .\photohost\templates\dashboard\partials\stats.html:262
 msgid "Period can be 1 day, 2 days, 1 week, 1 month, or any calendar interval."
 msgstr ""
 "Период может быть 1 день, 2 дня, 1 неделя, 1 месяц или любой календарный "
 "интервал."
 
-#: .\templates\dashboard\partials\stats.html:268
+#: .\photohost\templates\dashboard\partials\stats.html:268
 msgid "Server"
 msgstr "Сервер"
 
-#: .\templates\dashboard\partials\stats.html:274
+#: .\photohost\templates\dashboard\partials\stats.html:274
 msgid "Total storage"
 msgstr "Общий объём хранилища"
 
-#: .\templates\dashboard\partials\stats.html:279
+#: .\photohost\templates\dashboard\partials\stats.html:279
 msgid "Free storage"
 msgstr "Свободное место"
 
-#: .\templates\dashboard\partials\stats.html:284
+#: .\photohost\templates\dashboard\partials\stats.html:284
 msgid "Used storage"
 msgstr "Использовано"
 
-#: .\templates\dashboard\partials\stats.html:311
+#: .\photohost\templates\dashboard\partials\stats.html:311
 msgid "Uptime"
 msgstr "Время работы"
 
-#: .\templates\dashboard\partials\stats.html:318
+#: .\photohost\templates\dashboard\partials\stats.html:318
 msgid "Load avg "
 msgstr "Средняя нагрузка "
 
-#: .\templates\dashboard\partials\twofa.html:17
-#: .\templates\dashboard\partials\twofa.html:27
+#: .\photohost\templates\dashboard\partials\twofa.html:17
+#: .\photohost\templates\dashboard\partials\twofa.html:27
 msgid "2FA is"
 msgstr "2FA"
 
-#: .\templates\dashboard\partials\twofa.html:17
+#: .\photohost\templates\dashboard\partials\twofa.html:17
 msgid "enabled"
 msgstr "включена"
 
-#: .\templates\dashboard\partials\twofa.html:17
+#: .\photohost\templates\dashboard\partials\twofa.html:17
 msgid "for this account. ✅"
 msgstr "для этого аккаунта. ✅"
 
-#: .\templates\dashboard\partials\twofa.html:22
+#: .\photohost\templates\dashboard\partials\twofa.html:22
 msgid "Disable 2FA"
 msgstr "Отключить 2FA"
 
-#: .\templates\dashboard\partials\twofa.html:27
+#: .\photohost\templates\dashboard\partials\twofa.html:27
 msgid "disabled"
 msgstr "отключена"
 
-#: .\templates\dashboard\partials\twofa.html:29
+#: .\photohost\templates\dashboard\partials\twofa.html:29
 msgid ""
 "Scan the QR code with Google Authenticator / Authy / 1Password, then enter "
 "the code to enable 2FA."
@@ -477,279 +481,284 @@ msgstr ""
 "Отсканируйте QR-код в Google Authenticator / Authy / 1Password, затем "
 "введите код, чтобы включить 2FA."
 
-#: .\templates\dashboard\partials\twofa.html:41
+#: .\photohost\templates\dashboard\partials\twofa.html:41
 msgid "Manual secret:"
 msgstr "Секрет вручную:"
 
-#: .\templates\dashboard\partials\twofa.html:61
+#: .\photohost\templates\dashboard\partials\twofa.html:61
 msgid "Enable 2FA"
 msgstr "Включить 2FA"
 
-#: .\templates\dashboard\partials\twofa.html:67
+#: .\photohost\templates\dashboard\partials\twofa.html:67
 msgid "No secret generated yet."
 msgstr "Секрет ещё не сгенерирован."
 
-#: .\templates\dashboard\shell.html:14
+#: .\photohost\templates\dashboard\shell.html:14
 msgid "Dashboard"
 msgstr "Панель управления"
 
-#: .\templates\dashboard\shell.html:24
+#: .\photohost\templates\dashboard\shell.html:24
 msgid "Statistics"
 msgstr "Статус"
 
-#: .\templates\dashboard\shell.html:48
+#: .\photohost\templates\dashboard\shell.html:48
 msgid "Secret Notes"
 msgstr "Создать заметку"
 
-#: .\templates\dashboard\shell.html:57
+#: .\photohost\templates\dashboard\shell.html:57
 msgid "Settings"
 msgstr "Настройки"
 
-#: .\templates\includes\donate_modal.html:14
+#: .\photohost\templates\includes\donate_modal.html:14
 msgid "Support Ximg"
 msgstr "Поддержать Ximg"
 
-#: .\templates\includes\donate_modal.html:17
+#: .\photohost\templates\includes\donate_modal.html:17
 msgid "Donations help keep the service online and improve security."
 msgstr ""
 "Пожертвования помогают поддерживать сервис онлайн и улучшать безопасность."
 
-#: .\templates\includes\donate_modal.html:108
+#: .\photohost\templates\includes\donate_modal.html:108
 msgid "Tip: Always double-check the address before sending."
 msgstr "Совет: Всегда проверяйте адрес перед отправкой."
 
-#: .\templates\includes\donate_modal.html:139
+#: .\photohost\templates\includes\donate_modal.html:139
 msgid "Copied to clipboard"
 msgstr "Скопировано в буфер обмена"
 
-#: .\templates\includes\donate_modal.html:140
-#: .\templates\includes\donate_modal.html:150
-#: .\templates\photohostapp\multi_upload_result.html:51
+#: .\photohost\templates\includes\donate_modal.html:140
+#: .\photohost\templates\includes\donate_modal.html:150
+#: .\photohost\templates\photohostapp\multi_upload_result.html:51
 msgid "Copied"
 msgstr "Скопировано"
 
-#: .\templates\photohostapp\multi_upload_detail.html:171
-
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:19
 msgid "Multi-upload completed"
 msgstr "Загрузка завершена"
 
-#: .\templates\photohostapp\multi_upload_detail.html:173
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:21
 msgid ""
 "Each file has been uploaded to an independent section. Copy the individual "
 "links below to share them."
-msgstr "Каждый файл был загружен в отдельный раздел. Скопируйте отдельные ссылки ниже, чтобы поделиться ими."
+msgstr ""
+"Каждый файл был загружен в отдельный раздел. Скопируйте отдельные ссылки "
+"ниже, чтобы поделиться ими."
 
-#: .\templates\photohostapp\multi_upload_detail.html:196
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:36
+msgid "Copy links to all Sections"
+msgstr "Скопируйте ссылки на все разделы"
 
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:69
 msgid "Password protected"
 msgstr "Защищено паролем"
 
-#: .\templates\photohostapp\multi_upload_detail.html:202
-
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:75
 msgid "Section link"
 msgstr "Ссылка на раздел"
 
-#: .\templates\photohostapp\multi_upload_detail.html:219
-
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:92
 msgid "Copy section link"
 msgstr "Скопировать ссылку на раздел"
 
-#: .\templates\photohostapp\multi_upload_detail.html:220
-
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:93
 msgid "Copy link"
 msgstr "Копировать"
 
-#: .\templates\photohostapp\multi_upload_detail.html:235
-
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:108
 msgid "Open section"
 msgstr "Открытый раздел"
 
-#: .\templates\photohostapp\multi_upload_detail.html:242
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:115
 msgid "No available files in this batch."
 msgstr "В этом пакете нет доступных файлов."
 
-#: .\templates\photohostapp\multi_upload_detail.html:251
-
+#: .\photohost\templates\photohostapp\multi_upload_detail.html:124
 msgid "Upload more files"
 msgstr "Загружайте больше файлов"
 
-#: .\templates\photohostapp\multi_upload_result.html:7
+#: .\photohost\templates\photohostapp\multi_upload_result.html:7
 msgid "Upload is completed"
 msgstr "Загрузка завершена"
 
-#: .\templates\photohostapp\multi_upload_result.html:69
+#: .\photohost\templates\photohostapp\multi_upload_result.html:69
 msgid "All URLs"
 msgstr "Все URL"
 
-#: .\templates\photohostapp\multi_upload_result.html:76
+#: .\photohost\templates\photohostapp\multi_upload_result.html:76
 msgid "All URLs copied"
 msgstr "Все URL скопированы"
 
-#: .\templates\photohostapp\section_detail.html:97
+#: .\photohost\templates\photohostapp\section_detail.html:97
 msgid "Download All in ZIP"
 msgstr "Скачать всё в ZIP"
 
-#: .\templates\photohostapp\section_password.html:21
+#: .\photohost\templates\photohostapp\section_password.html:21
 msgid "Password protected section"
 msgstr "Раздел, защищенный паролем"
 
-#: .\templates\photohostapp\section_password.html:25
+#: .\photohost\templates\photohostapp\section_password.html:25
 msgid "This section is private. Enter the password to access its files."
 msgstr ""
 "Этот раздел является закрытым. Введите пароль для доступа к его файлам."
 
-#: .\templates\photohostapp\section_password.html:50
+#: .\photohost\templates\photohostapp\section_password.html:50
 msgid "Enter password"
 msgstr "Введите пароль"
 
-#: .\templates\photohostapp\section_password.html:61
+#: .\photohost\templates\photohostapp\section_password.html:61
 msgid "Unlock section"
 msgstr "Разблокируйте раздел"
 
-#: .\templates\photohostapp\upload.html:16
+#: .\photohost\templates\photohostapp\upload.html:16
 msgid "file Hosting with automatic"
 msgstr "Хостинг файлов с автоматической"
 
-#: .\templates\photohostapp\upload.html:17
+#: .\photohost\templates\photohostapp\upload.html:17
 msgid "EXIF (metadata) cleaning"
 msgstr "очисткой EXIF (метаданных)"
 
-#: .\templates\photohostapp\upload.html:24
+#: .\photohost\templates\photohostapp\upload.html:24
 msgid "Loading..."
 msgstr "Загрузка..."
 
-#: .\templates\photohostapp\upload.html:26
+#: .\photohost\templates\photohostapp\upload.html:26
 msgid "Uploading files..."
 msgstr "Загрузка файлов..."
 
-#: .\templates\photohostapp\upload.html:44
+#: .\photohost\templates\photohostapp\upload.html:44
 msgid "of"
 msgstr "из"
 
-#: .\templates\photohostapp\upload.html:44
+#: .\photohost\templates\photohostapp\upload.html:44
 msgid "files uploaded"
 msgstr "файлов загружено"
 
-#: .\templates\photohostapp\upload.html:57
+#: .\photohost\templates\photohostapp\upload.html:57
 msgid "Cancel Upload"
 msgstr "Отменить загрузку"
 
-#: .\templates\photohostapp\upload.html:76
+#: .\photohost\templates\photohostapp\upload.html:76
 msgid " Select files to upload"
 msgstr "Выбрать файлы для загрузки"
 
-#: .\templates\photohostapp\upload.html:81
+#: .\photohost\templates\photohostapp\upload.html:81
 msgid "Or Drag and Drop"
 msgstr "Или перетащите файлы"
 
-#: .\templates\photohostapp\upload.html:103
+#: .\photohost\templates\photohostapp\upload.html:103
 msgid "Keep original filenames"
 msgstr "Сохранить старые имена файлов"
 
-#: .\templates\photohostapp\upload.html:107
+#: .\photohost\templates\photohostapp\upload.html:107
 msgid "The function allows you to"
 msgstr "Функция позволяет"
 
-#: .\templates\photohostapp\upload.html:107
+#: .\photohost\templates\photohostapp\upload.html:107
 msgid "save the original file names"
 msgstr "сохранить оригинальные имена файлов"
 
-#: .\templates\photohostapp\upload.html:107
+#: .\photohost\templates\photohostapp\upload.html:107
 msgid "after uploading to the hosting"
 msgstr "после загрузки на хостинг"
 
-#: .\templates\photohostapp\upload.html:138
+#: .\photohost\templates\photohostapp\upload.html:127
+msgid "Multi-upload"
+msgstr "мульти-загрузки"
+
+#: .\photohost\templates\photohostapp\upload.html:138
 msgid ""
 "Each file will be uploaded into its own independent section, with a separate "
 "shareable link."
-msgstr "Каждый файл будет загружен в отдельный раздел с отдельной ссылкой, доступной для общего доступа."
+msgstr ""
+"Каждый файл будет загружен в отдельный раздел с отдельной ссылкой, доступной "
+"для общего доступа."
 
-#: .\templates\photohostapp\upload.html:153
+#: .\photohost\templates\photohostapp\upload.html:153
 msgid "Set password"
 msgstr "Установить пароль"
 
-#: .\templates\photohostapp\upload.html:162
+#: .\photohost\templates\photohostapp\upload.html:162
 msgid "Make the section private by protecting the section with a password."
 msgstr "Сделайте раздел приватным, защитив его паролем."
 
-#: .\templates\photohostapp\upload.html:177
+#: .\photohost\templates\photohostapp\upload.html:177
 msgid "Section password"
 msgstr "Пароль к разделу"
 
-#: .\templates\photohostapp\upload.html:185
+#: .\photohost\templates\photohostapp\upload.html:185
 msgid "Password must contain at least 8 characters."
 msgstr "Пароль должен содержать не менее 8 символов."
 
-#: .\templates\photohostapp\upload.html:211
+#: .\photohost\templates\photohostapp\upload.html:211
 msgid "Data stored from 1 to 180 days"
 msgstr "Данные хранятся от 1 до 180 дней"
 
-#: .\templates\photohostapp\upload.html:219
+#: .\photohost\templates\photohostapp\upload.html:219
 msgid "Upload"
 msgstr "Загрузить"
 
-#: .\templates\photohostapp\upload.html:224
+#: .\photohost\templates\photohostapp\upload.html:224
 msgid " We delete ExIf (meta tags) from media files (JPG, PDF, PSD and other)"
 msgstr "Мы удаляем ExIf (метатеги) из медиафайлов (JPG, PDF, PSD и других)"
 
-#: .\templates\photohostapp\upload.html:226
+#: .\photohost\templates\photohostapp\upload.html:226
 msgid "Supported files"
 msgstr "Поддерживаемые файлы"
 
-#: .\templates\secret_notes\alert.html:10
-#: .\templates\secret_notes\password.html:20
+#: .\photohost\templates\secret_notes\alert.html:10
+#: .\photohost\templates\secret_notes\password.html:20
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: .\templates\secret_notes\alert.html:11
+#: .\photohost\templates\secret_notes\alert.html:11
 msgid "This note will be permanently deleted after opening."
 msgstr "Эта заметка будет удалена навсегда после открытия."
 
-#: .\templates\secret_notes\alert.html:15
+#: .\photohost\templates\secret_notes\alert.html:15
 msgid "Open Note"
 msgstr "Открыть заметку"
 
-#: .\templates\secret_notes\alert.html:19
+#: .\photohost\templates\secret_notes\alert.html:19
 msgid "Cancel"
 msgstr "Отмена"
 
-#: .\templates\secret_notes\confirm_read.html:18
+#: .\photohost\templates\secret_notes\confirm_read.html:18
 msgid "Important Warning"
 msgstr "Важное предупреждение"
 
-#: .\templates\secret_notes\confirm_read.html:22
+#: .\photohost\templates\secret_notes\confirm_read.html:22
 msgid "You are about to read and"
 msgstr "Вы собираетесь прочитать и"
 
-#: .\templates\secret_notes\confirm_read.html:22
+#: .\photohost\templates\secret_notes\confirm_read.html:22
 msgid "permanently destroy this note"
 msgstr "навсегда уничтожить эту заметку"
 
-#: .\templates\secret_notes\confirm_read.html:30
+#: .\photohost\templates\secret_notes\confirm_read.html:30
 msgid "Are you sure you want to continue?"
 msgstr "Вы уверены, что хотите продолжить?"
 
-#: .\templates\secret_notes\confirm_read.html:44
+#: .\photohost\templates\secret_notes\confirm_read.html:44
 msgid "Yes, show me the note"
 msgstr "Да, покажите мне заметку"
 
-#: .\templates\secret_notes\confirm_read.html:53
+#: .\photohost\templates\secret_notes\confirm_read.html:53
 msgid " Yes, show me the note"
 msgstr "Да, покажите мне заметку"
 
-#: .\templates\secret_notes\confirm_read.html:62
+#: .\photohost\templates\secret_notes\confirm_read.html:62
 msgid "No, not now"
 msgstr "Нет, не сейчас"
 
-#: .\templates\secret_notes\confirm_read.html:68
+#: .\photohost\templates\secret_notes\confirm_read.html:68
 msgid "Remember"
 msgstr "Помните"
 
-#: .\templates\secret_notes\confirm_read.html:69
+#: .\photohost\templates\secret_notes\confirm_read.html:69
 msgid "If you need to keep the information from this note,"
 msgstr "Если вам нужно сохранить информацию из этой заметки,"
 
-#: .\templates\secret_notes\confirm_read.html:70
+#: .\photohost\templates\secret_notes\confirm_read.html:70
 msgid ""
 "make sure to copy it before closing the page, as it will be permanently "
 "deleted."
@@ -757,158 +766,162 @@ msgstr ""
 "обязательно скопируйте её перед закрытием страницы, так как она будет "
 "удалена навсегда."
 
-#: .\templates\secret_notes\create.html:11
-#: .\templates\secret_notes\created.html:8 .\templates\secret_notes\view.html:8
+#: .\photohost\templates\secret_notes\create.html:11
+#: .\photohost\templates\secret_notes\created.html:8
+#: .\photohost\templates\secret_notes\view.html:8
 msgid "Send"
 msgstr "Отправить"
 
-#: .\templates\secret_notes\create.html:11
-#: .\templates\secret_notes\created.html:8 .\templates\secret_notes\view.html:8
+#: .\photohost\templates\secret_notes\create.html:11
+#: .\photohost\templates\secret_notes\created.html:8
+#: .\photohost\templates\secret_notes\view.html:8
 msgid "Encrypted"
 msgstr "Зашифрованные"
 
-#: .\templates\secret_notes\create.html:12
-#: .\templates\secret_notes\created.html:9 .\templates\secret_notes\view.html:8
+#: .\photohost\templates\secret_notes\create.html:12
+#: .\photohost\templates\secret_notes\created.html:9
+#: .\photohost\templates\secret_notes\view.html:8
 msgid "Notes that will self-destruct"
 msgstr "Заметки, которые самоуничтожатся"
 
-#: .\templates\secret_notes\create.html:12
-#: .\templates\secret_notes\created.html:9 .\templates\secret_notes\view.html:8
+#: .\photohost\templates\secret_notes\create.html:12
+#: .\photohost\templates\secret_notes\created.html:9
+#: .\photohost\templates\secret_notes\view.html:8
 msgid "after being read"
 msgstr "после прочтения"
 
-#: .\templates\secret_notes\create.html:27
+#: .\photohost\templates\secret_notes\create.html:27
 msgid "Optional Password"
 msgstr "Пароль (необязательно)"
 
-#: .\templates\secret_notes\create.html:38
+#: .\photohost\templates\secret_notes\create.html:38
 msgid "If set, users will need this password to view the note"
 msgstr ""
 "Если установлен, пользователям потребуется этот пароль для просмотра заметки"
 
-#: .\templates\secret_notes\create.html:45
+#: .\photohost\templates\secret_notes\create.html:45
 msgid "Self-destruct"
 msgstr "Самоуничтожение"
 
-#: .\templates\secret_notes\create.html:63
+#: .\photohost\templates\secret_notes\create.html:63
 msgid "Create Note"
 msgstr "Создать заметку"
 
-#: .\templates\secret_notes\created.html:13
+#: .\photohost\templates\secret_notes\created.html:13
 msgid "Secret note created successfully"
 msgstr "Секретная заметка успешно создана"
 
-#: .\templates\secret_notes\created.html:24
-#: .\templates\secret_notes\created.html:73
+#: .\photohost\templates\secret_notes\created.html:24
+#: .\photohost\templates\secret_notes\created.html:73
 msgid "Password Protected"
 msgstr "Защищено паролем"
 
-#: .\templates\secret_notes\created.html:25
+#: .\photohost\templates\secret_notes\created.html:25
 msgid "This note requires a password to view"
 msgstr "Для просмотра этой заметки требуется пароль"
 
-#: .\templates\secret_notes\created.html:37
+#: .\photohost\templates\secret_notes\created.html:37
 msgid "No Password Set"
 msgstr "Пароль не установлен"
 
-#: .\templates\secret_notes\created.html:38
+#: .\photohost\templates\secret_notes\created.html:38
 msgid "Anyone with the link can view this note"
 msgstr "Любой, у кого есть ссылка, может просмотреть эту заметку"
 
-#: .\templates\secret_notes\created.html:45
+#: .\photohost\templates\secret_notes\created.html:45
 msgid "Share this link. Anyone with it can read the note"
 msgstr ""
 "Поделитесь этой ссылкой. Любой, у кого она есть, может прочитать заметку"
 
-#: .\templates\secret_notes\created.html:46
+#: .\photohost\templates\secret_notes\created.html:46
 msgid "Password required"
 msgstr "Требуется пароль"
 
-#: .\templates\secret_notes\created.html:68
+#: .\photohost\templates\secret_notes\created.html:68
 msgid "Note Information"
 msgstr "Информация о заметке"
 
-#: .\templates\secret_notes\created.html:71
+#: .\photohost\templates\secret_notes\created.html:71
 msgid "Status"
 msgstr "Статус"
 
-#: .\templates\secret_notes\created.html:73
+#: .\photohost\templates\secret_notes\created.html:73
 msgid "No Password"
 msgstr "Без пароля"
 
-#: .\templates\secret_notes\created.html:77
+#: .\photohost\templates\secret_notes\created.html:77
 msgid "Expiration"
 msgstr "Срок действия"
 
-#: .\templates\secret_notes\created.html:83
+#: .\photohost\templates\secret_notes\created.html:83
 msgid "No expiration"
 msgstr "Без срока действия"
 
-#: .\templates\secret_notes\created.html:104
+#: .\photohost\templates\secret_notes\created.html:104
 msgid "Test View"
 msgstr "Тестовый просмотр"
 
-#: .\templates\secret_notes\created.html:111
+#: .\photohost\templates\secret_notes\created.html:111
 msgid " Create Another"
 msgstr "Создать ещё одну"
 
-#: .\templates\secret_notes\created.html:118
+#: .\photohost\templates\secret_notes\created.html:118
 msgid "Important"
 msgstr "Важно"
 
-#: .\templates\secret_notes\created.html:119
+#: .\photohost\templates\secret_notes\created.html:119
 msgid "The password cannot be recovered if lost."
 msgstr "Пароль нельзя восстановить, если он утерян."
 
-#: .\templates\secret_notes\created.html:120
+#: .\photohost\templates\secret_notes\created.html:120
 msgid "Make sure to save it somewhere safe before sharing the link."
 msgstr ""
 "Обязательно сохраните его в безопасном месте перед тем, как делиться ссылкой."
 
-#: .\templates\secret_notes\deleted.html:18
+#: .\photohost\templates\secret_notes\deleted.html:18
 msgid "Note Deleted"
 msgstr "Заметка удалена"
 
-#: .\templates\secret_notes\deleted.html:21
+#: .\photohost\templates\secret_notes\deleted.html:21
 msgid "This secret note has been deleted or has expired"
 msgstr "Эта секретная заметка была удалена или истек её срок действия"
 
-#: .\templates\secret_notes\deleted.html:32
+#: .\photohost\templates\secret_notes\deleted.html:32
 msgid "Why was this note deleted?"
 msgstr "Почему была удалена эта заметка?"
 
-#: .\templates\secret_notes\deleted.html:34
+#: .\photohost\templates\secret_notes\deleted.html:34
 msgid "It was set to 'delete after reading' and has already been viewed"
 msgstr ""
 "Она была настроена на 'удаление после прочтения' и уже была просмотрена"
 
-#: .\templates\secret_notes\deleted.html:35
+#: .\photohost\templates\secret_notes\deleted.html:35
 msgid "It reached its expiration date"
 msgstr "Истёк срок её действия"
 
-#: .\templates\secret_notes\deleted.html:36
+#: .\photohost\templates\secret_notes\deleted.html:36
 msgid "The creator manually deleted it"
 msgstr "Создатель удалил её вручную"
 
-#: .\templates\secret_notes\deleted.html:37
+#: .\photohost\templates\secret_notes\deleted.html:37
 msgid "An error occurred while decrypting the content"
 msgstr "Произошла ошибка при расшифровке содержимого"
 
-#: .\templates\secret_notes\deleted.html:44
-#: .\templates\secret_notes\error.html:40
-#: .\templates\secret_notes\password.html:77
+#: .\photohost\templates\secret_notes\deleted.html:44
+#: .\photohost\templates\secret_notes\error.html:40
+#: .\photohost\templates\secret_notes\password.html:77
 msgid "Create New Note"
 msgstr "Создать новую заметку"
 
-#: .\templates\secret_notes\deleted.html:47
+#: .\photohost\templates\secret_notes\deleted.html:47
 msgid "Go to Homepage"
 msgstr "Перейти на главную"
 
-#: .\templates\secret_notes\deleted.html:53
+#: .\photohost\templates\secret_notes\deleted.html:53
 msgid "Note"
 msgstr "Примечание"
 
-#: .\templates\secret_notes\deleted.html:53
+#: .\photohost\templates\secret_notes\deleted.html:53
 msgid ""
 "Secret notes are designed to self-destruct after being read or when they "
 "expire."
@@ -916,59 +929,59 @@ msgstr ""
 "Секретные заметки предназначены для самоуничтожения после прочтения или по "
 "истечении срока действия."
 
-#: .\templates\secret_notes\deleted.html:54
+#: .\photohost\templates\secret_notes\deleted.html:54
 msgid ""
 "This ensures your sensitive information doesn't stay accessible forever."
 msgstr ""
 "Это гарантирует, что ваша конфиденциальная информация не останется доступной "
 "навсегда."
 
-#: .\templates\secret_notes\error.html:19
+#: .\photohost\templates\secret_notes\error.html:19
 msgid "Error"
 msgstr "Ошибка"
 
-#: .\templates\secret_notes\error.html:26
+#: .\photohost\templates\secret_notes\error.html:26
 msgid "Possible reasons"
 msgstr "Возможные причины"
 
-#: .\templates\secret_notes\error.html:31
+#: .\photohost\templates\secret_notes\error.html:31
 msgid "Encryption key mismatch or corruption"
 msgstr "Несоответствие или повреждение ключа шифрования"
 
-#: .\templates\secret_notes\error.html:32
+#: .\photohost\templates\secret_notes\error.html:32
 msgid "Note content has been tampered with"
 msgstr "Содержимое заметки было изменено"
 
-#: .\templates\secret_notes\error.html:33
+#: .\photohost\templates\secret_notes\error.html:33
 msgid "Database inconsistency"
 msgstr "Несогласованность базы данных"
 
-#: .\templates\secret_notes\error.html:34
+#: .\photohost\templates\secret_notes\error.html:34
 msgid "Temporary server issue"
 msgstr "Временная проблема с сервером"
 
-#: .\templates\secret_notes\error.html:43
+#: .\photohost\templates\secret_notes\error.html:43
 msgid "Try Again"
 msgstr "Попробовать снова"
 
-#: .\templates\secret_notes\password.html:12
+#: .\photohost\templates\secret_notes\password.html:12
 msgid "Password Required"
 msgstr "Требуется пароль"
 
-#: .\templates\secret_notes\password.html:20
+#: .\photohost\templates\secret_notes\password.html:20
 msgid "This note will be permanently"
 msgstr "Эта заметка будет"
 
-#: .\templates\secret_notes\password.html:20
+#: .\photohost\templates\secret_notes\password.html:20
 msgid "deleted"
 msgstr "удалена"
 
-#: .\templates\secret_notes\password.html:20
-#: .\templates\secret_notes\view.html:15
+#: .\photohost\templates\secret_notes\password.html:20
+#: .\photohost\templates\secret_notes\view.html:15
 msgid "after reading"
 msgstr "после прочтения"
 
-#: .\templates\secret_notes\password.html:31
+#: .\photohost\templates\secret_notes\password.html:31
 msgid ""
 "This note is protected by a password. Please enter it below to view the "
 "content."
@@ -976,31 +989,31 @@ msgstr ""
 "Эта заметка защищена паролем. Пожалуйста, введите его ниже, чтобы "
 "просмотреть содержимое."
 
-#: .\templates\secret_notes\password.html:49
+#: .\photohost\templates\secret_notes\password.html:49
 msgid "self-destruct"
 msgstr "самоуничтожится"
 
-#: .\templates\secret_notes\password.html:49
+#: .\photohost\templates\secret_notes\password.html:49
 msgid "immediately after viewing."
 msgstr "сразу после просмотра."
 
-#: .\templates\secret_notes\password.html:61
+#: .\photohost\templates\secret_notes\password.html:61
 msgid "Read and Destroy Note"
 msgstr "Прочитать и уничтожить заметку"
 
-#: .\templates\secret_notes\password.html:63
+#: .\photohost\templates\secret_notes\password.html:63
 msgid "View Note"
 msgstr "Просмотреть заметку"
 
-#: .\templates\secret_notes\password.html:72
+#: .\photohost\templates\secret_notes\password.html:72
 msgid "Go Back"
 msgstr "Назад"
 
-#: .\templates\secret_notes\view.html:12
+#: .\photohost\templates\secret_notes\view.html:12
 msgid "Note Content"
 msgstr "Содержимое заметки"
 
-#: .\templates\secret_notes\view.html:29
+#: .\photohost\templates\secret_notes\view.html:29
 msgid "Copy to Clipboard"
 msgstr "Копировать в буфер обмена"
 
